@@ -70,6 +70,18 @@ class User
      */
     private $is_delivery;
 
+    /**
+     * One User has Many Orders.
+     * @OneToMany(targetEntity="Order", mappedBy="users")
+     */
+    private $orders;
+
+    public function __construct() {
+        $this->orders = new ArrayCollection();
+    }
+}
+
+
     public function getId()
     {
         return $this->id;
@@ -218,4 +230,5 @@ class User
 
         return $this;
     }
+
 }

@@ -68,6 +68,12 @@ class Order
      */
     private $products;
 
+    /**
+     * Many Orders have One User.
+     * @ManyToOne(targetEntity="User", inversedBy="orders")
+     */
+    private $users;
+    
     public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
