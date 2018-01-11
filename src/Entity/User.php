@@ -79,8 +79,6 @@ class User
     public function __construct() {
         $this->orders = new ArrayCollection();
     }
-}
-
 
     public function getId()
     {
