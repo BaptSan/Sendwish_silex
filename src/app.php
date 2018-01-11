@@ -24,7 +24,7 @@ $conn = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
     'password' => '',
-    'dbname'   => 'Sendwish_silex_test',
+    'dbname'   => 'sendwish_silex_test',
 );
 
 $app['em'] = EntityManager::create($conn, $config);
