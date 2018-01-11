@@ -11,51 +11,51 @@ return $app['twig']->render('index.html.twig', array());
 ->bind('homepage')
 ;
 $app->get('/inscription', function (Request $request) use ($app) {
-if (isset($request->get('inscripValid'))) {
+    if (isset($request->get('inscripValid'))) {
 //Connexion à la base de donnée : sendwish_test
-    $bdd = new PDO('mysql:host=localhost; dbname=sendwish_test;charset=utf8','root','');
-    if (isset($_POST['firstname']) && !empty($_POST['firstname']) &&
-        isset($_POST['lastname']) && !empty($_POST['lastname']) &&
-        isset($_POST['address']) && !empty($_POST['address']) &&
-        isset($_POST['email']) && !empty($_POST['email']) &&
-        isset($_POST['tel']) && !empty($_POST['tel']) &&
-        isset($_POST['birthday']) && !empty($_POST['birthday']) &&
-        isset($_POST['password']) && !empty($_POST['password']) &&
-        isset($_POST['passwordConf']) && !empty($_POST['passwordConf']) &&
-        $_POST['password'] === $_POST['passwordConf']) {
-        $varFirstName = htmlspecialchars($_POST['firstname']);
-        $varLastName = htmlspecialchars($_POST['lastname']);
-        $varAddress = htmlspecialchars($_POST['address']);
-        $varEmail = htmlspecialchars($_POST['email']);
-        $varTel = htmlspecialchars($_POST['tel']);
-        $varBrithday = htmlspecialchars($_POST['birthday']);
-        $varPassWord = htmlspecialchars($_POST['password']);
-        $varPassWordConf = htmlspecialchars($_POST['passwordConf']);;
-        $addAddress = $bdd->prepare("INSERT INTO address (formatted, telephone)
-                                    VALUES (:add, :phone)
+        $bdd = new PDO('mysql:host=localhost; dbname=sendwish_test;charset=utf8','root','');
+        if (isset($request->get('firstname')) && !empty($request->get('firstname')) &&
+            isset($request->get('lastname')) && !empty($request->get('lastname')) &&
+            isset($request->get('address')) && !empty($request->get('address')) &&
+            isset($request->get('email')) && !empty($request->get('email')) &&
+            isset($request->get('tel')) && !empty($request->get('tel')) &&
+            isset($request->get('birthday')) && !empty($request->get('birthday')) &&
+            isset($request->get('password')) && !empty($request->get('password')) &&
+            isset($request->get('passwordConf')) && !empty($request->get('passwordConf')) &&
+            $request->get('password') === $request->get('passwordConf')) {
+            $varFirstName = htmlspecialchars($request->get('firstname'));
+            $varLastName = htmlspecialchars($request->get('lastname'));
+            $varAddress = htmlspecialchars($request->get('address'));
+            $varEmail = htmlspecialchars($request->get('email'));
+            $varTel = htmlspecialchars($request->get('tel'));
+            $varBrithday = htmlspecialchars($request->get('birthday'));
+            $varPassWord = htmlspecialchars($request->get('password'));
+            $varPassWordConf = htmlspecialchars($request->get('passwordConf'));;
+            $addAddress = $bdd->prepare("INSERT INTO address (formatted, telephone)
+                                        VALUES (:add, :phone)
+                                        ");
+            $addAddress->execute(array(
+                        'add' => $varAddress,
+                        'phone' => $varTel,
+                        ));
+            $addAccess = $bdd->prepare("INSERT INTO access (password, mail)
+                                        VALUES (:passW, :em)
+                                        ");
+            $addAccess->execute(array(
+                        'passW' => $varPassWord,
+                        'em' => $varEmail,
+                        ));
+            $addUsers = $bdd->prepare("INSERT INTO users (lastname, firstname)
+                                    VALUES (:lastN, :firstN)
                                     ");
-        $addAddress->execute(array(
-                    'add' => $varAddress,
-                    'phone' => $varTel,
-                    ));
-        $addAccess = $bdd->prepare("INSERT INTO access (password, mail)
-                                    VALUES (:passW, :em)
-                                    ");
-        $addAccess->execute(array(
-                    'passW' => $varPassWord,
-                    'em' => $varEmail,
-                    ));
-        $addUsers = $bdd->prepare("INSERT INTO users (lastname, firstname)
-                                VALUES (:lastN, :firstN)
-                                ");
-        $addUsers->execute(array(
-                    'lastN' => $varLastName,
-                    'firstN' => $varFirstName,
-                    ));
+            $addUsers->execute(array(
+                        'lastN' => $varLastName,
+                        'firstN' => $varFirstName,
+                        ));
+        }
+        return // revois 'félicitation votre inscription est validéé !'
     }
-}else{
-return $app['twig']->render('inscription.html.twig', array());
-}
+    return $app['twig']->render('inscription.html.twig', array());
 });
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 if ($app['debug']) {
