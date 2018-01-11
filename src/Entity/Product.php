@@ -43,7 +43,7 @@ class Product
     private $orders;
 
     public function __construct() {
-        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId()
