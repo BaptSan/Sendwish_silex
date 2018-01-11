@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
@@ -13,8 +15,18 @@ $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
-
     return $twig;
 });
+
+$isDevMode = true;
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/Entity"), $isDevMode);
+$conn = array(
+    'driver'   => 'pdo_mysql',
+    'user'     => 'root',
+    'password' => '',
+    'dbname'   => 'Sendwish_silex_test',
+);
+
+$app['em'] = EntityManager::create($conn, $config);
 
 return $app;
