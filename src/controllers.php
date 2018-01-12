@@ -4,24 +4,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {
 return $app['twig']->render('index.html.twig', array());
 })
 ->bind('homepage')
 ;
-$app->get('/inscription', function (Request $request) use ($app) {
-    if (isset($request->get('inscripValid'))) {
-//Connexion à la base de donnée : sendwish_test
-        $bdd = new PDO('mysql:host=localhost; dbname=sendwish_test;charset=utf8','root','');
-        if (isset($request->get('firstname')) && !empty($request->get('firstname')) &&
-            isset($request->get('lastname')) && !empty($request->get('lastname')) &&
-            isset($request->get('address')) && !empty($request->get('address')) &&
-            isset($request->get('email')) && !empty($request->get('email')) &&
-            isset($request->get('tel')) && !empty($request->get('tel')) &&
-            isset($request->get('birthday')) && !empty($request->get('birthday')) &&
-            isset($request->get('password')) && !empty($request->get('password')) &&
-            isset($request->get('passwordConf')) && !empty($request->get('passwordConf')) &&
+
+$app->match('/inscription', function (Request $request) use ($app) {
+    if ($request->get('inscripValid') !== NULL) {
+        if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
+            null !== $request->get('lastname') && !empty($request->get('lastname')) &&
+            null !== $request->get('address') && !empty($request->get('address')) &&
+            null !== $request->get('email') && !empty($request->get('email')) &&
+            null !== $request->get('tel') && !empty($request->get('tel')) &&
+            null !== $request->get('birthday') && !empty($request->get('birthday')) &&
+            null !== $request->get('password') && !empty($request->get('password')) &&
+            null !== $request->get('passwordConf') && !empty($request->get('passwordConf')) &&
             $request->get('password') === $request->get('passwordConf')) {
             $varFirstName = htmlspecialchars($request->get('firstname'));
             $varLastName = htmlspecialchars($request->get('lastname'));
@@ -30,30 +30,9 @@ $app->get('/inscription', function (Request $request) use ($app) {
             $varTel = htmlspecialchars($request->get('tel'));
             $varBrithday = htmlspecialchars($request->get('birthday'));
             $varPassWord = htmlspecialchars($request->get('password'));
-            $varPassWordConf = htmlspecialchars($request->get('passwordConf'));;
-            $addAddress = $bdd->prepare("INSERT INTO address (formatted, telephone)
-                                        VALUES (:add, :phone)
-                                        ");
-            $addAddress->execute(array(
-                        'add' => $varAddress,
-                        'phone' => $varTel,
-                        ));
-            $addAccess = $bdd->prepare("INSERT INTO access (password, mail)
-                                        VALUES (:passW, :em)
-                                        ");
-            $addAccess->execute(array(
-                        'passW' => $varPassWord,
-                        'em' => $varEmail,
-                        ));
-            $addUsers = $bdd->prepare("INSERT INTO users (lastname, firstname)
-                                    VALUES (:lastN, :firstN)
-                                    ");
-            $addUsers->execute(array(
-                        'lastN' => $varLastName,
-                        'firstN' => $varFirstName,
-                        ));
+            $varPassWordConf = htmlspecialchars($request->get('passwordConf'));
         }
-        return // revois 'félicitation votre inscription est validéé !'
+        return "félicitation"; // revois 'félicitation votre inscription est validéé !'
     }
     return $app['twig']->render('inscription.html.twig', array());
 });
