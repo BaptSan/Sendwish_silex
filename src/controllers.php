@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Entity\User;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {
@@ -13,6 +14,7 @@ return $app['twig']->render('index.html.twig', array());
 ;
 
 $app->match('/inscription', function (Request $request) use ($app) {
+    $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
             null !== $request->get('lastname') && !empty($request->get('lastname')) &&
@@ -32,6 +34,19 @@ $app->match('/inscription', function (Request $request) use ($app) {
             $varPassWord = htmlspecialchars($request->get('password'));
             $varPassWordConf = htmlspecialchars($request->get('passwordConf'));
         }
+        $sd = new User();
+        $em = $app['em'];
+        $sd->setFirstname("Clément");
+        $sd->setLastname("Pillot");
+        $sd->setMail("pillot.clement@gmail.com");
+        $sd->setPassword("coucou");
+        $sd->setFormattedAddr("Le Champ du Rocher, Chérisay 72610");
+        $sd->setLat("48");
+        $sd->setLng("0.02");
+        $sd->setDistance("5");
+        $sd->setIsDelivery("true");
+        $em->persist($sd);
+        $em->flush();
         return "félicitation"; // revois 'félicitation votre inscription est validéé !'
     }
     return $app['twig']->render('inscription.html.twig', array());
