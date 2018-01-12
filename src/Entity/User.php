@@ -1,72 +1,78 @@
 <?php
-
+namespace Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 /** @Entity */
 class User
 {
 	/**
      * @Id
-     * @Column(type="integer")
+     * @Column(type="integer", nullable=true)
      * @GeneratedValue
      */
     private $id;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $lastname;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $firstname;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $mail;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $password;
 
     /**
-     * @Column(type="string")
+     * @Column(type="date", nullable=true)
+     */
+    private $birthdate;
+
+    /**
+     * @Column(type="string", nullable=true)
      */
     private $formatted_addr;
 
     /**
-     * @Column(type="float")
+     * @Column(type="float", nullable=true)
      */
     private $lat;
 
     /**
-     * @Column(type="float")
+     * @Column(type="float", nullable=true)
      */
     private $lng;
 
     /**
-     * @Column(type="float")
+     * @Column(type="float", nullable=true)
      */
     private $distance;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $tel;
 
     /**
-     * @Column(type="boolean")
+     * @Column(type="boolean", nullable=true)
      */
     private $is_admin;
 
     /**
-     * @Column(type="boolean")
+     * @Column(type="boolean", nullable=true)
      */
     private $is_client;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $is_delivery;
 
