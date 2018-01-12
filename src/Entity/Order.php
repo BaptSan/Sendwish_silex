@@ -1,5 +1,5 @@
 <?php
-
+namespace Entity;
 /** @Entity */
 class Order
 {
