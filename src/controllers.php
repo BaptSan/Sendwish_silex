@@ -30,17 +30,17 @@ $app->match('/inscription', function (Request $request) use ($app) {
             $varAddress = htmlspecialchars($request->get('address'));
             $varEmail = htmlspecialchars($request->get('email'));
             $varTel = htmlspecialchars($request->get('tel'));
-            $varBrithday = htmlspecialchars($request->get('birthday'));
+            $varBirthday = htmlspecialchars($request->get('birthday'));
             $varPassWord = htmlspecialchars($request->get('password'));
             $varPassWordConf = htmlspecialchars($request->get('passwordConf'));
         }
         $sd = new User();
         $em = $app['em'];
-        $sd->setFirstname("Clément");
-        $sd->setLastname("Pillot");
-        $sd->setMail("pillot.clement@gmail.com");
-        $sd->setPassword("coucou");
-        $sd->setFormattedAddr("Le Champ du Rocher, Chérisay 72610");
+        $sd->setFirstname($varFirstName);
+        $sd->setLastname($varLastName);
+        $sd->setMail($varEmail);
+        $sd->setPassword($varPassWord);
+        $sd->setFormattedAddr($varAddress);
         $sd->setLat("48");
         $sd->setLng("0.02");
         $sd->setDistance("5");
