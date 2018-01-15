@@ -45,7 +45,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setFirstname($varFirstName);
         $sd->setLastname($varLastName);
         $sd->setMail($varEmail);
-        $sd->setPassword($varPassWord);
+        $sd->setPassword(password_hash($varPassWord,PASSWORD_DEFAULT));
         $sd->setTel($varTel);
         $sd->setFormattedAddr($varAddress);
         $sd->setBirthdate(new DateTime($varBirthday));
@@ -57,7 +57,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setDistance($varDist);
         $em->persist($sd);
         $em->flush();
-        return "félicitation"; // revois 'félicitation votre inscription est validéé !'
+        return $app['twig']->render('index.html.twig', array('inscriptionValid'=>true));
     }
     return $app['twig']->render('inscription.html.twig', array());
 });
@@ -65,6 +65,7 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 if ($app['debug']) {
 return;
 }
+
 // 404.html, or 40x.html, or 4xx.html, or error.html
 $templates = array(
 'errors/'.$code.'.html.twig',
