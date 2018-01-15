@@ -139,6 +139,17 @@ class User
         return $this;
     }
 
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+        return $this;
+    }
+    
     public function getFormattedAddr()
     {
         return $this->formatted_addr;
