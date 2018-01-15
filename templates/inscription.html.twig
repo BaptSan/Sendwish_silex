@@ -15,8 +15,10 @@
 		<input type="date" name="birthday">
 		<br>
 		<br>
+		<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></a>
 		Adresse :
-		<input type="text" name="address">
+		<input type="text" name="address" id="inputAddress">
+		<p id="addressMessage" style="display: none;"></p>
 		<br>
 		<br>
 		E-mail :
@@ -31,5 +33,8 @@
 		<br>
 		<input type="submit" value="Inscription!">
 		<input type="hidden" name="inscripValid">
+		<input type="hidden" name="inputLat" id="inputLat">
+		<input type="hidden" name="inputLng" id="inputLng">
+		<input type="hidden" name="inputDist" id="inputDist">
 	</form>
 	{% endblock %}

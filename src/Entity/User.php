@@ -52,7 +52,7 @@ class User
     private $lng;
 
     /**
-     * @Column(type="float", nullable=true)
+     * @Column(type="string", nullable=true)
      */
     private $distance;
 
@@ -72,7 +72,7 @@ class User
     private $is_client;
 
     /**
-     * @Column(type="string", nullable=true)
+     * @Column(type="boolean", nullable=true)
      */
     private $is_delivery;
 
