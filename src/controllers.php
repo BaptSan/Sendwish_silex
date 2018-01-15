@@ -8,10 +8,11 @@ use Entity\User;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {
-return $app['twig']->render('index.html.twig', array());
+return $app['twig']->render('index.html.twig', array(
+                        'isRegister' => $_GET['register'] ?? NULL 
+                    ));
 })
-->bind('homepage')
-;
+->bind('homepage');
 
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
@@ -57,7 +58,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setDistance($varDist);
         $em->persist($sd);
         $em->flush();
-        return $app->redirect('/');
+        return $app->redirect('/?register=true');
     }
     return $app['twig']->render('inscription.html.twig', array());
 });
