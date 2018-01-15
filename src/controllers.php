@@ -17,6 +17,9 @@ $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
+            null !== $request->get('inputLat') && !empty($request->get('inputLat')) &&
+            null !== $request->get('inputLng') && !empty($request->get('inputLng')) &&
+            null !== $request->get('inputDist') && !empty($request->get('inputDist')) &&
             null !== $request->get('lastname') && !empty($request->get('lastname')) &&
             null !== $request->get('address') && !empty($request->get('address')) &&
             null !== $request->get('email') && !empty($request->get('email')) &&
@@ -27,6 +30,9 @@ $app->match('/inscription', function (Request $request) use ($app) {
             $request->get('password') === $request->get('passwordConf')) {
             $varFirstName = htmlspecialchars($request->get('firstname'));
             $varLastName = htmlspecialchars($request->get('lastname'));
+            $varLat = htmlspecialchars($request->get('inputLat'));
+            $varLng = htmlspecialchars($request->get('inputLng'));
+            $varDist = htmlspecialchars($request->get('inputDist'));
             $varAddress = htmlspecialchars($request->get('address'));
             $varEmail = htmlspecialchars($request->get('email'));
             $varTel = htmlspecialchars($request->get('tel'));
@@ -40,11 +46,15 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setLastname($varLastName);
         $sd->setMail($varEmail);
         $sd->setPassword($varPassWord);
+        $sd->setTel($varTel);
         $sd->setFormattedAddr($varAddress);
-        $sd->setLat("48");
-        $sd->setLng("0.02");
-        $sd->setDistance("5");
-        $sd->setIsDelivery("true");
+        $sd->setBirthdate(new DateTime($varBirthday));
+        $sd->setLat($varLat);
+        $sd->setIsAdmin(true);
+        $sd->setIsClient(false);
+        $sd->setIsDelivery(false);
+        $sd->setLng($varLng);
+        $sd->setDistance($varDist);
         $em->persist($sd);
         $em->flush();
         return "félicitation"; // revois 'félicitation votre inscription est validéé !'

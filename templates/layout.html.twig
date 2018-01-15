@@ -6,23 +6,31 @@
 
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
 
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
+        <!--<script type="text/javascript">
+        //     var _gaq = _gaq || [];
+        //     _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+        //     _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+        //     (function() {
+        //         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        //         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        //         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        //     })();
+        // </script> -->
     </head>
     <body>
         {% block content %}
             {% block inscrip %}{% endblock %}
         {% endblock %}
         {% include "footer.html.twig" %}
+        <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/1fc4da24df.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkeHVc5oyBqsO1mjf7xwA4vrdVS12O6oI&callback=init">
+        </script>
+        <script src="js/distanceMatrix.js"></script>
     </body>
 </html> 
