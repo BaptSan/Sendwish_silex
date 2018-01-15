@@ -8,7 +8,7 @@ function getLoc(){
 		navigator.geolocation.getCurrentPosition(function(position){
 			clientLat = position.coords.latitude;
 			clientLng = position.coords.longitude;	
-			// SendWish place 8 Cours Clémenceau Orient Kebab
+			// SendWish place (8 Cours Clémenceau Orient Kebab)
 			var origin1 = new google.maps.LatLng(48.4314183, 0.08938020000005054);
 			// Client Place
 			console.log(clientLat);
