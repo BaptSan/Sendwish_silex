@@ -2,7 +2,13 @@
 
 {% block content %}
     Welcome to your new Silex Application!
+    {% if isRegister is defined %}
+		<div class="divRegisterInfo">
+			<p>Félicitations, vous êtes bien enregistré !</p>
+		</div>
+	{%  endif %}
 {% endblock %}
+
 {% if inscriptionValid is defined %}
 	{% block script %}
 		<script type="../web/js/inscriptionValide.js">	</script>
