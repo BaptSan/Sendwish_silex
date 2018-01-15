@@ -3,3 +3,8 @@
 {% block content %}
     Welcome to your new Silex Application!
 {% endblock %}
+{% if inscriptionValid is defined %}
+	{% block script %}
+		<script type="../web/js/inscriptionValide.js">	</script>
+	{% endblock %}
+{% endif %}
