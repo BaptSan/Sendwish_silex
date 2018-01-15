@@ -45,7 +45,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setFirstname($varFirstName);
         $sd->setLastname($varLastName);
         $sd->setMail($varEmail);
-        $sd->setPassword($varPassWord);
+        $sd->setPassword(password_hash($varPassWord,PASSWORD_DEFAULT));
         $sd->setTel($varTel);
         $sd->setFormattedAddr($varAddress);
         $sd->setBirthdate(new DateTime($varBirthday));
