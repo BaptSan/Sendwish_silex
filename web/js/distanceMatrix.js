@@ -60,10 +60,10 @@ function init(){
 		// For each place, get the icon, name and location.
 		var bounds = new google.maps.LatLngBounds();
 		places.forEach(function(place) {
-			locLat = place.geometry.location.lat();
-			locLng = place.geometry.location.lng()
+			clientLat = place.geometry.location.lat();
+			clientLng = place.geometry.location.lng()
 			formatted_address = place.formatted_address;
-			calcDist(locLat,locLng);
+			calcDist(clientLat,clientLng);
 			$('#inputAddress').val(place.formatted_address);
 			if (!place.geometry) {
 				console.log("Returned place contains no geometry");
