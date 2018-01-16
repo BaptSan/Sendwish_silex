@@ -13,7 +13,9 @@ $app->get('/', function () use ($app) {
                     )); 
 })
 ->bind('homepage');
-
+$app->get('/contact', function () use ($app) {
+    return $app['twig']->render('contact.html.twig');
+});
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
