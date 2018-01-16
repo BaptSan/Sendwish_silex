@@ -7,8 +7,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
-$app->get('/', function () use ($app) {
-return $app['twig']->render('accueil.html.twig', array());
+$app->get('/', function () use ($app) {     
+    return $app['twig']->render('index.html.twig', array( 
+                        'isRegister' => $_GET['register'] ?? NULL  
+                    )); 
 })
 ->bind('homepage');
 
