@@ -4,7 +4,7 @@ initFlick();
  });
  function initFlick(){
  	$('.carousel-main').flickity({
-    pageDots: false,
+    pageDots: true,
     });
   
   // 2nd carousel, navigation
@@ -17,7 +17,7 @@ initFlick();
 $( "#card1" ).click(function() {
 	console.log('test');
 $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-          '<img src="../img/boisson/fanta.png" alt="" class="w-25 align-self-left" >'+'<p>craquez pour ce gout mythique</p>'+
+          '<img src="../img/boisson/fanta.png" alt="" class="w-25 align-self-center" >'+'<p>craquez pour ce gout mythique</p>'+
         '</div>'+
         '<div class="carousel-cell card img2">'+
           '<img src="../img/boisson/coca.png" alt="" class="w-25 align-self-center">'+
