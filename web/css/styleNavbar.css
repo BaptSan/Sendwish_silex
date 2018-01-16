@@ -28,7 +28,10 @@ SIDEBAR STYLE
 .wrapper {
 display: flex;
 align-items: stretch;
+position: relative;
+float: left;
 }
+
 #sidebar {
 background: #222; /*backgroud color nav bar*/
 color: #00f;

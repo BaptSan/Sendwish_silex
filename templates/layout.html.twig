@@ -22,12 +22,10 @@
             </script>
         </head>
         <body>
-            <div id="mainDiv" class="container-fluid m-0 p-0">
-                <div class="row m-0 p-0">
-                    <div class="col-md-1 m-0 p-0">
-                        {% include "navbar.html.twig" %}
-                    </div>
-                    <div class="col-md m-0 p-0">
+            {% include "navbar.html.twig" %}
+            <div id="mainDiv" class="container-fluid m-0 p-0">  
+                <div class="row m-0 p-0"> 
+                    <div class="col-md-12">   
                         {% block Header %}{% endblock %}
                         {% block Carrousel %}{% endblock %}
                         {% block contact %}{% endblock %}
