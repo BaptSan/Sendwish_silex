@@ -1,16 +1,5 @@
 /* external css: flickity.css */
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body { 
-  font-family: sans-serif;
-  background-color: #646568; 
-}
-
-
 .gallery-cell {
   width: 28%;
   height: 200px;
@@ -32,11 +21,6 @@ body {
   font-size: 80px;
   color: white;
 }
-
-
-
-
-font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;

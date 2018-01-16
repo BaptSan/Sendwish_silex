@@ -7,74 +7,15 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/*Style Navbar presentation produits*/
-nav {
-  width: 80%;
-  margin: 0 auto;
-  background: #fff;
-  padding: 10px 0;
-  box-shadow: 0px 5px 0px #dedede;
-}
-nav ul {
-  list-style: none;
-  text-align: center;
-}
-nav ul .liNavProduct {
-  display: inline-block;
-}
-nav ul .liNavProduct a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #aaa;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-nav ul .liNavProduct a,
-nav ul .liNavProduct a:after,
-nav ul .liNavProduct a:before {
-  transition: all .5s;
-}
-nav ul .liNavProduct a:hover {
-  color: #555;
-
-}
-nav.navProduct ul .liNavProduct a {
-  position:relative;
-  z-index: 1;
-}
-nav.navProduct ul .liNavProduct a:hover {
-  color: black;
-  
-}
-nav.navProduct ul .liNavProduct a:after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
+nav{
   width: 100%;
-  content: '.';
-  color: transparent;
-  background: #86baef;
-  visibility: none;
-  opacity: 0;
-  z-index: -1;
-  border-radius: 10px;
-
 }
-nav.navProduct ul .liNavProduct a:hover:after {
-  opacity: 1;
-  visibility: visible;
-  height: 100%;
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-* { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
-
 
 /*Carousel*/
 .carousel {
