@@ -85,10 +85,50 @@ nav.navProduct ul .liNavProduct a:hover:after {
   visibility: visible; 
   height: 100%; 
 } 
+
+/*Carousel*/
+.carousel {
+  margin-bottom: 40px;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 300px;
+  margin-right: 10px;
+  background:  ;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.carousel-nav .carousel-cell {
+  height: 140px;
+  width: 140px;
+}
+.carousel-cell {
+  height: 220px;
+}
+.carousel-nav .carousel-cell:before {
+  font-size: 50px;
+  line-height: 80px;
+}
+
+.carousel-nav .carousel-cell.is-nav-selected {
+  background: #37bace;
+}
+
+
 * { box-sizing: border-box; } 
  
 body { font-family: sans-serif; } 
-
 
 
 /*Carousel*/
@@ -129,6 +169,9 @@ body { font-family: sans-serif; }
 .carousel-nav .carousel-cell.is-nav-selected {
   background: #37bace;
 }
+
+
+
 
 /*Style Font*/
 

@@ -17,19 +17,19 @@ initFlick();
 $( "#card1" ).click(function() {
 	console.log('test');
 $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-          '<img src="../img/boisson/fanta.png" alt="" class="w-25 align-self-center" >'+'<p>craquez pour ce gout mythique</p>'+
+          '<img src="../img/boisson/fanta.png" alt="" class="w-100 align-self-center" >'+
         '</div>'+
         '<div class="carousel-cell card img2">'+
-          '<img src="../img/boisson/coca.png" alt="" class="w-25 align-self-center">'+
+          '<img src="../img/boisson/coca.png" alt="" class="w-100 align-self-center">'+
         '</div>'+
         '<div class="carousel-cell card img3">'+
-          '<img src="../img/boisson/cocalight.png" alt="" class="w-25 align-self-center">'+
+          '<img src="../img/boisson/cocalight.png" alt="" class="w-100 align-self-center">'+
         '</div>'+
         '<div class="carousel-cell card img4">'+
-          '<img src="../img/boisson/nestea.png" alt="" class="w-25 align-self-center">'+
+          '<img src="../img/boisson/nestea.png" alt="" class="w-100 align-self-center">'+
         '</div>'+
         '<div class="carousel-cell card img5">'+
-          '<img src="../img/boisson/sprite.png" alt="" class="w-25 align-self-center">'+
+          '<img src="../img/boisson/sprite.png" alt="" class="w-100 align-self-center">'+
         '</div>'+'</div>');
 initFlick();
 
