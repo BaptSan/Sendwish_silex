@@ -9,12 +9,31 @@ use Entity\User;
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
     return $app['twig']->render('index.html.twig', array( 
-                        'isRegister' => $_GET['register'] ?? NULL  
-                    )); 
+        'isRegister' => $_GET['register'] ?? NULL  
+    )); 
 })
 ->bind('homepage');
 $app->get('/contact', function () use ($app) {
     return $app['twig']->render('contact.html.twig');
+});
+
+$app->get('/nosMenus', function () use ($app) {
+    return $app['twig']->render('nosMenus.html.twig');
+});
+
+$app->get('/sandwichs', function () use ($app) {
+    return $app['twig']->render('sandwichs.html.twig');
+});
+
+$app->get('/boissons', function () use ($app) {
+    return $app['twig']->render('boissons.html.twig');
+});
+
+$app->get('/petitesFaims', function () use ($app) {
+    return $app['twig']->render('petitesFaims.html.twig');
+});
+$app->get('/client', function () use ($app) {
+    return $app['twig']->render('espaceClient.html.twig');
 });
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
