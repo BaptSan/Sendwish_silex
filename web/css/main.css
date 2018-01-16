@@ -9,11 +9,13 @@
 	animation: animRegisterInfo 5s;
 	opacity: 0;
 	text-align: center;
+	visibility: hidden;
 }
 
  @keyframes animRegisterInfo{
- 	0% {opacity: 0;}
+ 	0% {opacity: 0; visibility: visible;}
  	25% {opacity: 1;}
  	75% {opacity: 1;}
- 	100% {opacity: 0;}
+ 	99% {visibility: visible;}
+ 	100% {opacity: 0; visibility: hidden;}
  }
