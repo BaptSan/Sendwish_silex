@@ -7,6 +7,7 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             <link rel="stylesheet" href="css/styleNavbar.css">
             <link rel="stylesheet" href="css/styleFooter.css">
+            <link rel="stylesheet" href="css/styleLayout.css">
             <link rel="stylesheet" href="css/style.css">
             <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -20,14 +21,20 @@
             </script>
         </head>
         <body>
-            <div class="container-fluid">
-            {% block Header %}{% endblock %}
-            {% block Carrousel %}{% endblock %}
-            {% include "navbar.html.twig" %}
+            <div class="container-fluid m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-md-1 m-0 p-0">
+                        {% include "navbar.html.twig" %}
+                    </div>
+                    <div class="col-md m-0 p-0">
+                        {% block Header %}{% endblock %}
+                        {% block Carrousel %}{% endblock %}
             {% block contact %}{% endblock %}
-            {% block inscrip %}{% endblock %}
-            {% include "footer.html.twig" %}
-        </div>
+                            {% block inscrip %}{% endblock %}
+                        {% include "footer.html.twig" %}
+                    </div>
+                </div>
+            </div>
             <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
