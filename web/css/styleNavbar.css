@@ -16,6 +16,11 @@ a, a:hover, a:focus {
 text-decoration: none;
 transition: all 0.3s;
 }
+
+svg {
+  width:50px;
+  height:50px;
+}
 /* ---------------------------------------------------
 SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -101,28 +106,52 @@ background-color: #f47442;
 #clmenus {
 color: #ff2626;
 }
-#bgmenus:hover :not(i){
+#bgmenus:hover :not(svg){
 background-color: red;
+fill:white;
 }
+
+.menuSVG {
+    fill:red;
+}
+
 #clsandwichs {
 color: #545c68;
 padding-right:5px !important;
 }
-#bgsandwichs:hover :not(i)  {
+#bgsandwichs:hover :not(svg)  {
 background-color: #545c68;
+fill:white;
 }
+
+.hamburgerSVG {
+  fill: #545c68;
+}
+
 #clboissons {
 color:#3baf21;
 }
-#bgboissons:hover :not(i){
+#bgboissons:hover :not(svg){
 background-color: #3baf21;
+fill:white;
 }
+
+.sodaSVG {
+    fill:#3baf21;
+}
+
 #clfaim {
 color: #d84f2d;
 }
-#bgfaim:hover :not(i){
+#bgfaim:hover :not(svg){
 background-color: #d84f2d;
+fill:white;
 }
+
+.friesSVG {
+    fill:#d84f2d;
+}
+
 #clclient {
 color: #4286f4;
 }
