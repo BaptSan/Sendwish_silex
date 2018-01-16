@@ -7,6 +7,7 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             <link rel="stylesheet" href="css/styleNavbar.css">
             <link rel="stylesheet" href="css/styleFooter.css">
+            <link rel="stylesheet" href="css/styleLayout.css">
             <link rel="stylesheet" href="css/style.css">
             <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -25,14 +26,11 @@
             {% block Carrousel %}{% endblock %}
             {% include "navbar.html.twig" %}
             {% block content %}
-            
                 {% block inscrip %}{% endblock %}
-           
-            
-            
             {% endblock %}
+            <div class="fixed-bottom">
             {% include "footer.html.twig" %}
-
+        </div>
         </div>
             <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
