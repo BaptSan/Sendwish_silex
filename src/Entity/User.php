@@ -6,7 +6,7 @@ class User
 {
 	/**
      * @Id
-     * @Column(type="integer", nullable=true)
+     * @Column(type="integer")
      * @GeneratedValue
      */
     private $id;
@@ -76,13 +76,21 @@ class User
      */
     private $is_delivery;
 
+
     /**
-     * One User has Many Orders.
-     * @OneToMany(targetEntity="Order", mappedBy="users")
+     * One user has Many cart items.
+     * @OneToMany(targetEntity="CartItem", mappedBy="user")
+     */
+    private $cartItems;
+
+    /**
+     * One user has Many orders.
+     * @OneToMany(targetEntity="Order", mappedBy="user")
      */
     private $orders;
 
     public function __construct() {
+        $this->cartItems = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
 

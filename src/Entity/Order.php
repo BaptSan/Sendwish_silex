@@ -1,5 +1,6 @@
 <?php
 namespace Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 /** @Entity */
 class Order
 {
@@ -21,6 +22,22 @@ class Order
      * @Column(type="integer")
      */
 	private $order_num;
+
+    /**
+     * One order has Many order items.
+     * @OneToMany(targetEntity="OrderItem", mappedBy="order")
+     */
+    private $orderItems;
+
+    /**
+     * Many order item have one user.
+     * @ManyToOne(targetEntity="User", inversedBy="orders")
+     */
+    private $user;
+
+    public function __construct() {
+        $this->orderItems = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -61,20 +78,5 @@ class Order
         $this->order_num = $order_num;
 
         return $this;
-    }
-    /**
-     * Many Orders have Many Products.
-     * @ManyToMany(targetEntity="Product", mappedBy="orders")
-     */
-    private $products;
-
-    /**
-     * Many Orders have One User.
-     * @ManyToOne(targetEntity="User", inversedBy="orders")
-     */
-    private $users;
-    
-    public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }
