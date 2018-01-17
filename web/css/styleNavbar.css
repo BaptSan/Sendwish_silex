@@ -5,6 +5,7 @@ DEMO STYLE
 body {
 font-family: 'Poppins', sans-serif;
 background-color: #bbb;
+margin-left: 101px;
 }
 p {
 font-family: 'Poppins', sans-serif;
@@ -28,8 +29,9 @@ SIDEBAR STYLE
 .wrapper {
 display: flex;
 align-items: stretch;
-position: relative;
-float: left;
+position: fixed;
+left:0;
+top:0;
 }
 
 #sidebar {
@@ -161,6 +163,12 @@ color: #4286f4;
 #bgclient:hover :not(i){
 background-color: #4286f4;
 }
+
+.col-md-12 {
+    padding:0;
+}
+
+
 /* ---------------------------------------------------
 MEDIAQUERIES
 ----------------------------------------------------- */
