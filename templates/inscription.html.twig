@@ -1,37 +1,37 @@
 {% extends "layout.html.twig" %}
 {% block inscrip %}
-	<form method="post">
+	<form method="post" onsubmit="return validateForm();" >
 		Prénom :
-		<input type="text" name="firstname">
+		<input type="text" name="firstname" id="prenom" required="required">
 		Nom :
-		<input type="text" name="lastname">
+		<input type="text" name="lastname" id="nom" required="required">
 		<br>
 		<br>
 		Numéro de Téléphone :
-		<input type="tel" name="tel">
+		<input type="tel" name="tel" id="tel" required="required">
 		<br>
 		<br>
 		Date de Naissance :
-		<input type="date" name="birthday">
+		<input type="date" name="birthday" required="required">
 		<br>
 		<br>
 		<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></a>
 		Adresse :
-		<input type="text" name="address" id="inputAddress">
+		<input type="text" name="address" id="inputAddress" required="required">
 		<p id="addressMessage" style="display: none;"></p>
 		<br>
 		<br>
 		E-mail :
-		<input type="email" name="email">
+		<input type="email" name="email" required="required">
 		<br>
 		<br>
 		Mot de passe :
-		<input type="password" name="password">
+		<input type="password" name="password" id="mdp" required="required">
 		Confirmation :
-		<input type="password" name="passwordConf">
+		<input type="password" name="passwordConf" id="cmdp" required="required">
 		<br>
 		<br>
-		<input type="submit" value="Inscription!" id="messValid">
+		<input type="submit" value="Inscription !" id="messValid" onclick="">
 		<input type="hidden" name="inscripValid">
 		<input type="hidden" name="inputLat" id="inputLat">
 		<input type="hidden" name="inputLng" id="inputLng">
