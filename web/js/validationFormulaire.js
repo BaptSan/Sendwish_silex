@@ -26,7 +26,9 @@ function validateForm()
 		valid = false;
 	}
 				// CONFIMATION DE MOT DE PASSE
-	if ($('#cmdp').val() === $('#mdp').val()) 
+				console.log($('#cmdp').val());
+				console.log($('#mdp').val());
+	if ($('#cmdp').val() !== $('#mdp').val()) 
 	{
 		$('#cmdp').css("background-color","#cc2828");	
 		valid = false;
