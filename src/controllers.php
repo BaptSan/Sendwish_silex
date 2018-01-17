@@ -35,6 +35,9 @@ $app->get('/petitesFaims', function () use ($app) {
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
+$app->get('/connexion', function () use ($app) {
+    return $app->redirect('/');
+});
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
