@@ -38,6 +38,11 @@ class Product
 	private $ingredients;
 
     /**
+     * @Column(type="string")
+     */
+    private $image_path;
+
+    /**
      * One product has Many cart items.
      * @OneToMany(targetEntity="CartItem", mappedBy="product")
      */
