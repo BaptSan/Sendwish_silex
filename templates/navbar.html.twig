@@ -3,7 +3,7 @@
     <nav id="sidebar" class="active">
         <ul class="list-unstyled components active">         
             <li id="bgaccueil">
-                <a id="claccueil" href="" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     Accueil
                 </a>
@@ -17,19 +17,20 @@
                 </li>
 
                 <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false" style="height: 0px;">
-                    <li id="bgmenus"><a id="clmenus" href="#">
-                        <i class="fa fa-list" aria-hidden="true"></i>
+                    <li id="bgmenus"><a id="clmenus" href="/nosMenus">
+                        {% include 'fastfood.html.twig' %} <br>
                     Nos Menus</a>
                     </li>
-                    <li id="bgsandwichs"><a id="clsandwichs" href="#">
-                        <i class="fa fa-ils" aria-hidden="true"></i>
+                    <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                        {% include 'hamburger.html.twig' %} <br>
                     Sandwichs</a>
                     </li>
-                    <li id="bgboissons"><a id="clboissons" href="#">
-                        <i class="fa fa-glass" aria-hidden="true"></i>
+                    <li id="bgboissons"><a id="clboissons" href="/boissons">
+                        {% include 'soda.html.twig' %} <br>
                     Boissons</a>
                     </li>
-                    <li id="bgfaim"><a id="clfaim" href="#" aria-hidden="true"><i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                    <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
+                        {% include 'frenchfries.html.twig' %} <br>
                     Petites faims</a>
                     </li>
                 </ul>
@@ -41,7 +42,7 @@
             </a>
             </li>
             <li id="bgclient">
-            <a id="clclient" href="#">
+            <a id="clclient" href="/client">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
                 Espace client
             </a>
