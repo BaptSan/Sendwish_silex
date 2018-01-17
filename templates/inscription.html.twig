@@ -1,41 +1,34 @@
 {% extends "layout.html.twig" %}
 {% block inscrip %}
 	<form method="post" onsubmit="return validateForm();" >
-		Prénom :
-		<input type="text" name="firstname" id="prenom" required="required">
-		Nom :
-		<input type="text" name="lastname" id="nom" required="required">
+		<i class="fa fa-user" aria-hidden="true"></i>
+		<input type="text" name="firstname" id="prenom" required="required" placeholder="Prénom :">
+		<input type="text" name="lastname" id="nom" required="required" placeholder="Nom :">
 		<br>
 		<br>
-
-
-		Numéro de Téléphone :
-		<input type="text" name="tel" id="tel" value="" required="required">
-
-		
+		<i class="fa fa-phone" aria-hidden="true"></i>
+		<input type="text" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone :">
 		<br>
 		<br>
-		Date de Naissance :
-		<input type="date" name="birthday" required="required">
+		<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+		<input type="date" name="birthday" required="required" placeholder="Date de Naissance :">
 		<br>
 		<br>
 		<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></a>
-		Adresse :
-		<input type="text" name="address" id="inputAddress" required="required">
+		<input type="text" name="address" id="inputAddress" required="required" placeholder="Localisation :">
 		<p id="addressMessage" style="display: none;"></p>
 		<br>
 		<br>
-		E-mail :
-		<input type="email" name="email" required="required">
+		<i class="fa fa-envelope" aria-hidden="true"></i>
+		<input type="email" name="email" required="required" placeholder="E-mail :">
 		<br>
 		<br>
-		Mot de passe :
-		<input type="password" name="password" id="mdp" required="required">
-		Confirmation :
-		<input type="password" name="passwordConf" id="cmdp" required="required">
+		<i class="fa fa-lock" aria-hidden="true"></i>
+		<input type="password" name="password" id="mdp" required="required" placeholder="Mot de passe :">
+		<input type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation :">
 		<br>
 		<br>
-		<input type="submit" value="Inscription !" id="messValid" onclick="">
+		<input type="submit" value="Envoyer" id="messValid" onclick="">
 		<input type="hidden" name="inscripValid">
 		<input type="hidden" name="inputLat" id="inputLat">
 		<input type="hidden" name="inputLng" id="inputLng">
