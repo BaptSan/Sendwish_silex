@@ -1,5 +1,7 @@
 <?php
 namespace Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /** @Entity */
 class Product
 {
@@ -35,16 +37,16 @@ class Product
      */
 	private $ingredients;
 
-	 /**
-     * Many Products have Many Orders.
-     * @ManyToMany(targetEntity="Order", inversedBy="products")
-     * @JoinTable(name="products_orders")
-     */	
-    private $orders;
+    /**
+     * One product has Many cart items.
+     * @OneToMany(targetEntity="CartItem", mappedBy="product")
+     */
+    private $cartItems;
 
     public function __construct() {
-        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cartItems = new ArrayCollection();
     }
+
 
     public function getId()
     {
