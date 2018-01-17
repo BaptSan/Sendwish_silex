@@ -24,6 +24,16 @@ class Order
 	private $order_num;
 
     /**
+     * @Column(type="boolean")
+     */
+    private $eat_in;
+
+    /**
+     * @Column(type="boolean")
+     */
+    private $take_out;
+
+    /**
      * One order has Many order items.
      * @OneToMany(targetEntity="OrderItem", mappedBy="order")
      */
