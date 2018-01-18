@@ -35,6 +35,7 @@ $app->get('/petitesFaims', function () use ($app) {
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
+<<<<<<< HEAD
 
 
 $app->match('/connexion', function (Request $request) use ($app) {
@@ -52,6 +53,11 @@ $app->match('/connexion', function (Request $request) use ($app) {
     } return 'coucou';
 });
 
+=======
+$app->get('/panier', function (Request $request) use ($app) {
+    return $request->get('carrousel');
+});
+>>>>>>> Envoie_Reception
 $app->match('/inscription', function (Request $request) use ($app) {
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
