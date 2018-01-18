@@ -35,9 +35,22 @@ $app->get('/petitesFaims', function () use ($app) {
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
-$app->get('/connexion', function () use ($app) {
-    return $app->redirect('/');
+
+
+$app->match('/connexion', function (Request $request) use ($app) {
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
+    if (null !== $user && $user->getPassword()) {
+            dump($user->getPassword());
+            dump($request->get('mdpConnect'));
+            dump(password_hash($request->get('mdpConnect'), PASSWORD_DEFAULT));
+        if (password_hash(htmlspecialchars($request->get('mdpConnect')), PASSWORD_DEFAULT) == $user->getPassword()) {
+            dump('test');
+            // return new Response(var_dump($users[0]->getPassword()));
+            return $app->redirect('/');
+        }        
+    } return 'coucou';
 });
+
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
@@ -70,7 +83,8 @@ $app->match('/inscription', function (Request $request) use ($app) {
         $sd->setFirstname($varFirstName);
         $sd->setLastname($varLastName);
         $sd->setMail($varEmail);
-        $sd->setPassword(password_hash($varPassWord,PASSWORD_DEFAULT));
+        // $sd->setPassword($varPassWord);
+        $sd->setPassword(password_hash($varPassWord, PASSWORD_DEFAULT));
         $sd->setTel($varTel);
         $sd->setFormattedAddr($varAddress);
         $sd->setBirthdate(new DateTime($varBirthday));
