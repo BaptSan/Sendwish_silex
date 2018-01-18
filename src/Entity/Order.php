@@ -45,8 +45,16 @@ class Order
      */
     private $user;
 
-    public function __construct() {
+    public function __construct($id, $price_df, $price, $order_num, $eat_in, $take_out, $orderItems, $user)
+    {
+        $this->id = $id;
+        $this->price_df = $price_df;
+        $this->price = $price;
+        $this->order_num = $order_num;
+        $this->eat_in = $eat_in;
+        $this->take_out = $take_out;
         $this->orderItems = new ArrayCollection();
+        $this->user = $user;
     }
 
     public function getId()

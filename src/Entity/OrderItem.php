@@ -37,6 +37,16 @@ class OrderItem
      */
 	private $order;
 
+	public function __construct($id, $order_id, $name, $price_df, $price, $order)
+	{
+		$this->id = $id;
+		$this->order_id = $order_id;
+		$this->name = $name;
+		$this->price_df = $price_df;
+		$this->price = $price;
+		$this->order = $order;
+	}
+
     public function getId()
     {
         return $this->id;

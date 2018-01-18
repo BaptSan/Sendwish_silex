@@ -48,10 +48,18 @@ class Product
      */
     private $cartItems;
 
-    public function __construct() {
+
+    public function __construct($id, $name, $description, $price, $cals, $ingredients, $image_path, $cartItems)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->description = $description;
+        $this->price = $price;
+        $this->cals = $cals;
+        $this->ingredients = $ingredients;
+        $this->image_path = $image_path;
         $this->cartItems = new ArrayCollection();
     }
-
 
     public function getId()
     {

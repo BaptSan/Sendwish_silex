@@ -89,11 +89,26 @@ class User
      */
     private $orders;
 
-    public function __construct() {
+    public function __construct($id, $lastname, $firstname, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery, $cartItems, $orders)
+    {
+        $this->id = $id;
+        $this->lastname = $lastname;
+        $this->firstname = $firstname;
+        $this->mail = $mail;
+        $this->password = $password;
+        $this->birthdate = $birthdate;
+        $this->formatted_addr = $formatted_addr;
+        $this->lat = $lat;
+        $this->lng = $lng;
+        $this->distance = $distance;
+        $this->tel = $tel;
+        $this->is_admin = $is_admin;
+        $this->is_client = $is_client;
+        $this->is_delivery = $is_delivery;
         $this->cartItems = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
-
+    
     public function getId()
     {
         return $this->id;
