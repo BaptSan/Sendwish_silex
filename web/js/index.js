@@ -6,17 +6,18 @@ initFlick();
  	$('.carousel-main').flickity({
     pageDots: true,
     });
+  //Envoie des différents id des différentes image + 
   $('#secondCar .card img').click(function() {  
-    //console.log('test');
-    idClique=$(this).attr('data-id');
-    console.log(idClique);
-    // if($(this).hasClass("img1")) {
-    //   console.log('test1');
-    // if($(this).hasClass("img2")) {
-    //   console.log('test2');
-    //  }
-    // }
-    
+    var idCarrousel = $(this).attr('data-id');
+    $.ajax({
+      type:'GET',
+      data: {
+        'carrousel': idCarrousel
+      }, 
+      url: '/panier'
+    }).done(function(data){
+      console.log(data);
+    });
   });
   
   // 2nd carousel, navigation

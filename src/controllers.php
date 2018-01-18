@@ -35,6 +35,9 @@ $app->get('/petitesFaims', function () use ($app) {
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
+$app->get('/panier', function (Request $request) use ($app) {
+    return $request->get('carrousel');
+});
 $app->match('/inscription', function (Request $request) use ($app) {
     $thevar = new User();
     if ($request->get('inscripValid') !== NULL) {
