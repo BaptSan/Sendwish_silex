@@ -5,23 +5,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
-use Entity\Product;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
-
-     // $product = new Product($id, "EggBurger", "Délicieux Burger aggrémenté d'un oeuf cuit à la perfection", 4.20, 567, "Salade, Pain, Tomates, Cheddar, Oeuf, Boeuf", "egg burger.png", $cartItems);
-        $em = $app['em'];
-     //    $em->persist($product);
-     //    $em->flush();
-
-        $myProducts = $em->getRepository(Product::class)->findAll();
-
-    // var_dump($myProducts);
     return $app['twig']->render('index.html.twig', array( 
         'isRegister' => $_GET['register'] ?? NULL,
         'connect' => $_GET['connect'] ?? NULL,
-        'products' => $myProducts ?? NULL  
+        'products' => $myProducts ?? NULL
     )); 
 })
 ->bind('homepage');
@@ -48,10 +38,11 @@ $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
 $app->match('/connexion', function (Request $request) use ($app) {
-    $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
-    if (null !== $user && $user->getPassword()) {
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
+    $db_password = $user->getPassword();
+    if (null !== $user && $db_password) {
         $password_client = htmlspecialchars($request->get('mdpConnect'));
-        if (password_verify($password_client, $user->getPassword())) {
+        if (password_verify($password_client, $db_password)) {
             return $app->redirect('/?connect=true');
         }        
     }
