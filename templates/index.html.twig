@@ -80,4 +80,9 @@
       <p>{{product.price ~ "€"}}</p>
     </div>
   {% endfor %}
+  {% if theUser != NULL %}
+  {{theUser.id}}
+  {{theUser.mail}}
+  {{theUser.admin}}
+{% endif %}
 {% endblock %}
