@@ -39,11 +39,12 @@ $app->get('/client', function () use ($app) {
 
 $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
-    if (null !== $user && $user->getPassword()) {
+    $db_password = $user->getPassword();
+    if (null !== $user && $db_password) {
             dump($user->getPassword());
-            dump($request->get('mdpConnect'));
-            dump(password_hash($request->get('mdpConnect'), PASSWORD_DEFAULT));
-        if (password_hash(htmlspecialchars($request->get('mdpConnect')), PASSWORD_DEFAULT) == $user->getPassword()) {
+            $password_client = htmlspecialchars($request->get('mdpConnect'));
+            dump(htmlspecialchars($request->get('mdpConnect')));
+        if (password_verify($password_client, $db_password)) {
             dump('test');
             // return new Response(var_dump($users[0]->getPassword()));
             return $app->redirect('/');
@@ -76,7 +77,10 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $varBirthday = htmlspecialchars($request->get('birthday'));
                 $varPassWord = htmlspecialchars($request->get('password'));
                 $varPassWordConf = htmlspecialchars($request->get('passwordConf'));
-                $sd = new User($id, $varLastName, $varFirstName, $varEmail, password_hash($varPassWord, PASSWORD_DEFAULT), new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false, $cartItems, $orders);
+
+                $password = password_hash($varPassWord,PASSWORD_DEFAULT);
+
+                $sd = new User($id, $varLastName, $varFirstName, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false, $cartItems, $orders);
                 $em = $app['em'];
                 $em->persist($sd);
                 $em->flush();
