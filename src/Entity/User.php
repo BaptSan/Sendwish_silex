@@ -89,9 +89,13 @@ class User
      */
     private $orders;
 
-    public function __construct($id, $lastname, $firstname, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery, $cartItems, $orders)
+    /**
+     * @Column(type="string", nullable=true)
+     */
+    private $gender;
+
+    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery, $cartItems, $orders)
     {
-        $this->id = $id;
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->mail = $mail;
@@ -105,6 +109,7 @@ class User
         $this->is_admin = $is_admin;
         $this->is_client = $is_client;
         $this->is_delivery = $is_delivery;
+        $this->gender = $thegender;
         $this->cartItems = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
@@ -265,6 +270,18 @@ class User
     public function setIsDelivery($is_delivery)
     {
         $this->is_delivery = $is_delivery;
+
+        return $this;
+    }
+
+    public function geGender()
+    {
+        return $this->gender;
+    }
+
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
 
         return $this;
     }
