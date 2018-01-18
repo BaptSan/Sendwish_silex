@@ -6,7 +6,7 @@
 	left: 0;
 	background-color: rgba(0,0,0,0.7);
 	color: white;
-	animation: animRegisterInfo 5s;
+	animation: animRegisterInfo 3s;
 	opacity: 0;
 	visibility: hidden;
 	z-index: 10000000;
@@ -16,11 +16,15 @@
 	background-color: rgba(130,0,0,0.4);
 }
 
-.divRegisterInfo div{
+.divErrorLog div{
+	background-color: rgba(0,0,0,0.4);
+}
+
+.divRegisterInfo div, .divErrorLog div{
 	border: white solid 2px;
 	padding: 10px;
 }
-.divRegisterInfo div p{
+.divRegisterInfo div p, .divErrorLog div p{
 	padding: 0;
 	margin: 0;
  }
