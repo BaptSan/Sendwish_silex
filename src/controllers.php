@@ -10,7 +10,7 @@ use Entity\User;
 $app->get('/', function () use ($app) {     
     return $app['twig']->render('index.html.twig', array( 
         'isRegister' => $_GET['register'] ?? NULL,
-        'connect' => $_GET['connect'] ?? NULL
+        'connect' => $_GET['connect'] ?? NULL,
     )); 
 })
 ->bind('homepage');
@@ -38,14 +38,12 @@ $app->get('/client', function () use ($app) {
 });
 $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
-    $db_password = $user->getPassword();
-    if (null !== $user && $db_password) {
+    if (null !== $user && $user->getPassword()) {
         $password_client = htmlspecialchars($request->get('mdpConnect'));
-        if (password_verify($password_client, $db_password)) {
+        if (password_verify($password_client, $user->getPassword())) {
             return $app->redirect('/?connect=true');
         }        
     }
-    echo 'coucou';
     return $app['twig']->render('errorLog.html.twig');
 });
 
