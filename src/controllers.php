@@ -5,11 +5,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
+use Entity\Product;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
+
+     // $product = new Product($id, "EggBurger", "Délicieux Burger aggrémenté d'un oeuf cuit à la perfection", 4.20, 567, "Salade, Pain, Tomates, Cheddar, Oeuf, Boeuf", "egg burger.png", $cartItems);
+        $em = $app['em'];
+     //    $em->persist($product);
+     //    $em->flush();
+
+        $myProducts = $em->getRepository(Product::class)->findAll();
+
+    // var_dump($myProducts);
     return $app['twig']->render('index.html.twig', array( 
-        'isRegister' => $_GET['register'] ?? NULL  
+        'isRegister' => $_GET['register'] ?? NULL,
+        'products' => $myProducts ?? NULL  
     )); 
 })
 ->bind('homepage');
