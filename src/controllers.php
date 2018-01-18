@@ -42,9 +42,9 @@ $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
     $db_password = $user->getPassword();
     if (null !== $user && $db_password) {
-        $password_client = htmlspecialchars($request->get('mdpConnect'));
+        $password_client = htmlspecialchars($request->get('password'));
         if (password_verify($password_client, $db_password)) {
-            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin()));
+            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId()));
             return $app->redirect('/?connect=true');
         }        
     }
