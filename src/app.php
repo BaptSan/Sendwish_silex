@@ -25,7 +25,7 @@ $conn = array(
     'user'     => 'root',
     'password' => '',
     'dbname'   => 'sendwish_silex_test',
-    'charset' => 'utf8',
+    'charset' => 'utf8mb4',
 );
 
 $app['em'] = EntityManager::create($conn, $config);
