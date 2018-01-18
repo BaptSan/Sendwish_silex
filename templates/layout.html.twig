@@ -10,6 +10,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.10/flickity.min.css" media="screen">
             <link rel="stylesheet" href="css/styleLayout.css">
             <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="css/styleFormulaireInscription.css">
             <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
@@ -36,6 +37,7 @@
                         {% block boissons %}{% endblock %}
                         {% block pFaims %}{% endblock %}
                         {% block client %}{% endblock %}
+                        {% block panier %}{% endblock %}
                         {% include "footer.html.twig" %}
                     </div>
                 </div>
@@ -54,5 +56,6 @@
         <script src="js/distanceMatrix.js"></script>
         <script src="js/validationFormulaire.js"></script>
         <script src="js/index.js"></script>
+        <script src="js/ajoutPanier.js"></script>
     </body>
 </html> 
