@@ -1,4 +1,4 @@
-.divRegisterInfo{
+.divRegisterInfo, .divErrorLog {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -11,6 +11,11 @@
 	visibility: hidden;
 	z-index: 10000000;
 }
+
+.divErrorLog {
+	background-color: rgba(130,0,0,0.4);
+}
+
 .divRegisterInfo div{
 	border: white solid 2px;
 	padding: 10px;
@@ -26,3 +31,7 @@
  	99% {visibility: visible;}
  	100% {opacity: 0; visibility: hidden;}
  }
+
+.divErrorLog p {
+	width:100%;
+}

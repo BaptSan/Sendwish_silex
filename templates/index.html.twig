@@ -1,10 +1,14 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    {% if isRegister != NULL %}
+    {% if isRegister != NULL or connect != NULL %}
 		<div class="divRegisterInfo d-flex align-items-center justify-content-center">
 			<div>
+        {% if isRegister != NULL %}
 				<p>Félicitations, vous êtes bien enregistré !</p>
+        {% else %}
+        <p>Félicitations, vous êtes bien connecté</p>
+        {% endif %}
 			</div>
 		</div>
 	{%  endif %}

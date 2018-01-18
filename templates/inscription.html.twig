@@ -1,39 +1,52 @@
 {% extends "layout.html.twig" %}
 {% block inscrip %}
-<div class="row">	
+{% block errorLogin %}{% endblock %}
+<div class="container-fluid">
 	<div class="col-md-8">
 		<form method="post" onsubmit="return validateForm();" >
-			Prénom :
-			<input type="text" name="firstname" id="prenom" required="required">
-			Nom :
-			<input type="text" name="lastname" id="nom" required="required">
+			<br />
+			<h2>Inscription</h2>
+			<blockquote id="premierForm">
+			<hr>				
+			<i class="fa fa-user" aria-hidden="true"></i>
+			<input class="form-control doubleIp" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
+			<input class="form-control doubleIp" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
+			<br />
+			<br />
+			<i class="fa fa-transgender" aria-hidden="true"></i>
+			<select id="questionType" class="form-control" required="required">
+				<option>Homme</option>
+				<option>Femme</option>
+				<option>Autre</option>
+			</select>
+			<br />
+			<br />
+			<i class="fa fa-phone" aria-hidden="true"></i>
+			<input class="form-control" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
 			<br>
 			<br>
-			Numéro de Téléphone :
-			<input type="tel" name="tel" id="tel" required="required">
-			<br>
-			<br>
-			Date de Naissance :
-			<input type="date" name="birthday" required="required">
+			<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+			<input class="form-control" type="date" name="birthday" required="required" placeholder="Date de Naissance">
 			<br>
 			<br>
 			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></a>
-			Adresse :
-			<input type="text" name="address" id="inputAddress" required="required">
+			<input class="form-control" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
 			<p id="addressMessage" style="display: none;"></p>
 			<br>
-			<br>
-			E-mail :
-			<input type="email" name="email" required="required">
-			<br>
-			<br>
-			Mot de passe :
-			<input type="password" name="password" id="mdp" required="required">
-			Confirmation :
-			<input type="password" name="passwordConf" id="cmdp" required="required">
+			<br>	
+			<i class="fa fa-envelope" aria-hidden="true"></i>
+			<input class="form-control" type="email" name="email" required="required" placeholder="E-mail">
 			<br>
 			<br>
-			<input type="submit" value="Inscription !" id="messValid">
+			<i class="fa fa-lock" aria-hidden="true"></i>
+			<input class="form-control doubleIp" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+			<input class="form-control doubleIp" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
+			<br>
+			<br>
+			<i class="fa fa-check-circle" aria-hidden="true"></i>
+			<input class="form-control" type="submit" value="Envoyer" id="messValid">
+			<hr id="hrF1">
+			</blockquote>
 			<input type="hidden" name="inscripValid">
 			<input type="hidden" name="inputLat" id="inputLat">
 			<input type="hidden" name="inputLng" id="inputLng">
@@ -41,14 +54,20 @@
 		</form>
 	</div>
 	<div class="col-md-4">
-		<form action="/connexion" method="post">
-			<input type="mail" name="mailConnect">
-			<input type="password" name="mdpConnect">
-			<input type="submit" value="Connexion" id="btnConnect">
+		<form id="formulaireConnetion" action="/connexion" method="post">
+			<br />
+			<h2>Connection</h2>
+			<blockquote id="deuxiemeForm">
+			<hr>
+			<input class="form-control" id="email" type="email" name="email" required="required" placeholder="E-mail">	
+			<input class="form-control formulaireCo" type="password" name="mdpConnect" placeholder="Mot de passe" required="required">
+			<input class="form-control" type="submit" value="Connexion" id="btnConnect">
+			<hr id="hrF2">
+		</blockquote>
 		</form>
 	</div>
 </div>
 		<p style="text-align: center; color: white;">Inscription</p>
 		<blockquote>
 </blockquote>
-	{% endblock %}
+{% endblock %}
