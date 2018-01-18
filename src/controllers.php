@@ -67,6 +67,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
             null !== $request->get('password') && !empty($request->get('password')) &&
             null !== $request->get('passwordConf') && !empty($request->get('passwordConf')) &&
             $request->get('password') === $request->get('passwordConf')) {
+            
                 $varFirstName = htmlspecialchars($request->get('firstname'));
                 $varLastName = htmlspecialchars($request->get('lastname'));
                 $varLat = htmlspecialchars($request->get('inputLat'));
