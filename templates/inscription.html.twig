@@ -1,5 +1,6 @@
 {% extends "layout.html.twig" %}
 {% block inscrip %}
+{% block errorLogin %}{% endblock %}
 <div class="row">	
 	<div class="col-md-8">
 		<form method="post" onsubmit="return validateForm();" >
@@ -51,4 +52,4 @@
 		<p style="text-align: center; color: white;">Inscription</p>
 		<blockquote>
 </blockquote>
-	{% endblock %}
+{% endblock %}

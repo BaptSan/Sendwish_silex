@@ -9,7 +9,8 @@ use Entity\User;
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
     return $app['twig']->render('index.html.twig', array( 
-        'isRegister' => $_GET['register'] ?? NULL  
+        'isRegister' => $_GET['register'] ?? NULL,
+        'connect' => $_GET['connect'] ?? NULL
     )); 
 })
 ->bind('homepage');
@@ -41,15 +42,13 @@ $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
     $db_password = $user->getPassword();
     if (null !== $user && $db_password) {
-            dump($user->getPassword());
-            $password_client = htmlspecialchars($request->get('mdpConnect'));
-            dump(htmlspecialchars($request->get('mdpConnect')));
+        $password_client = htmlspecialchars($request->get('mdpConnect'));
         if (password_verify($password_client, $db_password)) {
-            dump('test');
-            // return new Response(var_dump($users[0]->getPassword()));
-            return $app->redirect('/');
+            return $app->redirect('/?connect=true');
         }        
-    } return 'coucou';
+    }
+    echo 'coucou';
+    return $app['twig']->render('errorLog.html.twig');
 });
 
 $app->match('/inscription', function (Request $request) use ($app) {
