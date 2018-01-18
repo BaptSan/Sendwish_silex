@@ -10,7 +10,8 @@ use Entity\User;
 $app->get('/', function () use ($app) {     
     return $app['twig']->render('index.html.twig', array( 
         'isRegister' => $_GET['register'] ?? NULL,
-        'connect' => $_GET['connect'] ?? NULL
+        'connect' => $_GET['connect'] ?? NULL,
+        'products' => $myProducts ?? NULL
     )); 
 })
 ->bind('homepage');
@@ -37,7 +38,7 @@ $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
 $app->match('/connexion', function (Request $request) use ($app) {
-    $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('mailConnect')));
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
     $db_password = $user->getPassword();
     if (null !== $user && $db_password) {
         $password_client = htmlspecialchars($request->get('mdpConnect'));
@@ -45,7 +46,6 @@ $app->match('/connexion', function (Request $request) use ($app) {
             return $app->redirect('/?connect=true');
         }        
     }
-    echo 'coucou';
     return $app['twig']->render('errorLog.html.twig');
 });
 
@@ -67,6 +67,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
             null !== $request->get('password') && !empty($request->get('password')) &&
             null !== $request->get('passwordConf') && !empty($request->get('passwordConf')) &&
             $request->get('password') === $request->get('passwordConf')) {
+            
                 $varFirstName = htmlspecialchars($request->get('firstname'));
                 $varLastName = htmlspecialchars($request->get('lastname'));
                 $varLat = htmlspecialchars($request->get('inputLat'));

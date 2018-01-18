@@ -40,7 +40,7 @@ class Product
     /**
      * @Column(type="string")
      */
-    private $image_path;
+    private $imagePath;
 
     /**
      * One product has Many cart items.
@@ -49,7 +49,7 @@ class Product
     private $cartItems;
 
 
-    public function __construct($id, $name, $description, $price, $cals, $ingredients, $image_path, $cartItems)
+    public function __construct($id, $name, $description, $price, $cals, $ingredients, $imagePath, $cartItems)
     {
         $this->id = $id;
         $this->name = $name;
@@ -57,7 +57,7 @@ class Product
         $this->price = $price;
         $this->cals = $cals;
         $this->ingredients = $ingredients;
-        $this->image_path = $image_path;
+        $this->imagePath = $imagePath;
         $this->cartItems = new ArrayCollection();
     }
 
@@ -122,6 +122,18 @@ class Product
     public function setIngredients($ingredients)
     {
         $this->ingredients = $ingredients;
+
+        return $this;
+    }
+
+        public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }

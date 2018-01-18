@@ -69,3 +69,15 @@
       
     </div>
 {% endblock %}
+
+{% block produits %}
+  {% for product in products %}
+    <div>
+      <img src="{{"img/menu/" ~ product.imagePath}}">
+      <h1>{{product.imagePath}}</h1>
+      <h1>{{product.name}}</h1>
+      <p>{{product.description}}</p>
+      <p>{{product.price ~ "€"}}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
