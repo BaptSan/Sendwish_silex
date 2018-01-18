@@ -28,9 +28,9 @@
 			<input class="form-control" type="date" name="birthday" required="required" placeholder="Date de Naissance">
 			<br>
 			<br>
-			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></a>
+			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true">
 			<input class="form-control" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
-			<p id="addressMessage" style="display: none;"></p>
+			<p id="addressMessage" style="display: none;"></p></i></a>
 			<br>
 			<br>	
 			<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -55,18 +55,22 @@
 	<div class="col-md-4">
 		<form id="formulaireConnetion" action="/connexion" method="post">
 			<br />
-			<h2>Connection</h2>
+			<h2>Connexion</h2>
 			<blockquote id="deuxiemeForm">
-			<hr>
-			<input class="form-control" id="email" type="email" name="email" required="required" placeholder="E-mail">	
-			<input class="form-control formulaireCo" type="password" name="mdpConnect" placeholder="Mot de passe" required="required">
-			<input class="form-control" type="submit" value="Connexion" id="btnConnect">
+			<hr>				
+			<i class="fa fa-envelope" aria-hidden="true"></i>
+			<input class="form-control" type="email" name="email" required="required" placeholder="E-mail">
+			<br>
+			<br>
+			<i class="fa fa-lock" aria-hidden="true"></i>
+			<input class="form-control formulaireCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+			<br>
+			<br>
+			<i class="fa fa-check-circle" aria-hidden="true"></i>
+			<input class="form-control" type="submit" value="Connexion" id="messValid">
 			<hr id="hrF2">
-		</blockquote>
+			</blockquote>
 		</form>
 	</div>
 </div>
-		<p style="text-align: center; color: white;">Inscription</p>
-		<blockquote>
-</blockquote>
 {% endblock %}
