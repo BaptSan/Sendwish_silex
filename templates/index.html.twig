@@ -5,9 +5,10 @@
 		<div class="divRegisterInfo d-flex align-items-center justify-content-center">
 			<div>
         {% if isRegister != NULL %}
-				<p>Félicitations, vous êtes bien enregistré !</p>
+        <h3>Bienvenue !</h3>
+        <p>Félicitations, vous avez bien été enregistré, et vous êtes à présent connecté {{theUser.firstname}} !</p>
         {% else %}
-        <p>Félicitations, vous êtes bien connecté</p>
+        <p>Bonjour {{ theUser.firstname }}, une petite faim ?</p>
         {% endif %}
 			</div>
 		</div>
@@ -80,9 +81,4 @@
       <p>{{product.price ~ "€"}}</p>
     </div>
   {% endfor %}
-  {% if theUser != NULL %}
-  {{theUser.id}}
-  {{theUser.mail}}
-  {{theUser.admin}}
-{% endif %}
 {% endblock %}

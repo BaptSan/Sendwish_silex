@@ -1,4 +1,6 @@
 {% extends "layout.html.twig" %}
 {% block client %}
-Bonjour chère clientèles ! :D
+	{% for key, info in theUser %}
+		{{key}}: {{info}}
+	{% endfor %}
 {% endblock %}

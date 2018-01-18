@@ -17,7 +17,7 @@ $app->get('/', function () use ($app) {
 })
 ->bind('homepage');
 $app->get('/contact', function () use ($app) {
-    return $app['twig']->render('contact.html.twig');
+    return $app['twig']->render('contact.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
 $app->get('/nosMenus', function () use ($app) {
@@ -37,11 +37,11 @@ $app->get('/petitesFaims', function () use ($app) {
 });
 
 $app->get('/client', function () use ($app) {
-    return $app['twig']->render('espaceClient.html.twig');
+    return $app['twig']->render('espaceClient.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
 $app->get('/ajoutPanier', function () use ($app) {
-    return $app['twig']->render('panier.html.twig');
+    return $app['twig']->render('panier.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
 $app->match('/connexion', function (Request $request) use ($app) {
@@ -50,12 +50,18 @@ $app->match('/connexion', function (Request $request) use ($app) {
     if (null !== $user && $db_password) {
         $password_client = htmlspecialchars($request->get('password'));
         if (password_verify($password_client, $db_password)) {
-            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId()));
+            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname()));
             return $app->redirect('/?connect=true');
         }        
     }
     return $app['twig']->render('errorLog.html.twig');
 });
+
+$app->get('/deconnexion', function (Request $request) use ($app) {
+    $app['session']->clear();
+    return $app->redirect('/');
+});
+
 
 $app->get('/panier', function (Request $request) use ($app) {
     return $request->get('carrousel');
@@ -101,10 +107,12 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $em = $app['em'];
                 $em->persist($sd);
                 $em->flush();
+                $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
+                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname()));
             return $app->redirect('/?register=true');
         }
     }
-    return $app['twig']->render('inscription.html.twig', array());
+    return $app['twig']->render('inscription.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
 });
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 if ($app['debug']) {
