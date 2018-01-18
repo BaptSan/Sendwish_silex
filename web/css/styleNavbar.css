@@ -154,7 +154,7 @@ fill:white;
 }
 
 .friesSVG {
-    fill:#d84f2d;
+   fill:#d84f2d;
 }
 
 #clclient {
@@ -162,6 +162,19 @@ color: #4286f4;
 }
 #bgclient:hover :not(i){
 background-color: #4286f4;
+}
+
+#clpanier {
+	color: #ff4747;
+}
+
+#bgpanier:hover :not(svg) {
+	background-color: #ff4747;
+	fill:white;
+}
+
+.panierSVG {
+	fill:#ff4747;
 }
 
 .col-md-12 {

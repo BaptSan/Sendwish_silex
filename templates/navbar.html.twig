@@ -36,23 +36,22 @@
                 </ul>
             </li>
             <li id="bgcontact">
-            <a id="clcontact" href="/contact">
-                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                Contact
-            </a>
+                <a id="clcontact" href="/contact">
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                    Contact
+                </a>
             </li>
             <li id="bgclient">
-            <a id="clclient" href="/client">
-                <i class="fa fa-user-o" aria-hidden="true"></i>
-                Espace client
-            </a>
+                <a id="clclient" href="/client">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    Espace client
+                </a>
             </li>
-            <li id="bgclient">
-            <a id="clpanier" href="/client">
-                {# ICI #}
-                <i class="fa fa-user-o" aria-hidden="true"></i>
-                Panier
-            </a>
+            <li id="bgpanier">
+                <a id="clpanier" href="/panier">
+                    {% include 'shoppingBasket.html.twig' %} <br>
+                    Panier
+                </a>
             </li>
         </ul>
     </nav>
