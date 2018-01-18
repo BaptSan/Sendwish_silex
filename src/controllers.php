@@ -11,7 +11,8 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig', array( 
         'isRegister' => $_GET['register'] ?? NULL,
         'connect' => $_GET['connect'] ?? NULL,
-        'products' => $myProducts ?? NULL
+        'products' => $myProducts ?? NULL,
+        'theUser' => $app['session']->get('user') ?? NULL
     )); 
 })
 ->bind('homepage');
@@ -43,6 +44,7 @@ $app->match('/connexion', function (Request $request) use ($app) {
     if (null !== $user && $db_password) {
         $password_client = htmlspecialchars($request->get('mdpConnect'));
         if (password_verify($password_client, $db_password)) {
+            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin()));
             return $app->redirect('/?connect=true');
         }        
     }
