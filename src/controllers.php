@@ -34,12 +34,15 @@ $app->get('/boissons', function () use ($app) {
 $app->get('/petitesFaims', function () use ($app) {
     return $app['twig']->render('petitesFaims.html.twig');
 });
+
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig');
 });
+
 $app->get('/ajoutPanier', function () use ($app) {
     return $app['twig']->render('panier.html.twig');
 });
+
 $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
     $db_password = $user->getPassword();

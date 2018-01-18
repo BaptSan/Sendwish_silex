@@ -16,7 +16,14 @@ initFlick();
       }, 
       url: '/panier'
     }).done(function(data){
-      console.log(data);
+      $('#tst').addClass('badge badge-light');
+      if($('#tst').text() == ""){
+        $('#tst').text('1');
+      }else{
+        test = parseInt($('#tst').text());
+        test++;
+        $('#tst').text(test);
+      }
     });
   });
   
