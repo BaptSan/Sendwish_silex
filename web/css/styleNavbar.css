@@ -32,6 +32,7 @@ align-items: stretch;
 position: fixed;
 left:0;
 top:0;
+width: 100.8px;
 }
 
 #sidebar {
@@ -162,6 +163,30 @@ color: #4286f4;
 }
 #bgclient:hover :not(i){
 background-color: #4286f4;
+}
+
+#claccount {
+  color: #6a2bff;
+}
+
+#bgaccount:hover :not(i){
+background-color: #6a2bff;
+}
+
+#cladmin {
+  color: #a35032;
+}
+
+#bgadmin:hover :not(i){
+background-color: #a35032;
+}
+
+#cldeco {
+  color: red;
+}
+
+#bgdeco:hover :not(i){
+background-color: red;
 }
 
 #clpanier {

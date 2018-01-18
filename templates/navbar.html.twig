@@ -41,12 +41,43 @@
                     Contact
                 </a>
             </li>
-            <li id="bgclient">
-                <a id="clclient" href="/client">
-                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                    Espace client
-                </a>
-            </li>
+
+            {% if theUser != NULL %}
+                <li id="bgclient">
+                    <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i style="position: relative; top:-6px; margin-bottom:0; padding-bottom:0;" class="fa fa-angle-down" aria-hidden="true"></i>
+                        Client
+                    </a>
+                </li>
+
+                <ul class="list-unstyled collapse" id="pageSubclient" aria-expanded="false" style="height: 0px;">
+                    <li id="bgaccount"><a id="claccount" href="/client">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Mon Compte</a>
+                    </li>
+                    {% if theUser.admin == 1 %}
+                        <li id="bgadmin"><a id="cladmin" href="/admin">
+                           <i class="fa fa-key" aria-hidden="true"></i>
+                        Accès Admin</a>
+                    {%  endif %}
+                    <li id="bgdeco"><a id="cldeco" href="/deconnexion">
+                        <i class="fa fa-power-off" aria-hidden="true"></i>
+                    Déconnexion</a>
+                    </li>
+                </ul>
+
+                {% else %}
+                    <li id="bgclient">
+                        <a id="clclient" href="/inscription">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            Connexion
+                        </a>
+                    </li>
+                {% endif %}
+                
+        
+
+
             <li id="bgpanier">
                 <a id="clpanier" href="/ajoutPanier">
                     {% include 'shoppingBasket.html.twig' %}<span class="" id="tst"></span> <br>
