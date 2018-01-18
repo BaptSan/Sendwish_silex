@@ -66,7 +66,11 @@ $app->match('/inscription', function (Request $request) use ($app) {
             null !== $request->get('birthday') && !empty($request->get('birthday')) &&
             null !== $request->get('password') && !empty($request->get('password')) &&
             null !== $request->get('passwordConf') && !empty($request->get('passwordConf')) &&
+            null !== $request->get('inputGender') && !empty($request->get('inputGender')) &&
             $request->get('password') === $request->get('passwordConf')) {
+
+
+            
             
                 $varFirstName = htmlspecialchars($request->get('firstname'));
                 $varLastName = htmlspecialchars($request->get('lastname'));
@@ -79,10 +83,13 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $varBirthday = htmlspecialchars($request->get('birthday'));
                 $varPassWord = htmlspecialchars($request->get('password'));
                 $varPassWordConf = htmlspecialchars($request->get('passwordConf'));
+                $varGender = htmlspecialchars($request->get('inputGender'));
 
                 $password = password_hash($varPassWord,PASSWORD_DEFAULT);
+                $orders="";
+                $orders=$cartItems="";
 
-                $sd = new User($id, $varLastName, $varFirstName, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false, $cartItems, $orders);
+                $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false, $cartItems, $orders);
                 $em = $app['em'];
                 $em->persist($sd);
                 $em->flush();
