@@ -66,19 +66,7 @@ input {
 	color: #3633EA;
 	width: 100%;	
 }
-.fa-map-marker:hover {
-	color: #050593;
-}
-.fa-map-marker:hover {
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(1);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(1);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(1);
-  transition: all 200ms ease-in;
-  transform: scale(1);
-}
+/*P ACCHICHANT LE MESSAGE DE L'ADRESSE */
 #addressMessage {
 	font-size: 0.5em;
 	width: 100%;
