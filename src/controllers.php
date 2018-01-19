@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
+use Entity\Product;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
@@ -67,6 +68,34 @@ $app->get('/panier', function (Request $request) use ($app) {
     return $request->get('carrousel');
 });
 
+$app->get('/admin', function () use ($app) {
+    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
+});
+
+$app->match('/admin', function (Request $request) use ($app) {
+    if (null !== $request->get('productName') && !empty($request->get('productName')) &&
+        null !== $request->get('productDescription') && !empty($request->get('productDescription')) &&
+        null !== $request->get('productPrice') && !empty($request->get('productPrice')) && 
+        null !== $request->get('productCal') && !empty($request->get('productCal')) &&
+        null !== $request->get('productIngredient') && !empty($request->get('productIngredient')) && 
+        null !== $request->get('productPath') && !empty($request->get('productPath'))) {
+                
+            $varProductName = htmlspecialchars($request->get('productName'));
+            $varProductDescription = htmlspecialchars($request->get('productDescription'));
+            $varProductPrice = htmlspecialchars($request->get('productPrice'));
+            $varProductCal = htmlspecialchars($request->get('productCal'));
+            $varProductIngredient = htmlspecialchars($request->get('productIngredient'));
+            $varProductPath = htmlspecialchars($request->get('productPath'));
+
+            $np = new Product($varProductName,$varProductDescription,$varProductPrice,$varProductCal,$varProductIngredient, $varProductPath);
+
+            $em = $app['em'];
+            $em->persist($np);
+            $em->flush();
+            return $app->redirect('/inscription');
+    } return $app->redirect('/admin');
+});
+
 $app->match('/inscription', function (Request $request) use ($app) {
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
@@ -83,9 +112,6 @@ $app->match('/inscription', function (Request $request) use ($app) {
             null !== $request->get('inputGender') && !empty($request->get('inputGender')) &&
             $request->get('password') === $request->get('passwordConf')) {
 
-
-            
-            
                 $varFirstName = htmlspecialchars($request->get('firstname'));
                 $varLastName = htmlspecialchars($request->get('lastname'));
                 $varLat = htmlspecialchars($request->get('inputLat'));
