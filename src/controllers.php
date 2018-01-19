@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
+use Entity\CartItem;
+use Entity\Product;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
@@ -64,6 +66,13 @@ $app->get('/deconnexion', function (Request $request) use ($app) {
 
 
 $app->get('/panier', function (Request $request) use ($app) {
+    $product = $app['em']->find('Entity\Product',$request->get('carrousel'));
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->find('Entity\User',$userSession['id']);
+
+    $cartItem = new CartItem($userSession['id'], $request->get('carrousel'), 1, $user, $product);
+    $app['em']->persist($cartItem);
+    $app['em']->flush();
     return $request->get('carrousel');
 });
 
