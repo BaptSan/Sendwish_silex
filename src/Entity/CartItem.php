@@ -38,9 +38,8 @@ class CartItem
      */
 	private $product;
 
-	public function __construct($id, $user_id, $product_id, $quantity, $user, $product)
+	public function __construct($user_id, $product_id, $quantity, $user, $product)
 	{
-		$this->id = $id;
 		$this->user_id = $user_id;
 		$this->product_id = $product_id;
 		$this->quantity = $quantity;
