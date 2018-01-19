@@ -26,6 +26,11 @@ initFlick();
       }
     });
   });
+/*  $('clpanier').click(function() {
+    if ($('#idPanier').text() != "") {
+      $('#idPanier').text() = "";
+    }
+  });*/
   
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
