@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+
+{% block backOffice %}
+	<form action="#" method="post" enctype="multipart/form-data">
+		<label for="productName"> Nom du produit :
+			<input type="text" name="productName" id="productName">
+		</label> <br>
+		<label for="productDescription"> Description du produit :
+			<input type="text" name="productDescription" id="productDescription">
+		</label> <br>
+		<label for="productPrice"> Prix du produit :
+			<input type="text" name="productPrice" id="productPrice">
+		</label> <br>
+		<label for="productCal"> Nombre de calorie : 
+			<input type="text" name="productCal" id="productCal">
+		</label> <br>
+		<label for="productIngredient"> Ingrédient :
+			<input type="text" name="productIngredient" id="productIngredient">
+		</label> <br>
+		<label for="productIngredient"> Insertion de l'image dans la fiche produit :
+			<input type="file" name="productPath" id="productPath">
+		</label> <br>
+		<input type="submit" name="btnAddProduct">
+	</form>
+{% endblock %}
