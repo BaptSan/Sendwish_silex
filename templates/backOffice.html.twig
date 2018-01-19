@@ -1,22 +1,36 @@
 {% extends "layout.html.twig" %}
 
 {% block backOffice %}
-	<form action="/admin" method="post" enctype="multipart/form-data">
-		<label for="productName"> Nom du produit :
-			<input type="text" name="productName" id="productName">
-		</label> <br>
-		<label for="productDescription"> Description du produit :
-			<input type="text" name="productDescription" id="productDescription">
-		</label> <br>
-		<label for="productPrice"> Prix du produit :
-			<input type="text" name="productPrice" id="productPrice">
-		</label> <br>
-		<label for="productCal"> Nombre de calorie : 
-			<input type="text" name="productCal" id="productCal">
-		</label> <br>
-		<label for="productIngredient"> Ingrédient :
-			<input type="text" name="productIngredient" id="productIngredient">
-		</label> <br>
+<div class="container-fluid" id="mainContentBackOffice">
+	<div class="row rowBackOffice">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" id="product-tab" data-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Produit</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="addUser-tab" data-toggle="tab" href="#addUser" role="tab" aria-controls="addUser" aria-selected="false">Utilisateur</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Historique des commandes</a>
+		  </li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+		  <div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="product-tab">		<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">	
+				<label for="productName"> Nom du produit : <br>
+					<input type="text" name="productName" id="productName">
+				</label> <br>
+				<label for="productDescription"> Description du produit : <br>
+					<input type="text" name="productDescription" id="productDescription">
+				</label> <br>
+				<label for="productPrice"> Prix du produit : <br>
+					<input type="text" name="productPrice" id="productPrice">
+				</label> <br>
+				<label for="productCal"> Nombre de calorie : <br>
+					<input type="text" name="productCal" id="productCal">
+				</label> <br>
+				<label for="productIngredient"> Ingrédient : <br>
+					<input type="text" name="productIngredient" id="productIngredient">
+				</label> <br>
 		<label for="productCategory"> Ingrédient :
 			<select name="productCategory" id="productCategory">
 				<option value="drink">Boisson</option>
@@ -26,9 +40,73 @@
 				<option value="menu">Menu</option>
 			</select>
 		</label><br>
-		<label for="productPath"> Insertion de l'image dans la fiche produit :
-			<input type="file" name="productPath" id="productPath">
-		</label> <br>
-		<input type="submit" name="btnAddProduct">
-	</form>
+				<label for="productIngredient"> Insertion de l'image dans la fiche produit : <br>
+					<input type="file" name="productPath" id="productPath">
+				</label> <br>
+				<input type="submit" name="btnAddProduct" id="btnAddProduct">
+			</form>
+		</div>
+		<div class="tab-pane fade" id="addUser" role="tabpanel" aria-labelledby="addUser-tab">
+			<form method="post" onsubmit="return validateForm();" >
+					<br />
+					<h2>Ajout d'un utilisateur</h2>
+					<blockquote id="premierForm">
+					<hr>				
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input class="form-control doubleIp formInscriptionCo" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
+					<input class="form-control doubleIp formInscriptionCo" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
+					<br />
+					<br />
+					<i class="fa fa-transgender" aria-hidden="true"></i>
+					<select name="inputGender" id="questionType" class="form-control" required="required">
+						<option value="male">Homme</option>
+						<option value="female">Femme</option>
+					</select>
+					<br />
+					<br />
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<input class="form-control formInscriptionCo" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
+					<br>
+					<br>
+					<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+					<input class="form-control formInscriptionCo" type="date" name="birthday" required="required" placeholder="Date de Naissance">
+					<br>
+					<br>
+					<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true">
+					<input class="form-control formInscriptionCo" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
+					<p id="addressMessage" style="display: none;"></p></i></a>
+					<br>
+					<br>	
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+					<input class="form-control formInscriptionCo" type="email" name="email" required="required" placeholder="E-mail">
+					<br>
+					<br>
+					<i class="fa fa-lock" aria-hidden="true"></i>
+					<input class="form-control doubleIp formInscriptionCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+					<input class="form-control doubleIp formInscriptionCo" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
+					<br>
+					<br>
+					<i class="fa fa-superpowers" aria-hidden="true"></i>
+					<select name="inputRight" id="addRight" class="form-control" required="required">
+						<option value="User">Utilisateur</option>
+						<option value="DeliveryMan">Livreur</option>
+						<option value="Admin">Admin</option>
+					</select>
+					<br>
+					<br>
+					<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<input class="form-control formInscriptionCo" type="submit" value="Envoyer" id="messValid">
+					<hr id="hrF1">
+					</blockquote>
+					<input type="hidden" name="inscripValid">
+					<input type="hidden" name="inputLat" id="inputLat">
+					<input type="hidden" name="inputLng" id="inputLng">
+					<input type="hidden" name="inputDist" id="inputDist">
+				</form>
+			</div>
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+			</div>
+
+	</div>
+</div>
 {% endblock %}
