@@ -16,13 +16,13 @@ initFlick();
       }, 
       url: '/panier'
     }).done(function(data){
-      $('#tst').addClass('badge badge-light');
-      if($('#tst').text() == ""){
-        $('#tst').text('1');
+      $('#idPanier').addClass('badge badge-light');
+      if($('#idPanier').text() == ""){
+        $('#idPanier').text('1');
       }else{
-        test = parseInt($('#tst').text());
+        test = parseInt($('#idPanier').text());
         test++;
-        $('#tst').text(test);
+        $('#idPanier').text(test);
       }
     });
   });
