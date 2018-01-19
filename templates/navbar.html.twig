@@ -1,7 +1,7 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar" class="active">
-        <ul class="list-unstyled components active">         
+        <ul class="list-unstyled components active scroll-menu">         
             <li id="bgaccueil">
                 <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
                     <i class="fa fa-home" aria-hidden="true"></i>
@@ -9,14 +9,27 @@
                 </a>
             </li>
             <li>
+
+                {# <div id="page-menu-wrapper">
+                <li class="nav-item dropdown barrnav">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorie</a>
+                <div style="background-color: red; border-radius: 5px; z-index: 100;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="color: white" class="dropdown-item" href="#">Bruh</a>
+                    <a style="color: white" class="dropdown-item" href="#">Putain</a>
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"></a>
+                </div>
+            </li> #}
+
+
                 <li id="bgproduits">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                         Nos produits
                     </a>
                 </li>
-
-                <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false" style="height: 0px;">
+                <li>
+                <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false">
                     <li id="bgmenus"><a id="clmenus" href="/nosMenus">
                         {% include 'fastfood.html.twig' %} <br>
                     Nos Menus</a>
@@ -45,7 +58,7 @@
             {% if theUser != NULL %}
                 <li id="bgclient">
                     <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i style="position: relative; top:-6px; margin-bottom:0; padding-bottom:0;" class="fa fa-angle-down" aria-hidden="true"></i>
+                        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
                         Client
                     </a>
                 </li>
@@ -74,12 +87,10 @@
                         </a>
                     </li>
                 {% endif %}
-                
         
-
-
+                
             <li id="bgpanier">
-                <a id="clpanier" href="/ajoutPanier">
+                <a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
                     {% include 'shoppingBasket.html.twig' %}<span class="" id="idPanier"></span><br>
                     Panier
                 </a>
