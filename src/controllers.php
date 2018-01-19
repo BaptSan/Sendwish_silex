@@ -76,6 +76,97 @@ $app->get('/panier', function (Request $request) use ($app) {
     return $request->get('carrousel');
 });
 
+$app->get('/admin', function () use ($app) {
+    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
+});
+
+$app->match('/admin', function (Request $request) use ($app) {
+    if (null !== $request->get('productName') && !empty($request->get('productName')) &&
+        null !== $request->get('productDescription') && !empty($request->get('productDescription')) &&
+        null !== $request->get('productPrice') && !empty($request->get('productPrice')) && 
+        null !== $request->get('productCal') && !empty($request->get('productCal')) &&
+        null !== $request->get('productIngredient') && !empty($request->get('productIngredient')) && 
+        null !== $request->get('productPath') && !empty($request->get('productPath'))) {
+                
+            $varProductName = htmlspecialchars($request->get('productName'));
+            $varProductDescription = htmlspecialchars($request->get('productDescription'));
+            $varProductPrice = htmlspecialchars($request->get('productPrice'));
+            $varProductCal = htmlspecialchars($request->get('productCal'));
+            $varProductIngredient = htmlspecialchars($request->get('productIngredient'));
+            $varProductPath = htmlspecialchars($request->get('productPath'));
+
+            $np = new Product($varProductName,$varProductDescription,$varProductPrice,$varProductCal,$varProductIngredient, $varProductPath);
+
+
+
+
+
+
+
+$target_dir = "img/product/";
+$target_file = $target_dir . basename($_FILES["productPath"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["productPath"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["productPath"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["productPath"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["productPath"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $em = $app['em'];
+            $em->persist($np);
+            $em->flush();
+            return $app->redirect('/inscription');
+    } return $app->redirect('/admin');
+});
+
 $app->match('/inscription', function (Request $request) use ($app) {
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
@@ -92,9 +183,6 @@ $app->match('/inscription', function (Request $request) use ($app) {
             null !== $request->get('inputGender') && !empty($request->get('inputGender')) &&
             $request->get('password') === $request->get('passwordConf')) {
 
-
-            
-            
                 $varFirstName = htmlspecialchars($request->get('firstname'));
                 $varLastName = htmlspecialchars($request->get('lastname'));
                 $varLat = htmlspecialchars($request->get('inputLat'));
