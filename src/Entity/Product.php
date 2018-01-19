@@ -49,9 +49,8 @@ class Product
     private $cartItems;
 
 
-    public function __construct($id, $name, $description, $price, $cals, $ingredients, $imagePath, $cartItems)
+    public function __construct($name, $description, $price, $cals, $ingredients, $imagePath)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
