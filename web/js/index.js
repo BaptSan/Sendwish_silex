@@ -26,7 +26,8 @@ initFlick();
       }
     });
   });
-/*  $('clpanier').click(function() {
+  // fonction suppression de badge.
+ /* $('clpanier').click(function() {
     if ($('#idPanier').text() != "") {
       $('#idPanier').text() = "";
     }
