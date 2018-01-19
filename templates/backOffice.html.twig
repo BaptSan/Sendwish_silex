@@ -17,7 +17,16 @@
 		<label for="productIngredient"> Ingrédient :
 			<input type="text" name="productIngredient" id="productIngredient">
 		</label> <br>
-		<label for="productIngredient"> Insertion de l'image dans la fiche produit :
+		<label for="productCategory"> Ingrédient :
+			<select name="productCategory" id="productCategory">
+				<option value="drink">Boisson</option>
+				<option value="suppl">Accompagnement</option>
+				<option value="sandwich">Sandwich</option>
+				<option value="child">Menu enfant</option>
+				<option value="menu">Menu</option>
+			</select>
+		</label><br>
+		<label for="productPath"> Insertion de l'image dans la fiche produit :
 			<input type="file" name="productPath" id="productPath">
 		</label> <br>
 		<input type="submit" name="btnAddProduct">
