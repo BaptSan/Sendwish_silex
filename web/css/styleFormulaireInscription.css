@@ -35,7 +35,7 @@ h2 {
 	border-radius: 5px;
 }
 /*TOUT LES INPUT DE PAGE D'INSCRIPTION*/
-input {
+.formInscriptionCo {
 	float: right;
 }
 /*SELECT FORMULAIRE 1*/

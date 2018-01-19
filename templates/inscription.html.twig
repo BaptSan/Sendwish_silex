@@ -9,8 +9,8 @@
 			<blockquote id="premierForm">
 			<hr>				
 			<i class="fa fa-user" aria-hidden="true"></i>
-			<input class="form-control doubleIp" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
-			<input class="form-control doubleIp" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
+			<input class="form-control doubleIp formInscriptionCo" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
+			<input class="form-control doubleIp formInscriptionCo" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
 			<br />
 			<br />
 			<i class="fa fa-transgender" aria-hidden="true"></i>
@@ -21,29 +21,31 @@
 			<br />
 			<br />
 			<i class="fa fa-phone" aria-hidden="true"></i>
-			<input class="form-control" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
+			<input class="form-control formInscriptionCo" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
 			<br>
 			<br>
 			<i class="fa fa-birthday-cake" aria-hidden="true"></i>
-			<input class="form-control" type="date" name="birthday" required="required" placeholder="Date de Naissance">
+			<input class="form-control formInscriptionCo" type="date" name="birthday" required="required" placeholder="Date de Naissance">
 			<br>
 			<br>
-			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" aria-hidden="true">
-			<input class="form-control" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
-			<p id="addressMessage" style="display: none;"></p></i></a>
+			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" data-toggle="collapse" data-target="#demo" aria-hidden="true">
+			<input class="form-control formInscriptionCo" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
+  			<div id="demo" class="collapse">
+			<p id="addressMessage" style="display: none;">
+			</p></div></i></a>
 			<br>
 			<br>	
 			<i class="fa fa-envelope" aria-hidden="true"></i>
-			<input class="form-control" type="email" name="email" required="required" placeholder="E-mail">
+			<input class="form-control formInscriptionCo" type="email" name="email" required="required" placeholder="E-mail">
 			<br>
 			<br>
 			<i class="fa fa-lock" aria-hidden="true"></i>
-			<input class="form-control doubleIp" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
-			<input class="form-control doubleIp" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
+			<input class="form-control doubleIp formInscriptionCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+			<input class="form-control doubleIp formInscriptionCo" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
 			<br>
 			<br>
 			<i class="fa fa-check-circle" aria-hidden="true"></i>
-			<input class="form-control" type="submit" value="Envoyer" id="messValid">
+			<input class="form-control formInscriptionCo" type="submit" value="Envoyer" id="messValid">
 			<hr id="hrF1">
 			</blockquote>
 			<input type="hidden" name="inscripValid">
@@ -59,15 +61,15 @@
 			<blockquote id="deuxiemeForm">
 			<hr>				
 			<i class="fa fa-envelope" aria-hidden="true"></i>
-			<input class="form-control" type="email" name="email" required="required" placeholder="E-mail">
+			<input class="form-control formInscriptionCo" type="email" name="email" required="required" placeholder="E-mail">
 			<br>
 			<br>
 			<i class="fa fa-lock" aria-hidden="true"></i>
-			<input class="form-control formulaireCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+			<input class="form-control formulaireCo formInscriptionCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
 			<br>
 			<br>
 			<i class="fa fa-check-circle" aria-hidden="true"></i>
-			<input class="form-control" type="submit" value="Connexion" id="messValid">
+			<input class="form-control formInscriptionCo" type="submit" value="Connexion" id="messValid">
 			<hr id="hrF2">
 			</blockquote>
 		</form>
