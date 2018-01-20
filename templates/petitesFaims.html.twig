@@ -1,4 +1,10 @@
 {% extends "layout.html.twig" %}
 {% block pFaims %}
-Petites faims !
+	{% if suppls != null %}
+		{% for suppl in suppls %}
+			<img src="{{suppl.imagePath}}">
+			<h3>{{suppl.name}}</h3>
+			<p>{{suppl.description}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}
