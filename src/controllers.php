@@ -8,6 +8,7 @@ use Entity\User;
 use Entity\CartItem;
 use Entity\Product;
 
+// MAIN ROUTE
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
     return $app['twig']->render('index.html.twig', array( 
@@ -18,10 +19,14 @@ $app->get('/', function () use ($app) {
     )); 
 })
 ->bind('homepage');
+
+// CONTACT ROUTE
 $app->get('/contact', function () use ($app) {
     return $app['twig']->render('contact.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
+
+// MENUS ROUTE
 $app->get('/nosMenus', function () use ($app) {
     $menus = $app['em']->getRepository(Product::class)->findBy(array('category' => "menu")); 
     return $app['twig']->render('nosMenus.html.twig',array(
@@ -29,6 +34,8 @@ $app->get('/nosMenus', function () use ($app) {
         'menus' => $menus ?? NULL));
 });
 
+
+// SANDWICHS ROUTE
 $app->get('/sandwichs', function () use ($app) {
     $sandwichs = $app['em']->getRepository(Product::class)->findBy(array('category' => "sandwich")); 
     return $app['twig']->render('sandwichs.html.twig',array(
@@ -36,6 +43,7 @@ $app->get('/sandwichs', function () use ($app) {
         'sandwichs' => $sandwichs ?? NULL));
 });
 
+// DRINKS ROUTE
 $app->get('/boissons', function () use ($app) {
     $drinks = $app['em']->getRepository(Product::class)->findBy(array('category' => "drink"));
     return $app['twig']->render('boissons.html.twig',array(
@@ -43,6 +51,7 @@ $app->get('/boissons', function () use ($app) {
         'drinks' => $drinks ?? NULL));
 });
 
+// SUPPLS ROUTE
 $app->get('/petitesFaims', function () use ($app) {
      $suppls = $app['em']->getRepository(Product::class)->findBy(array('category' => "suppl"));
     return $app['twig']->render('petitesFaims.html.twig',array(
@@ -50,14 +59,17 @@ $app->get('/petitesFaims', function () use ($app) {
         'suppls' => $suppls ?? NULL));
 });
 
+// ACCOUNT INFOS ROUTE
 $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
+// CART INFOS ROUTE
 $app->get('/ajoutPanier', function () use ($app) {
     return $app['twig']->render('panier.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
+// CONNECTION ROUTE
 $app->match('/connexion', function (Request $request) use ($app) {
     $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
     $db_password = $user->getPassword();
@@ -71,12 +83,15 @@ $app->match('/connexion', function (Request $request) use ($app) {
     return $app['twig']->render('errorLog.html.twig');
 });
 
+
+// DISCONNECTION ROUTE
 $app->get('/deconnexion', function (Request $request) use ($app) {
     $app['session']->clear();
     return $app->redirect('/');
 });
 
 
+// AJAX CART ROUTE
 $app->get('/panier', function (Request $request) use ($app) {
     $product = $app['em']->find('Entity\Product',$request->get('carrousel'));
     $userSession = $app['session']->get('user');
@@ -87,16 +102,18 @@ $app->get('/panier', function (Request $request) use ($app) {
     return $request->get('carrousel');
 });
 
-$app->get('/admin', function () use ($app) {
-    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
-});
 
+// // ADMIN BACKOFFICE ROUTE
+// $app->get('/admin', function () use ($app) {
+//     return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
+// });
+
+
+// AJAX DYNAMIC CARROUSEL ROUTE
 $app->get('/generateCarrousel', function (Request $request) use ($app) {
     $test = $app['em']->getRepository(Product::class)->findBy(array('category' => $request->get('productCat'))); 
     return json_encode($test);
 });
-
-
 
 
 $app->match('/admin', function (Request $request) use ($app) {
@@ -156,7 +173,61 @@ $app->match('/admin', function (Request $request) use ($app) {
             $em->persist($np);
             $em->flush();
             return $app->redirect('/admin');
-    } return $app->redirect('/admin');
+    } 
+
+        if($request->get('firstname') !== null && !empty($request->get('firstname')) &&
+            $request->get('lastname') !== null && !empty($request->get('lastname')) &&
+            $request->get('inputGender') !== null && !empty($request->get('inputGender')) &&
+            $request->get('email') !== null && !empty($request->get('email')) &&
+            $request->get('tel') !== null && !empty($request->get('tel')) &&
+            $request->get('birthday') !== null && !empty($request->get('birthday')) &&
+            $request->get('address') !== null && !empty($request->get('address')) &&
+            $request->get('password') !== null && !empty($request->get('password')) &&
+            $request->get('passwordConf') !== null && !empty($request->get('passwordConf')) &&
+            $request->get('inputRight') !== null && !empty($request->get('inputRight')) &&
+            $request->get('inputLat') !== null && !empty($request->get('inputLat')) &&
+            $request->get('inputLng') !== null && !empty($request->get('inputLng')) && 
+            $request->get('inputDist') !== null && !empty($request->get('inputDist')) &&
+            $request->get('password') == $request->get('passwordConf')){
+
+
+            $varFirstname = htmlspecialchars($request->get('firstname'));
+            $varLastname = htmlspecialchars($request->get('lastname'));
+            $varGender = htmlspecialchars($request->get('inputGender'));
+            $varTel = htmlspecialchars($request->get('tel'));
+            $varBirthday = new DateTime(htmlspecialchars($request->get('birthday')));
+            $varAddress = htmlspecialchars($request->get('address'));
+            $varMail = htmlspecialchars($request->get('email'));
+            $varPassword = password_hash(htmlspecialchars($request->get('password')),PASSWORD_DEFAULT);
+            
+            if ($request->get('inputRight') === "User") {
+                $varIsClient = true;
+                $varIsDelivery = false;
+                $varIsAdmin = false;
+            }else if($request->get('inputRight') === "DeliveryMan"){
+                $varIsClient = false;
+                $varIsDelivery = true;
+                $varIsAdmin = false;
+            }else if($request->get('inputRight') === "Admin"){
+                $varIsClient = false;
+                $varIsDelivery = false;
+                $varIsAdmin = true;
+            }
+            $varLat = htmlspecialchars($request->get('inputLat'));
+            $varLng = htmlspecialchars($request->get('inputLng'));
+            $varDist = htmlspecialchars($request->get('inputDist'));
+
+
+             $sd = new User($varLastname, $varFirstname, $varGender, $varMail, $varPassword, $varBirthday, $varAddress, $varLat, $varLng, $varDist, $varTel, $varIsAdmin, $varIsClient, $varIsDelivery);
+                    $em = $app['em'];
+                    $em->persist($sd);
+                    $em->flush();
+                    return $app->redirect('/admin');
+
+        return dump($_POST);
+        }
+
+    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
 $app->match('/inscription', function (Request $request) use ($app) {
@@ -189,10 +260,8 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $varGender = htmlspecialchars($request->get('inputGender'));
 
                 $password = password_hash($varPassWord,PASSWORD_DEFAULT);
-                $orders="";
-                $orders=$cartItems="";
 
-                $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false, $cartItems, $orders);
+                $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false);
                 $em = $app['em'];
                 $em->persist($sd);
                 $em->flush();
