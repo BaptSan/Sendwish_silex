@@ -23,19 +23,31 @@ $app->get('/contact', function () use ($app) {
 });
 
 $app->get('/nosMenus', function () use ($app) {
-    return $app['twig']->render('nosMenus.html.twig');
+    $menus = $app['em']->getRepository(Product::class)->findBy(array('category' => "menu")); 
+    return $app['twig']->render('nosMenus.html.twig',array(
+        'theUser' => $app['session']->get('user') ?? NULL,
+        'menus' => $menus ?? NULL));
 });
 
 $app->get('/sandwichs', function () use ($app) {
-    return $app['twig']->render('sandwichs.html.twig');
+    $sandwichs = $app['em']->getRepository(Product::class)->findBy(array('category' => "sandwich")); 
+    return $app['twig']->render('sandwichs.html.twig',array(
+        'theUser' => $app['session']->get('user') ?? NULL,
+        'sandwichs' => $sandwichs ?? NULL));
 });
 
 $app->get('/boissons', function () use ($app) {
-    return $app['twig']->render('boissons.html.twig');
+    $drinks = $app['em']->getRepository(Product::class)->findBy(array('category' => "drink"));
+    return $app['twig']->render('boissons.html.twig',array(
+        'theUser' => $app['session']->get('user') ?? NULL,
+        'drinks' => $drinks ?? NULL));
 });
 
 $app->get('/petitesFaims', function () use ($app) {
-    return $app['twig']->render('petitesFaims.html.twig');
+     $suppls = $app['em']->getRepository(Product::class)->findBy(array('category' => "suppl"));
+    return $app['twig']->render('petitesFaims.html.twig',array(
+        'theUser' => $app['session']->get('user') ?? NULL,
+        'suppls' => $suppls ?? NULL));
 });
 
 $app->get('/client', function () use ($app) {

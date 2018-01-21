@@ -1,4 +1,10 @@
 {% extends "layout.html.twig" %}
 {% block sandwichs %}
-sandwichs !
+	{% if sandwichs != null %}
+		{% for sandwich in sandwichs %}
+			<img src="{{sandwich.imagePath}}">
+			<h3>{{sandwich.name}}</h3>
+			<p>{{sandwich.description}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}
