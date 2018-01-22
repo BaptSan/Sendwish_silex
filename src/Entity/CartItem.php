@@ -34,7 +34,7 @@ class CartItem
 
 	/**
      * Many cart item have one product.
-     * @ManyToOne(targetEntity="Product", inversedBy="cartItems")
+     * @ManyToOne(targetEntity="Product", inversedBy="cartItems", fetch="EAGER")
      */
 	private $product;
 

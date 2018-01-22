@@ -79,7 +79,7 @@ class User
 
     /**
      * One user has Many cart items.
-     * @OneToMany(targetEntity="CartItem", mappedBy="user")
+     * @OneToMany(targetEntity="CartItem", mappedBy="user", fetch="EAGER")
      */
     private $cartItems;
 
@@ -270,6 +270,18 @@ class User
     public function setIsDelivery($is_delivery)
     {
         $this->is_delivery = $is_delivery;
+
+        return $this;
+    }
+
+        public function getCartItems()
+    {
+        return $this->cartItems;
+    }
+
+    public function setCartItems($cartItems)
+    {
+        $this->cartItems = $cartItems;
 
         return $this;
     }
