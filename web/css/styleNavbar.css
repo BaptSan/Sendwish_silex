@@ -248,4 +248,46 @@ margin-left: 0;
 #sidebarCollapse span {
 display: none;
 }
+
+
+
+
+
+/* make sidebar nav vertical */
+.sidebar-nav .navbar li {
+display: block;
 }
+.sidebar-nav .navbar li a {
+padding-top: 12px;
+padding-bottom: 12px;
+}
+nav li a {
+display: block;
+text-decoration: none;
+}
+.sidebar-nav .navbar ul {
+float: left;
+}
+.dropdown {
+display: none;
+}
+li:hover .dropdown {
+display: block;
+}
+li {
+position: relative;
+}
+li .dropdown {
+position: absolute;
+}
+.dropdown {
+left: 100%;
+top: 0%;
+}
+li:hover{
+background-color: #333;
+}
+li:hover > a {
+color: #fff;
+}
+
