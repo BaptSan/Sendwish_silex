@@ -1,11 +1,16 @@
 {% extends "layout.html.twig" %}
 {% block panier %}
 	{% if cartItems != null %}
-	<div class="container-fluid">
-		<table class="table table-hover table-light">
-			<thead class="thead-light">
+		<div class="jumbotron mb-0">
+		  <div class="container-fluid">
+		    <h1 class="display-4">{% include 'shoppingBasket.html.twig' %}Panier</h1><hr>
+		  </div>
+		</div>
+	<div class="container-fluid ">
+		<table class="table table-hover table-light mb-0">
+			<thead class="bg-danger">
 				<tr>
-				<th>Image</th>
+				<th>Articles</th>
 				<th>Nom du produit</th>
 				<th>Description</th>
 				<th>Quantité</th>
@@ -16,19 +21,19 @@
 				{% for cartItem in cartItems %}
 					<tr>
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
-						<td>{{cartItem.name}}</td>
-						<td>{{cartItem.description}}</td>
+						<td class="w-25">{{cartItem.name}}</td>
+						<td >{{cartItem.description}}</td>
 						<td>{{cartItem.quantity}}</td>
 						<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
 						</td>
 					</tr>
 				{% endfor %}
 			<tr>
-				<td>Prix Total :</td>
+				<td><strong>Prix Total :</strong></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>{{totalPrice}}€</td>
+				<td><strong>{{totalPrice}}€</strong></td>
 			</tr>
 			</tbody>
 		</table>

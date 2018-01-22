@@ -16,15 +16,22 @@
                 {% include 'fastfood.html.twig' %} <br />
                 Categorie
             </li>
+                <li id="bgproduits">
+                    <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        Nos produits
+                    </a>
+                </li>
+                <li>
+            <li>
 
-        <div id="dropdownbtn" class="dropdown-menu">
-            <li id="bgmenus"><a id="clmenus" href="/nosMenus">
-                {% include 'fastfood.html.twig' %} <br>
-                Nos Menus</a>
-        </li>
-
-            <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
-                {% include 'hamburger.html.twig' %} <br>
+                <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false">
+                    <li id="bgmenus"><a id="clmenus" href="/nosMenus">
+                        {% include 'fastfood.html.twig' %} <br>
+                    Nos Menus</a>
+                </li>
+                <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                    {% include 'hamburger.html.twig' %} <br>
                 Sandwichs</a>
         </li>
 
