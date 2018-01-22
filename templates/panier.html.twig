@@ -1,8 +1,8 @@
 {% extends "layout.html.twig" %}
 {% block panier %}
 	{% if cartItems != null %}
-	<div class="container">
-		<table class="table table-hover table-dark">
+	<div class="container-fluid">
+		<table class="table table-hover table-light">
 			<thead class="thead-light">
 				<tr>
 				<th>Image</th>
@@ -15,13 +15,15 @@
 			<tbody>
 				{% for cartItem in cartItems %}
 			<tr>
-				<td><img style="width:20%;" src="{{cartItem.imagepath}}"></td>
+				<td><img style="width:40%;" src="{{cartItem.imagepath}}"></td>
 				<td>{{cartItem.name}}</td>
 				<td>{{cartItem.description}}</td>
 				<td>{{cartItem.quantity}}</td>
-				<td>{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)</td>
+				<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)</td>
 			</tr>
+
 		{% endfor %}
+		
 			</tbody>
 		</table>
 	</div>
