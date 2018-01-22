@@ -77,4 +77,9 @@ header.masthead {
 
 footer.footer {
   padding-top: 4rem;
-  padding-bottom: 4rem; }
+  padding-bottom: 4rem; 
+}
+.reseau {
+  margin: 0 !important;
+  padding: 5px;
+ }
