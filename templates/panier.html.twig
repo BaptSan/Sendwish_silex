@@ -1,11 +1,16 @@
 {% extends "layout.html.twig" %}
 {% block panier %}
 	{% if cartItems != null %}
-	<div class="container-fluid">
-		<table class="table table-hover table-light">
-			<thead class="thead-light">
+		<div class="jumbotron mb-0">
+		  <div class="container-fluid">
+		    <h1 class="display-4">{% include 'shoppingBasket.html.twig' %}Panier</h1><hr>
+		  </div>
+		</div>
+	<div class="container-fluid ">
+		<table class="table table-hover table-light mb-0">
+			<thead class="bg-danger">
 				<tr>
-				<th>Image</th>
+				<th>Articles</th>
 				<th>Nom du produit</th>
 				<th>Description</th>
 				<th>Quantité</th>
@@ -24,11 +29,11 @@
 					</tr>
 				{% endfor %}
 			<tr>
-				<td>Prix Total :</td>
+				<td><strong>Prix Total :</strong></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>{{totalPrice}}€</td>
+				<td><strong>{{totalPrice}}€</strong></td>
 			</tr>
 			</tbody>
 		</table>
