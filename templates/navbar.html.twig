@@ -8,40 +8,49 @@
                     Accueil
                 </a>
             </li>
-            <li>
+
+
+
+        <div id="libtn" class="dropright">
+            <li id="btnNav" class="btn" data-toggle="dropdown">
+                {% include 'fastfood.html.twig' %} <br />
+                Categorie
             </li>
-                <li id="bgproduits">
-                    <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        Nos produits
-                    </a>
-                </li>
-                <li>
-                <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false">
-                    <li id="bgmenus"><a id="clmenus" href="/nosMenus">
-                        {% include 'fastfood.html.twig' %} <br>
-                    Nos Menus</a>
-                </li>
-                <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
-                    {% include 'hamburger.html.twig' %} <br>
+
+        <div id="dropdownbtn" class="dropdown-menu">
+            <li id="bgmenus"><a id="clmenus" href="/nosMenus">
+                {% include 'fastfood.html.twig' %} <br>
+                Nos Menus</a>
+        </li>
+
+            <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                {% include 'hamburger.html.twig' %} <br>
                 Sandwichs</a>
-            </li>
+        </li>
+
             <li id="bgboissons"><a id="clboissons" href="/boissons">
-                {% include 'soda.html.twig' %} <br>
+            {% include 'soda.html.twig' %} <br>
             Boissons</a>
         </li>
-        <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
+
+            <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
             {% include 'frenchfries.html.twig' %} <br>
-        Petites faims</a>
-    </li>
-</ul>
-</li>
+            Petites faims</a>
+        </li>
+    </div>
+</div>
+
 <li id="bgcontact">
 <a id="clcontact" href="/contact">
     <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
     Contact
 </a>
 </li>
+
+
+
+
+
 {% if theUser != NULL %}
 <li id="bgclient">
     <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">

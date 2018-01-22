@@ -248,8 +248,21 @@ display: none;
 
 
 
-
-
-/* make sidebar nav vertical */
-
-
+#btnNav {
+  color: white;
+  background-color: green;
+}
+#btnNav:hover {
+  background-color: red;
+  color: green;
+}
+#libtn {
+  color: white
+  background-color: red;
+}
+#dropdownbtn {
+  padding: 20px;
+  position: fixed;
+  z-index: 300000;
+  box-shadow: 1px 1px 5px;
+}
