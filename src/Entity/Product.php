@@ -3,8 +3,22 @@ namespace Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /** @Entity */
-class Product
+class Product implements \JsonSerializable
 {
+
+    public function JsonSerialize (){
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'cals' => $this->cals,
+            'ingredients' => $this->ingredients,
+            'imagePath' => $this->imagePath,
+            'cartItems' => $this->cartItems,
+            'category' => $this->category
+        ];
+    }
 	/**
      * @Id
      * @Column(type="integer")
@@ -49,7 +63,11 @@ class Product
     private $cartItems;
 
 
-    public function __construct($name, $description, $price, $cals, $ingredients, $imagePath)
+    /** 
+    * @Column(type="string", columnDefinition="ENUM('drink', 'suppl','sandwich','child','menu')") 
+    */
+    private $category;
+    public function __construct($name, $description, $price, $cals, $ingredients, $imagePath,$category)
     {
         $this->name = $name;
         $this->description = $description;
@@ -58,6 +76,7 @@ class Product
         $this->ingredients = $ingredients;
         $this->imagePath = $imagePath;
         $this->cartItems = new ArrayCollection();
+        $this->category = $category;
     }
 
     public function getId()
@@ -133,6 +152,18 @@ class Product
     public function setImagePath($imagePath)
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+       
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
 
         return $this;
     }

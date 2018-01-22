@@ -94,7 +94,7 @@ class User
      */
     private $gender;
 
-    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery, $cartItems, $orders)
+    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery)
     {
         $this->lastname = $lastname;
         $this->firstname = $firstname;

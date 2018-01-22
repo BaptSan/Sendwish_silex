@@ -1,4 +1,10 @@
 {% extends "layout.html.twig" %}
 {% block boissons %}
-Boissons !
+	{% if drinks != null %}
+		{% for drink in drinks %}
+			<img src="{{drink.imagePath}}">
+			<h3>{{drink.name}}</h3>
+			<p>{{drink.description}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}

@@ -1,4 +1,10 @@
 {% extends "layout.html.twig" %}
 {% block menus %}
-à vos menus !
+	{% if menus != null %}
+		{% for menu in menus %}
+			<img src="{{menu.imagePath}}">
+			<h3>{{menu.name}}</h3>
+			<p>{{menu.description}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}
