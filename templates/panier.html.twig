@@ -1,20 +1,37 @@
 {% extends "layout.html.twig" %}
 {% block panier %}
-	<div class="container">
-		<table class="table">
-			<thead>
+	{% if cartItems != null %}
+	<div class="container-fluid">
+		<table class="table table-hover table-light">
+			<thead class="thead-light">
 				<tr>
-					<th scope="col">Image</th>
-					<th scope="col">Produit</th>
-					<th scope="col">Description</th>
-					<th scope="col">€</th>
-					<th scope="col">quantité</th>
-				</tr>
+				<th>Image</th>
+				<th>Nom du produit</th>
+				<th>Description</th>
+				<th>Quantité</th>
+				<th>Prix (p * qte)</th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr id="addProd">
-				</tr>
+				{% for cartItem in cartItems %}
+					<tr>
+						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
+						<td>{{cartItem.name}}</td>
+						<td>{{cartItem.description}}</td>
+						<td>{{cartItem.quantity}}</td>
+						<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
+						</td>
+					</tr>
+				{% endfor %}
+			<tr>
+				<td>Prix Total :</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>{{totalPrice}}€</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
+	{% endif %}
 {% endblock %}

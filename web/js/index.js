@@ -40,6 +40,8 @@ initFlick();
  $('.carousel-nav').flickity({
     contain: true,
     pageDots: false,
+    prevNextButtons: false,
+    
     });
 }
  $('#carrouselCat .card').click(function(){

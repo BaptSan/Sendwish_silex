@@ -1,7 +1,7 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar" class="active">
-        <ul class="list-unstyled components active scroll-menu">         
+        <ul class="list-unstyled components active scroll-menu">
             <li id="bgaccueil">
                 <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
                     <i class="fa fa-home" aria-hidden="true"></i>
@@ -9,14 +9,6 @@
                 </a>
             </li>
             <li>
-                <div class="navbar navbar-default" role="navigation">
-                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                <li class="nav-item dropdown barrnav">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorie</a>
-                <div style="background-color: red; border-radius: 5px; z-index: 200000;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a style="color: white" class="dropdown-item" href="#">Bruh</a>
-                    <a style="color: white" class="dropdown-item" href="#">Putain</a>
-                </div>
             </li>
                 <li id="bgproduits">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -29,66 +21,63 @@
                     <li id="bgmenus"><a id="clmenus" href="/nosMenus">
                         {% include 'fastfood.html.twig' %} <br>
                     Nos Menus</a>
-                    </li>
-                    <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
-                        {% include 'hamburger.html.twig' %} <br>
-                    Sandwichs</a>
-                    </li>
-                    <li id="bgboissons"><a id="clboissons" href="/boissons">
-                        {% include 'soda.html.twig' %} <br>
-                    Boissons</a>
-                    </li>
-                    <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
-                        {% include 'frenchfries.html.twig' %} <br>
-                    Petites faims</a>
-                    </li>
-                </ul>
-            </li>
-            <li id="bgcontact">
-                <a id="clcontact" href="/contact">
-                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                    Contact
-                </a>
-            </li>
-
-            {% if theUser != NULL %}
-                <li id="bgclient">
-                    <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
-                        Client
-                    </a>
                 </li>
-
-                <ul class="list-unstyled collapse" id="pageSubclient" aria-expanded="false" style="height: 0px;">
-                    <li id="bgaccount"><a id="claccount" href="/client">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                    Mon Compte</a>
-                    </li>
-                    {% if theUser.admin == 1 %}
-                        <li id="bgadmin"><a id="cladmin" href="/admin">
-                           <i class="fa fa-key" aria-hidden="true"></i>
-                        Accès Admin</a>
-                    {%  endif %}
-                    <li id="bgdeco"><a id="cldeco" href="/deconnexion">
-                        <i class="fa fa-power-off" aria-hidden="true"></i>
-                    Déconnexion</a>
-                    </li>
-                </ul>
-
-                {% else %}
-                    <li id="bgclient">
-                        <a id="clclient" href="/inscription">
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                            Connexion
-                        </a>
-                    </li>
-                {% endif %}
-            <li id="bgpanier">
-                <a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
-                    {% include 'shoppingBasket.html.twig' %}<span class="" id="idPanier"></span><br>
-                    Panier
-                </a>
+                <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                    {% include 'hamburger.html.twig' %} <br>
+                Sandwichs</a>
             </li>
-        </ul>
-    </nav>
+            <li id="bgboissons"><a id="clboissons" href="/boissons">
+                {% include 'soda.html.twig' %} <br>
+            Boissons</a>
+        </li>
+        <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
+            {% include 'frenchfries.html.twig' %} <br>
+        Petites faims</a>
+    </li>
+</ul>
+</li>
+<li id="bgcontact">
+<a id="clcontact" href="/contact">
+    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    Contact
+</a>
+</li>
+{% if theUser != NULL %}
+<li id="bgclient">
+    <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
+        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
+        Client
+    </a>
+</li>
+<ul class="list-unstyled collapse" id="pageSubclient" aria-expanded="false" style="height: 0px;">
+    <li id="bgaccount"><a id="claccount" href="/client">
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+    Mon Compte</a>
+</li>
+{% if theUser.admin == 1 %}
+    <li id="bgadmin"><a id="cladmin" href="/admin">
+        <i class="fa fa-key" aria-hidden="true"></i>
+    Accès Admin</a>
+    {%  endif %}
+    <li id="bgdeco"><a id="cldeco" href="/deconnexion">
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+    Déconnexion</a>
+</li>
+</ul>
+{% else %}
+<li id="bgclient">
+<a id="clclient" href="/inscription">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+    Connexion
+</a>
+</li>
+{% endif %}
+<li id="bgpanier">
+<a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
+{% include 'shoppingBasket.html.twig' %}<span class="" id="idPanier"></span><br>
+Panier
+</a>
+</li>
+</ul>
+</nav>
 </div>

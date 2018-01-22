@@ -66,7 +66,34 @@ $app->get('/client', function () use ($app) {
 
 // CART INFOS ROUTE
 $app->get('/ajoutPanier', function () use ($app) {
-    return $app['twig']->render('panier.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
+    $userId = $app['session']->get('user');
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId['id']));
+    $cartItems = $user->getCartItems();
+    $cleanCartItems=[];
+    $totalPrice = 0;
+    for ($i = 0; $i < count($cartItems); $i++) {
+        if (!array_key_exists($cartItems[$i]->getProduct()->getId(),$cleanCartItems)){
+             $cleanCartItems[$cartItems[$i]->getProduct()->getId()]=[
+                'name' => $cartItems[$i]->getProduct()->getName(), 
+                'id' => $cartItems[$i]->getProduct()->getId(), 
+                'description' => $cartItems[$i]->getProduct()->getDescription(),
+                'price' => $cartItems[$i]->getProduct()->getPrice(),
+                'imagepath' => $cartItems[$i]->getProduct()->getImagePath(),
+                'quantity'=>1
+            ];
+        }else{
+            $cleanCartItems[$cartItems[$i]->getProduct()->getId()]['quantity']++;          
+        }
+    }
+    $test = "";
+    foreach($cleanCartItems as $key=>$value){
+        $totalPrice += $value['quantity'] * $value['price'];
+    }
+    return $app['twig']->render('panier.html.twig',array(
+                'theUser' => $app['session']->get('user') ?? NULL,
+                'cartItems' => $cleanCartItems,
+                'totalPrice' => $totalPrice
+            ));
 });
 
 // CONNECTION ROUTE
