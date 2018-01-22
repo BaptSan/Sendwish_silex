@@ -18,13 +18,14 @@ initFlick();
       }, 
       url: '/panier'
     }).done(function(data){
-      $('#idPanier').addClass('badge badge-light');
+/*      $('#addProd').html("<th scope='row'></th><td><img src="+ data.img +"></td><td>"+ data.name +"</td><td>"+ data.description +"</td><td>"+ data.prix +"</td><td>"+ data.quantité +"</td>");
+*/      $('#idPanier').addClass('badge badge-light');
       if($('#idPanier').text() == ""){
         $('#idPanier').text('1');
       }else{
-        test = parseInt($('#idPanier').text());
-        test++;
-        $('#idPanier').text(test);
+        Pbadge = parseInt($('#idPanier').text());
+        Pbadge++;
+        $('#idPanier').text(Pbadge);
       }
     });
   });
@@ -39,6 +40,8 @@ initFlick();
  $('.carousel-nav').flickity({
     contain: true,
     pageDots: false,
+    prevNextButtons: false,
+    
     });
 }
  $('#carrouselCat .card').click(function(){
