@@ -18,8 +18,8 @@ initFlick();
       }, 
       url: '/panier'
     }).done(function(data){
-/*      $('#addProd').html("<th scope='row'></th><td><img src="+ data.img +"></td><td>"+ data.name +"</td><td>"+ data.description +"</td><td>"+ data.prix +"</td><td>"+ data.quantité +"</td>");
-*/      $('#idPanier').addClass('badge badge-light');
+      //fonction ajout des produits dans le petit panier.
+      $('#idPanier').addClass('badge badge-light');
       if($('#idPanier').text() == ""){
         $('#idPanier').text('1');
       }else{
@@ -57,92 +57,33 @@ initFlick();
       string ='<div class="carousel carousel-main">';
       for (let product of test){
         i++;
-        console.log(product);
+        btnBoisson = '';
+        if(product.category == 'menu') {
+          btnBoisson = '<div class="input-group">'+
+          '<form>'+
+            '<select class="custom-select" id="">'+
+              '<option disabled selected>--Sélectionnez Votre Boisson--</option>'+
+              '<option>Coca-Cola</option>'+
+              '<option>Coca-Cola Light</option>'+
+              '<option>Coca-Cola Zéro</option>'+
+              '<option>Fanta</option>'+
+              '<option>Nestea</option>'+
+              '<option>Sprite</option>'+
+              '<option>Vitel</option>'+
+            '</select>'+
+            '</form>'+
+            '<div class="input-group-append">'+
+              '<button class="btn btn-outline-secondary" type="submit">Button</button>'+
+            '</div>'+
+          '</div>'
+        }
        string +='<div class="carousel-cell card img'+i+'">'+
-          '<img data-id="'+product.id+'" src="../'+product.imagePath+'" alt="" class="w-25 align-self-center" >'+
-        '</div>';
+                  '<img data-id="'+product.id+'" src="../'+product.imagePath+'" alt="" class="w-25 align-self-center" >'+
+                  btnBoisson+  
+                '</div>';
         }
       string+="</div>";
       $('#secondCar').html(string);
       initFlick();
     });
  });
-
-// $( "#card1" ).click(function() {
-// $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-//           '<img data-id="1" src="../img/boisson/fanta.png" alt="" class="w-25 align-self-center" >'+
-//         '</div>'+
-//         '<div class="carousel-cell card img2">'+
-//           '<img data-id="2" src="../img/boisson/coca.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img3">'+
-//           '<img data-id="3" src="../img/boisson/cocalight.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img4">'+
-//           '<img data-id="4" src="../img/boisson/nestea.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img5">'+
-//           '<img data-id="5" src="../img/boisson/sprite.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+'</div>');
-// initFlick();
-
-// });
-
-// $( "#card2" ).click(function() {
-// $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-//           '<img data-id="6" src="../img/menu/bigking.png" alt="" class="w-25 align-self-center" >'+
-//         '</div>'+
-//         '<div class="carousel-cell card img2">'+
-//           '<img data-id="7" src="../img/menu/chickeneggburger.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img3">'+
-//           '<img data-id="8" src="../img/menu/doubleeggburger.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img4">'+
-//           '<img data-id="9" src="../img/menu/egg burger.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img5">'+
-//           '<img data-id="10" src="../img/menu/whopper.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+'</div>');
-// initFlick();
-
-// });
-
-
-// $( "#card3" ).click(function() {
-// $('#secondCar').html('<div class="carousel carousel-main">'+
-//         '<div class="carousel-cell card img2">'+
-//           '<img data-id="11" src="../img/accompagnement/chilicheese.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img3">'+
-//           '<img data-id="12" src="../img/accompagnement/frites.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img4">'+
-//           '<img data-id="13" src="../img/accompagnement/nuggets.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+
-//         '<div class="carousel-cell card img5">'+
-//           '<img data-id="14" src="../img/accompagnement/ognionring.png" alt="" class="w-25 align-self-center">'+
-//         '</div>'+'</div>');
-// initFlick();
-
-// });
-
-// $( "#card4" ).click(function() {
-// $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-//           '<img data-id="15" src="../img/menu enfant/kingjunior.png" alt="" class="w-25 align-self-center" >'+
-//         '</div>');
-// initFlick();
-
-// });
-
-// $( "#card5" ).click(function() {
-// $('#secondCar').html('<div class="carousel carousel-main">'+'<div class="carousel-cell card img1">'+
-//           '<img data-id="16" src="../img/sandwich/cheeseburgerenfant.png" alt="" class="w-25 align-self-center" >'+
-//         '</div>'+
-//         '<div class="carousel-cell card img2">'+
-//           '<img data-id="17" src="../img/sandwich/hamburgerenfant.png" alt="" class="w-25 align-self-center">'+
-//         '</div>');
-// initFlick();
-
-// });
-

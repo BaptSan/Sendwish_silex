@@ -83,13 +83,11 @@ $app->match('/connexion', function (Request $request) use ($app) {
     return $app['twig']->render('errorLog.html.twig');
 });
 
-
 // DISCONNECTION ROUTE
 $app->get('/deconnexion', function (Request $request) use ($app) {
     $app['session']->clear();
     return $app->redirect('/');
 });
-
 
 // AJAX CART ROUTE
 $app->get('/panier', function (Request $request) use ($app) {
@@ -101,13 +99,6 @@ $app->get('/panier', function (Request $request) use ($app) {
     $app['em']->flush();
     return $request->get('carrousel');
 });
-
-
-// // ADMIN BACKOFFICE ROUTE
-// $app->get('/admin', function () use ($app) {
-//     return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
-// });
-
 
 // AJAX DYNAMIC CARROUSEL ROUTE
 $app->get('/generateCarrousel', function (Request $request) use ($app) {
