@@ -8,18 +8,44 @@
                     Accueil
                 </a>
             </li>
-            <li>
 
-                {# <div id="page-menu-wrapper">
+
+
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Menu Item 1</a></li>
+            <li><a href="#" >Menu Item 2</a></li>
+            <li><a href="#" >Menu Item 3</a>
+                <ul class="dropdown">
+                  <li><a href="#">TEST1</a></li>
+                  <li><a href="#">TEST2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Menu Item 4</a></li>
+            <li><a href="#">Menu Item 5</a></li>
+          </ul>
+
+
+
+
+
+
+            <li>
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
                 <li class="nav-item dropdown barrnav">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorie</a>
-                <div style="background-color: red; border-radius: 5px; z-index: 100;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div style="background-color: red; border-radius: 5px; z-index: 200000;" class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a style="color: white" class="dropdown-item" href="#">Bruh</a>
                     <a style="color: white" class="dropdown-item" href="#">Putain</a>
-                <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"></a>
                 </div>
-            </li> #}
+            </li>
+
+
+
+
+
+
 
 
                 <li id="bgproduits">
@@ -87,8 +113,6 @@
                         </a>
                     </li>
                 {% endif %}
-        
-                
             <li id="bgpanier">
                 <a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
                     {% include 'shoppingBasket.html.twig' %}<span class="" id="idPanier"></span><br>
