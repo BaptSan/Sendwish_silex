@@ -21,8 +21,8 @@
 				{% for cartItem in cartItems %}
 					<tr>
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
-						<td>{{cartItem.name}}</td>
-						<td>{{cartItem.description}}</td>
+						<td class="w-25">{{cartItem.name}}</td>
+						<td >{{cartItem.description}}</td>
 						<td>{{cartItem.quantity}}</td>
 						<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
 						</td>
