@@ -62,7 +62,7 @@ initFlick();
         btnBoisson = '';
         if(product.category == 'menu') {
           btnBoisson = '<div class="input-group">'+
-          '<form>'+
+          '<form method="get">'+
             '<select class="custom-select" id="">'+
               '<option disabled selected>--Sélectionnez Votre Boisson--</option>'+
               '<option>Coca-Cola</option>'+
@@ -75,7 +75,7 @@ initFlick();
             '</select>'+
             '</form>'+
             '<div class="input-group-append">'+
-              '<button class="btn btn-outline-secondary" type="submit">Button</button>'+
+              '<button class="btn btn-outline-secondary" type="submit" name="btnBMenus">Button</button>'+
             '</div>'+
           '</div>'
         }
