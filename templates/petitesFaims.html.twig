@@ -6,20 +6,22 @@
 			{% for suppl in suppls %}
 				{% set i = i+1 %}
 				{% if i%2 != 0 %}
-					<div class="maskProductBox"></div>
+					<div class="maskProductBox">
 						<div class="productBoxPair">
 							<img class="imgProductBox" src="{{suppl.imagePath}}">
-							<h2>{{suppl.name}} {{suppl.price}}€</h2>
-							<p>{{suppl.description}}</p>
+							<h2>{{suppl.name}} <br> {{suppl.price}}€</h2>	
 						</div>
-
-				{% else %}			
-					<div class="maskProductBox"></div>			
+						<p>{{suppl.description}}</p>
+					</div>
+				{% else %}	
+					<div class="maskProductBox">			
 						<div class="productBoxImpair">
 							<img class="imgProductBox" src="{{suppl.imagePath}}">
-							<h2>{{suppl.name}} {{suppl.price}}€</h2>
-							<p>{{suppl.description}}</p>
-						</div>						
+							<h2>{{suppl.name}} <br> {{suppl.price}}€</h2>
+							
+						</div>
+						<p>{{suppl.description}}</p>	
+					</div>					
 				{% endif %}
 			{% endfor %}
 		{% endif %}		
