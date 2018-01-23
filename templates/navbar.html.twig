@@ -8,44 +8,35 @@
                     Accueil
                 </a>
             </li>
-
-
-
-        <div id="libtn" class="dropright">
-            <li id="btnNav" class="btn" data-toggle="dropdown">
-                {% include 'fastfood.html.twig' %} <br />
-                Categorie
-            </li>
-                <li id="bgproduits">
+            <div class="dropdown">
+                <li id="bgproduits" class="dropdown-toggle">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        Nos produits
+                            Nos produits
                     </a>
                 </li>
-                <li>
-            <li>
 
-                <ul class="list-unstyled collapse" id="pageSubmenu" aria-expanded="false">
+                <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
                     <li id="bgmenus"><a id="clmenus" href="/nosMenus">
                         {% include 'fastfood.html.twig' %} <br>
-                    Nos Menus</a>
-                </li>
-                <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
-                    {% include 'hamburger.html.twig' %} <br>
-                Sandwichs</a>
-        </li>
+                        Nos Menus</a>
+                    </li>
+                    <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                        {% include 'hamburger.html.twig' %} <br>
+                        Sandwichs</a>
+                    </li>
 
-            <li id="bgboissons"><a id="clboissons" href="/boissons">
-            {% include 'soda.html.twig' %} <br>
-            Boissons</a>
-        </li>
+                    <li id="bgboissons"><a id="clboissons" href="/boissons">
+                        {% include 'soda.html.twig' %} <br>
+                        Boissons</a>
+                    </li>
 
-            <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
-            {% include 'frenchfries.html.twig' %} <br>
-            Petites faims</a>
-        </li>
-    </div>
-</div>
+                    <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
+                        {% include 'frenchfries.html.twig' %} <br>
+                        Petites faims</a>
+                    </li>
+                </ul>
+            </div>
 
 <li id="bgcontact">
 <a id="clcontact" href="/contact">

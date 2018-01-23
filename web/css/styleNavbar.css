@@ -30,6 +30,7 @@ position: fixed;
 left:0;
 top:0;
 width: 100.8px;
+z-index: 1; 
 }
 
 #sidebar {
@@ -203,7 +204,22 @@ background-color: red;
     padding:0;
 }
 
+#bgproduits::after{
+  display: none;
+}
 
+.dropdown:hover #pageSubmenu{
+  display: block;
+}
+
+#pageSubmenu{
+  display: none;
+  position: absolute;
+  left: 100.8px;
+  top:0;
+  z-index: 2;
+
+}
 /* ---------------------------------------------------
 MEDIAQUERIES
 ----------------------------------------------------- */
@@ -246,7 +262,7 @@ margin-left: 0;
 display: none;
 }
 
-
+/*
 
 #btnNav {
   color: white;
@@ -265,4 +281,6 @@ display: none;
   position: fixed;
   z-index: 300000;
   box-shadow: 1px 1px 5px;
+}
+*/
 }
