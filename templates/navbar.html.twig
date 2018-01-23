@@ -51,7 +51,6 @@
 
             {# DROPDOWN DE CONNEXION #}
                 {# PAGE CLIENT #}
-
             {% if theUser != NULL %}
                 <div class="dropdown">        
                     <li id="bgclient" class="dropdown-toggle">
@@ -67,6 +66,15 @@
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 Mon Compte</a>
                         </li>
+
+                        <li id="bgclientorderhistory"><a id="clclientorderhistory" href="/orderhistory">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+                                Mes Commandes</a>
+                        </li>
+
+                        
+
+
                 {# PAGE ADMIN #}
                         {% if theUser.admin == 1 %}
                         <li id="bgadmin"><a id="cladmin" href="/admin">

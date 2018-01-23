@@ -66,6 +66,17 @@ $app->get('/client', function () use ($app) {
     return $app['twig']->render('espaceClient.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 
+// ACCOUNT INFOS ROUTE
+$app->get('/orderhistory', function () use ($app) {
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
+    $userOrders = $user->getOrders();
+    return $app['twig']->render('clientorderhistory.html.twig',array(
+            'theUser' => $app['session']->get('user') ?? NULL,
+            'orders'=> $userOrders ?? NULL));
+});
+
+
 // CART INFOS ROUTE
 $app->get('/ajoutPanier', function () use ($app) {
     $userId = $app['session']->get('user');
@@ -103,7 +114,7 @@ $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');
     $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
     $cartItems = $user->getCartItems();
-    $order = new Order(0*0.2, 0, 1231231, 0, 1, $user);
+    $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
     $total=0;
     $totalDf=0;
     foreach($cartItems as $cartItem){
