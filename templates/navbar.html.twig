@@ -1,5 +1,6 @@
 <div class="wrapper">
-    <!-- Sidebar Holder -->
+            <!-- Sidebar Holder -->
+                {# PAGE D'ACCUEIL #}
     <nav id="sidebar" class="active">
         <ul class="list-unstyled components active scroll-menu">
             <li id="bgaccueil">
@@ -8,6 +9,7 @@
                     Accueil
                 </a>
             </li>
+                {# DROPDOWN NOS PRODUITS  #}
             <div class="dropdown">
                 <li id="bgproduits" class="dropdown-toggle">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -38,6 +40,8 @@
                 </ul>
             </div>
 
+                {# PAGE CONTACT #}
+
 <li id="bgcontact">
 <a id="clcontact" href="/contact">
     <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
@@ -45,39 +49,53 @@
 </a>
 </li>
 
+                {# DROPDOWN DE CONNEXION #}
 
+                {# PAGE CLIENT #}
 
-
-
-{% if theUser != NULL %}
-<li id="bgclient">
-    <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
-        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
+    {% if theUser != NULL %}
+<div class="dropdown">        
+    <li id="bgclient" class="dropdown-toggle">
+        <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
+        <i style="font-size:40px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>  
         Client
-    </a>
-</li>
-<ul class="list-unstyled collapse" id="pageSubclient" aria-expanded="false" style="height: 0px;">
+        </a>
+    </li>
+                {# PAGE COMPTE #}
+<ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
     <li id="bgaccount"><a id="claccount" href="/client">
         <i class="fa fa-user-circle" aria-hidden="true"></i>
     Mon Compte</a>
 </li>
+                {# PAGE ADMIN #}
 {% if theUser.admin == 1 %}
     <li id="bgadmin"><a id="cladmin" href="/admin">
         <i class="fa fa-key" aria-hidden="true"></i>
     Accès Admin</a>
+</li>
+                {# PAGE DECONNEXION #}
     {%  endif %}
     <li id="bgdeco"><a id="cldeco" href="/deconnexion">
         <i class="fa fa-power-off" aria-hidden="true"></i>
     Déconnexion</a>
 </li>
-</ul>
+
+
+                {# PAGE CONNEXION #}
+
 {% else %}
-<li id="bgclient">
-<a id="clclient" href="/inscription">
-    <i class="fa fa-user-o" aria-hidden="true"></i>
-    Connexion
-</a>
-</li>
+<div class="dropdown">
+    <li id="bgclient">
+        <a id="clclient" href="/inscription" data-toggle="collapse" aria-expanded="false" class="collapsed">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        Connexion
+    </a>
+    </li>
+</div>
+</ul>
+
+
+                {# PAGE PANIER #}
 {% endif %}
 <li id="bgpanier">
 <a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
@@ -85,6 +103,7 @@
 Panier
 </a>
 </li>
+</div>
 </ul>
 </nav>
 </div>
