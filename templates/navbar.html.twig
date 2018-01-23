@@ -9,7 +9,7 @@
                     Accueil
                 </a>
             </li>
-                {# DROPDOWN NOS PRODUITS  #}
+                {# DROPDOWN NOS PRODUITS #}
             <div class="dropdown">
                 <li id="bgproduits" class="dropdown-toggle">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -17,22 +17,23 @@
                             Nos produits
                     </a>
                 </li>
-
+                {# SOUS MENU MENUS #}
                 <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
                     <li id="bgmenus"><a id="clmenus" href="/nosMenus">
                         {% include 'fastfood.html.twig' %} <br>
                         Nos Menus</a>
                     </li>
+                {# SOUS MENU SANDWICHS #}
                     <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
                         {% include 'hamburger.html.twig' %} <br>
                         Sandwichs</a>
                     </li>
-
+                {# SOUS MENU BOISSONS #}
                     <li id="bgboissons"><a id="clboissons" href="/boissons">
                         {% include 'soda.html.twig' %} <br>
                         Boissons</a>
                     </li>
-
+                {# SOUS MENU PETITES FAIMS #}
                     <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
                         {% include 'frenchfries.html.twig' %} <br>
                         Petites faims</a>
@@ -41,7 +42,6 @@
             </div>
 
                 {# PAGE CONTACT #}
-
 <li id="bgcontact">
 <a id="clcontact" href="/contact">
     <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
@@ -50,10 +50,9 @@
 </li>
 
                 {# DROPDOWN DE CONNEXION #}
-
                 {# PAGE CLIENT #}
 
-    {% if theUser != NULL %}
+{% if theUser != NULL %}
 <div class="dropdown">        
     <li id="bgclient" class="dropdown-toggle">
         <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -74,7 +73,7 @@
     Accès Admin</a>
 </li>
                 {# PAGE DECONNEXION #}
-    {%  endif %}
+{%  endif %}
     <li id="bgdeco"><a id="cldeco" href="/deconnexion">
         <i class="fa fa-power-off" aria-hidden="true"></i>
     Déconnexion</a>
@@ -82,28 +81,25 @@
 
 
                 {# PAGE CONNEXION #}
-
 {% else %}
-<div class="dropdown">
     <li id="bgclient">
-        <a id="clclient" href="/inscription" data-toggle="collapse" aria-expanded="false" class="collapsed">
+        <a id="clclient" href="/inscription" aria-expanded="false">
         <i class="fa fa-user-o" aria-hidden="true"></i>
         Connexion
     </a>
     </li>
-</div>
 </ul>
-
+</div>
 
                 {# PAGE PANIER #}
 {% endif %}
 <li id="bgpanier">
 <a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
-{% include 'shoppingBasket.html.twig' %}<span class="" id="idPanier"></span><br>
+{% include 'shoppingBasket.html.twig' %}
+<span class="" id="idPanier"></span><br>
 Panier
 </a>
 </li>
-</div>
 </ul>
 </nav>
 </div>
