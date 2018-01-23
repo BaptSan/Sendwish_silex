@@ -2,11 +2,11 @@
 {% block panier %}
 	{% if cartItems != null %}
 		<div class="jumbotron mb-0">
-		  <div class="container-fluid">
+		  <div id="contentJumbotronCart" class="container-fluid">
 		    <h1 class="display-4">{% include 'shoppingBasket.html.twig' %}Panier</h1><hr>
 		  </div>
 		</div>
-	<div class="container-fluid ">
+	<div id="contentTableCart" class="container-fluid">
 		<table class="table table-hover table-light mb-0">
 			<thead class="bg-danger">
 				<tr>
@@ -19,20 +19,20 @@
 			</thead>
 			<tbody>
 				{% for cartItem in cartItems %}
-					<tr id="item{{cartItem.id}}">
+					<tr class="test" id="item{{cartItem.id}}">
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
 						<td class="w-25">{{cartItem.name}}</td>
 						<td>{{cartItem.quantity}}</td>
 						<td>{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
 						</td>
-						<td id="binCase">{% include 'bin.html.twig' %}</td>
+						<td class="binCase" data-id='{{cartItem.id}}'>{% include 'bin.html.twig' %}</td>
 					</tr>
 				{% endfor %}
 			<tr>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><strong>Prix Total : {{totalPrice}}€</strong></td>
+				<td><strong id="totalPriceCart">Prix Total : {{totalPrice}}€</strong></td>
 				<script>
 				var prixTotal = {{totalPrice}};
 				</script>
