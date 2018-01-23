@@ -109,6 +109,16 @@ $app->get('/ajoutPanier', function () use ($app) {
             ));
 });
 
+$app->get('/suppPanier',  function (Request $request) use ($app) {
+    $cartItemId = $request->get('cartItemId');
+    $cartItem = $app['em']->getRepository(CartItem::class)->findOneBy(array('id'=>$cartItemId));
+    $theproduct = $cartItem->getProduct()->getId();
+    return dump($theproduct);
+    $app['em']->remove($cartItem);
+    $app['em']->flush();
+    return dump($cartItem);
+});
+
 // ORDER ROUTE
 $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');

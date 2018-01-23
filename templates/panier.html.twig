@@ -14,24 +14,29 @@
 				<th>Nom du produit</th>
 				<th>Quantité</th>
 				<th>Prix (p * qte)</th>
+				<th></th>
 			</tr>
 			</thead>
 			<tbody>
 				{% for cartItem in cartItems %}
-					<tr>
+					<tr id="item{{cartItem.id}}">
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
 						<td class="w-25">{{cartItem.name}}</td>
 						<td>{{cartItem.quantity}}</td>
-						<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
+						<td>{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
 						</td>
+						<td id="binCase">{% include 'bin.html.twig' %}</td>
 					</tr>
 				{% endfor %}
 			<tr>
-				<td><strong>Prix Total :</strong></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><strong>{{totalPrice}}€</strong></td>
+				<td><strong>Prix Total : {{totalPrice}}€</strong></td>
+				<script>
+				var prixTotal = {{totalPrice}};
+				</script>
+				<td></td>
 			</tr>
 			</tbody>
 		</table>
