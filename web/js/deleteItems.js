@@ -14,8 +14,8 @@ $('.binCase svg').click(function() {
 		$('#totalPriceCart').html(formattedPrice);
 		prixTotal -= infos.substractPrice; 
 		$('#item'+infos.idDivItem).remove();
-		console.log($('.test').length);
-		if($('.test').length == 0){
+		console.log($('.itemRow').length);
+		if($('.itemRow').length == 0){
 			$('#contentJumbotronCart').html("<h1>Il n'y a actuellement aucun produits dans votre panier !</h1>");
 			$('#contentTableCart').html("");
 		}
