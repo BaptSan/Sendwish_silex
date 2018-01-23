@@ -73,7 +73,7 @@ margin-right: 10px;
 ul ul a {
 font-size: 0.9em !important;
 padding-left: 30px !important;
-background: #ddd; /*background drop down*/
+background: #fff; /*background drop down*/
 }
 /* ---------------------------------------------------
 CONTENT STYLE
@@ -114,11 +114,9 @@ color: #ff2626;
 background-color: red;
 fill:white;
 }
-
 .menuSVG {
-    fill:red;
+  fill:red;
 }
-
 #clsandwichs {
 color: #545c68;
 padding-right:5px !important;
@@ -127,11 +125,9 @@ padding-right:5px !important;
 background-color: #545c68;
 fill:white;
 }
-
 .hamburgerSVG {
   fill: #545c68;
 }
-
 #clboissons {
 color:#3baf21;
 }
@@ -139,11 +135,9 @@ color:#3baf21;
 background-color: #3baf21;
 fill:white;
 }
-
 .sodaSVG {
-    fill:#3baf21;
+  fill:#3baf21;
 }
-
 #clfaim {
 color: #d84f2d;
 }
@@ -151,74 +145,58 @@ color: #d84f2d;
 background-color: #d84f2d;
 fill:white;
 }
-
 .friesSVG {
-   fill:#d84f2d;
+  fill:#d84f2d;
 }
-
 #clclient {
 color: #4286f4;
 }
 #bgclient:hover :not(i){
 background-color: #4286f4;
 }
-
 #claccount {
   color: #6a2bff;
 }
-
 #bgaccount:hover :not(i){
 background-color: #6a2bff;
 }
-
 #cladmin {
   color: #a35032;
 }
-
 #bgadmin:hover :not(i){
 background-color: #a35032;
 }
-
 #cldeco {
   color: red;
 }
-
 #bgdeco:hover :not(i){
 background-color: red;
 }
-
 #clpanier {
 	color: #ff4747;
 }
-
 #bgpanier:hover :not(svg) {
 	background-color: #ff4747;
 	fill:white;
 }
-
 .panierSVG {
 	fill:#ff4747;
 }
-
-.col-md-12 {
-    padding:0;
-}
-
 #bgproduits::after{
   display: none;
 }
-
+#bgclient::after{
+  display: none;
+}
 .dropdown:hover #pageSubmenu{
   display: block;
 }
-
 #pageSubmenu{
   display: none;
   position: absolute;
   left: 100.8px;
   top:0;
   z-index: 2;
-
 }
 /* ---------------------------------------------------
 MEDIAQUERIES
@@ -261,26 +239,4 @@ margin-left: 0;
 #sidebarCollapse span {
 display: none;
 }
-
-/*
-
-#btnNav {
-  color: white;
-  background-color: green;
-}
-#btnNav:hover {
-  background-color: red;
-  color: green;
-}
-#libtn {
-  color: white
-  background-color: red;
-}
-#dropdownbtn {
-  padding: 20px;
-  position: fixed;
-  z-index: 300000;
-  box-shadow: 1px 1px 5px;
-}
-*/
 }

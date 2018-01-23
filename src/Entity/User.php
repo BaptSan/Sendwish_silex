@@ -39,7 +39,7 @@ class User
     /**
      * @Column(type="string", nullable=true)
      */
-    private $formatted_addr;
+    private $formattedAddr;
 
     /**
      * @Column(type="float", nullable=true)
@@ -64,17 +64,17 @@ class User
     /**
      * @Column(type="boolean", nullable=true)
      */
-    private $is_admin;
+    private $isAdmin;
 
     /**
      * @Column(type="boolean", nullable=true)
      */
-    private $is_client;
+    private $isClient;
 
     /**
      * @Column(type="boolean", nullable=true)
      */
-    private $is_delivery;
+    private $isDelivery;
 
 
     /**
@@ -94,21 +94,21 @@ class User
      */
     private $gender;
 
-    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formatted_addr, $lat, $lng, $distance, $tel, $is_admin, $is_client, $is_delivery)
+    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formattedAddr, $lat, $lng, $distance, $tel, $isAdmin, $isClient, $isDelivery)
     {
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->mail = $mail;
         $this->password = $password;
         $this->birthdate = $birthdate;
-        $this->formatted_addr = $formatted_addr;
+        $this->formattedAddr = $formattedAddr;
         $this->lat = $lat;
         $this->lng = $lng;
         $this->distance = $distance;
         $this->tel = $tel;
-        $this->is_admin = $is_admin;
-        $this->is_client = $is_client;
-        $this->is_delivery = $is_delivery;
+        $this->isAdmin = $isAdmin;
+        $this->isClient = $isClient;
+        $this->isDelivery = $isDelivery;
         $this->gender = $thegender;
         $this->cartItems = new ArrayCollection();
         $this->orders = new ArrayCollection();
@@ -180,12 +180,12 @@ class User
     
     public function getFormattedAddr()
     {
-        return $this->formatted_addr;
+        return $this->formattedAddr;
     }
 
-    public function setFormattedAddr($formatted_addr)
+    public function setFormattedAddr($formattedAddr)
     {
-        $this->formatted_addr = $formatted_addr;
+        $this->formattedAddr = $formattedAddr;
 
         return $this;
     }
@@ -240,24 +240,24 @@ class User
 
     public function getIsAdmin()
     {
-        return $this->is_admin;
+        return $this->isAdmin;
     }
 
-    public function setIsAdmin($is_admin)
+    public function setIsAdmin($isAdmin)
     {
-        $this->is_admin = $is_admin;
+        $this->isAdmin = $isAdmin;
 
         return $this;
     }
 
     public function getIsClient()
     {
-        return $this->is_client;
+        return $this->isClient;
     }
 
-    public function setIsClient($is_client)
+    public function setIsClient($isClient)
     {
-        $this->is_client = $is_client;
+        $this->isClient = $isClient;
 
         return $this;
     }
@@ -267,9 +267,9 @@ class User
         return $this->is_delivery;
     }
 
-    public function setIsDelivery($is_delivery)
+    public function setIsDelivery($isDelivery)
     {
-        $this->is_delivery = $is_delivery;
+        $this->isDelivery = $isDelivery;
 
         return $this;
     }
