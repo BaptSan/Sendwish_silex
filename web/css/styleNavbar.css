@@ -185,6 +185,9 @@ background-color: red;
 #bgproduits::after{
   display: none;
 }
+#bgclient::after{
+  display: none;
+}
 .dropdown:hover #pageSubmenu{
   display: block;
 }
