@@ -1,12 +1,13 @@
 {% extends "layout.html.twig" %}
 {% block pFaims %}
-	<div class="parallax">	
+	<div id="parallax">	
+		<div class="maskProductBox">
 		{% if suppls != null %}
 			{% set i = 0 %}
 			{% for suppl in suppls %}
 				{% set i = i+1 %}
 				{% if i%2 != 0 %}
-					<div class="maskProductBox">
+					<div class="contentProductBox">
 						<div class="productBoxPair">
 							<img class="imgProductBox" src="{{suppl.imagePath}}">
 							<h2>{{suppl.name}} <br> {{suppl.price}}€</h2>	
@@ -14,16 +15,16 @@
 						<p>{{suppl.description}}</p>
 					</div>
 				{% else %}	
-					<div class="maskProductBox">			
+					<div class="contentProductBox">			
 						<div class="productBoxImpair">
 							<img class="imgProductBox" src="{{suppl.imagePath}}">
-							<h2>{{suppl.name}} <br> {{suppl.price}}€</h2>
-							
+							<h2>{{suppl.name}} <br> {{suppl.price}}€</h2>	
 						</div>
 						<p>{{suppl.description}}</p>	
 					</div>					
 				{% endif %}
 			{% endfor %}
-		{% endif %}		
+		{% endif %}	
+		</div>	
 	</div>
 {% endblock %}
