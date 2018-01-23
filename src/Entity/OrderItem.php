@@ -12,20 +12,16 @@ class OrderItem
     private $id;
 
     /**
-     * @Column(type="integer")
-     */
-    private $order_id;
-
-    /**
      * @Column(type="string")
      */
+   
     private $name;
 
 	/**
      * @Column(type="float")
      */
 
-	private $price_df;
+	private $priceDf;
 	/**
      * @Column(type="float")
      */
@@ -37,13 +33,11 @@ class OrderItem
      */
 	private $order;
 
-	public function __construct($id, $order_id, $name, $price_df, $price, $order)
+	public function __construct($name, $priceDf, $price, $order)
 	{
-		$this->id = $id;
-		$this->order_id = $order_id;
 		$this->name = $name;
-		$this->price_df = $price_df;
-		$this->price = $price;
+		$this->priceDf = $priceDf;
+        $this->price = $price;
 		$this->order = $order;
 	}
 
@@ -54,12 +48,12 @@ class OrderItem
 
     public function getPriceDf()
     {
-        return $this->price_df;
+        return $this->priceDf;
     }
 
-    public function setPriceDf($price_df)
+    public function setPriceDf($priceDf)
     {
-        $this->price_df = $price_df;
+        $this->priceDf = $priceDf;
 
         return $this;
     }
