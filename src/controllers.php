@@ -110,13 +110,20 @@ $app->get('/ajoutPanier', function () use ($app) {
 });
 
 $app->get('/suppPanier',  function (Request $request) use ($app) {
-    $cartItemId = $request->get('cartItemId');
-    $cartItem = $app['em']->getRepository(CartItem::class)->findOneBy(array('id'=>$cartItemId));
-    $theproduct = $cartItem->getProduct()->getId();
-    return dump($theproduct);
-    $app['em']->remove($cartItem);
+    $userSession = $app['session']->get('user');
+    $userId = $userSession['id'];
+    $productItemId = $request->get('productItemId');
+    $cartItems = $app['em']->getRepository(CartItem::class)->findBy(array('productId'=>$productItemId,'userId'=>$userId));
+    $substractPrice = 0;
+    
+    foreach ($cartItems as $cartItem) {
+        $substractPrice += $cartItem->getProduct()->getPrice(); 
+
+        // return dump($cartItem->getProduct()->getPrice());
+        $app['em']->remove($cartItem);
+    }
     $app['em']->flush();
-    return dump($cartItem);
+    return json_encode(['substractPrice' => $substractPrice,'idDivItem'=>$productItemId]);
 });
 
 // ORDER ROUTE
