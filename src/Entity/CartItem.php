@@ -14,12 +14,12 @@ class CartItem
 	/**
      * @Column(type="integer")
      */
-	private $user_id;
+	private $userId;
 
 	/**
      * @Column(type="integer")
      */
-	private $product_id;
+	private $productId;
 
 	/**
      * @Column(type="integer")
@@ -38,10 +38,10 @@ class CartItem
      */
 	private $product;
 
-	public function __construct($user_id, $product_id, $quantity, $user, $product)
+	public function __construct($userId, $productId, $quantity, $user, $product)
 	{
-		$this->user_id = $user_id;
-		$this->product_id = $product_id;
+		$this->userId = $userId;
+		$this->productId = $productId;
 		$this->quantity = $quantity;
 		$this->user = $user;
 		$this->product = $product;
@@ -55,24 +55,24 @@ class CartItem
 
     public function getUserId()
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
-    public function setUserId($user_id)
+    public function setUserId($userId)
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
 
         return $this;
     }
 
     public function getProductId()
     {
-        return $this->product_id;
+        return $this->productId;
     }
 
-    public function setProductId($product_id)
+    public function setProductId($productId)
     {
-        $this->product_id = $product_id;
+        $this->productId = $productId;
 
         return $this;
     }
