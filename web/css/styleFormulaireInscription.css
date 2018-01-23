@@ -8,7 +8,13 @@
 	border-radius: 5px;
 }
 /*TITRE */
-h2 {
+#titreCo {
+	margin-left: 15%;
+	margin-right: 15%;
+	color: white;
+	text-align: center;
+}
+#titreIn {
 	margin-left: 15%;
 	margin-right: 15%;
 	color: white;
@@ -55,7 +61,7 @@ h2 {
 	margin-top: 2%;
 }
 /*FORMULAIRE CONNEXION DANS COL 4*/
-.col-md-4 {
+.cln4 {
 	position: absolute;
 	top: 0%;
 	right: 0%;	
