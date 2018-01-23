@@ -7,6 +7,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Entity\User;
 use Entity\CartItem;
 use Entity\Product;
+use Entity\Order;
+use Entity\OrderItem;
 
 // MAIN ROUTE
 //Request::setTrustedProxies(array('127.0.0.1'));
@@ -94,6 +96,29 @@ $app->get('/ajoutPanier', function () use ($app) {
                 'cartItems' => $cleanCartItems,
                 'totalPrice' => $totalPrice
             ));
+});
+
+// ORDER ROUTE
+$app->get('/order', function () use ($app) {
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
+    $cartItems = $user->getCartItems();
+    $order = new Order(0*0.2, 0, 1231231, 0, 1, $user);
+    $total=0;
+    $totalDf=0;
+    foreach($cartItems as $cartItem){
+        $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
+        $order->addOrderItem($orderItem);
+        $total+=$cartItem->getProduct()->getPrice();
+        $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
+        $app['em']->remove($cartItem);
+    }
+    $order->setPrice($total);
+    $order->setPriceDf($totalDf);
+    $app['em']->persist($order);
+    $app['em']->flush();
+
+    return $app->redirect('/ajoutPanier');
 });
 
 // CONNECTION ROUTE
