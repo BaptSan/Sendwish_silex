@@ -85,7 +85,7 @@ class User
 
     /**
      * One user has Many orders.
-     * @OneToMany(targetEntity="Order", mappedBy="user")
+     * @OneToMany(targetEntity="Order", mappedBy="user",fetch="EAGER")
      */
     private $orders;
 
@@ -264,7 +264,7 @@ class User
 
     public function getIsDelivery()
     {
-        return $this->is_delivery;
+        return $this->isDelivery;
     }
 
     public function setIsDelivery($isDelivery)
@@ -286,7 +286,7 @@ class User
         return $this;
     }
 
-    public function geGender()
+    public function getGender()
     {
         return $this->gender;
     }
@@ -297,5 +297,13 @@ class User
 
         return $this;
     }
+
+
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+
 
 }

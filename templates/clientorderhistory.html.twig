@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block clientorderhistory %}
+	<div class="container-fluid">
+		<h1 class="display-4"><i class="fa fa-archive" aria-hidden="true"></i>Vos commandes</h1><hr>
+	</div>
+	<div class="container-fluid ">
+		{% if orders != NULL and orders is defined %}
+			<table class="table table-sm">
+				<tr>
+					<th>Date de commande</th>
+					<th>Prix Hors Taxe</th>
+					<th>Prix TTC</th>
+					<th>Numéro de commande</th>
+					<th>Sur place</th>
+					<th>A emporter</th>
+				</tr>
+			{% for order in orders %}
+				<tr>
+					<td>{{order.orderDate|date('d/m/Y (H:i:s)')}}</td>
+					<td>{{order.priceDf}}</td>
+					<td>{{order.price}}</td>
+					<td>{{order.orderNum}}</td>
+					{% if order.eatIn == 1 %}
+						<td>Oui</td>
+						<td>Non</td>
+					{% else %}
+						<td>Non</td>
+						<td>Oui</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+	</div>			
+{% endblock %}
