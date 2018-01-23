@@ -3,6 +3,11 @@
 	height: auto;
 	margin:10%;
 	background-color: white;
+	border: solid 1px;
+	border-radius: 10px;
+	border-color: #000000;
+	padding: 2%;
+	box-shadow: 0px 0px 10px #666;
 }
 
 .rowBackOffice {
@@ -43,6 +48,7 @@
 	padding-left: 15%;
 	padding-right: 15%;
 	font-size: 1.3em;
+	padding-top: 2%;
 }
 
 #btnAddProduct {

@@ -1,10 +1,30 @@
 {% extends "layout.html.twig" %}
 {% block sandwichs %}
-	{% if sandwichs != null %}
-		{% for sandwich in sandwichs %}
-			<img src="{{sandwich.imagePath}}">
-			<h3>{{sandwich.name}}</h3>
-			<p>{{sandwich.description}}</p>
-		{% endfor %}
-	{% endif %}
+	<div id="sandwichParallax">
+		<div class="maskProductBox">
+		{% if sandwichs != null %}
+			{% set i = 0 %}
+			{% for sandwich in sandwichs %}
+				{% set i = i+1 %}
+					{% if i%2 != 0 %}
+						<div class="contentProductBox">
+							<div class="productBoxPair">
+								<img class="imgProductBox" src="{{sandwich.imagePath}}">
+								<h2>{{sandwich.name}} <br> {{sandwich.price}}€</h2>	
+							</div>
+							<p>{{sandwich.description}}</p>
+						</div>
+					{% else %}	
+						<div class="contentProductBox">
+							<div class="productBoxImpair">
+								<img class="imgProductBox" src="{{sandwich.imagePath}}">
+								<h2>{{sandwich.name}} <br> {{sandwich.price}}€</h2>
+							</div>
+							<p>{{sandwich.description}}</p>
+						</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		</div>
+	</div>
 {% endblock %}
