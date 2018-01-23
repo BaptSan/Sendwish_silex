@@ -64,7 +64,7 @@ class Product implements \JsonSerializable
 
 
     /** 
-    * @Column(type="string", columnDefinition="ENUM('drink', 'suppl','sandwich','child','menu')") 
+    * @Column(type="string") 
     */
     private $category;
     public function __construct($name, $description, $price, $cals, $ingredients, $imagePath,$category)

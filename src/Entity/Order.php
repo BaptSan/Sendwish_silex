@@ -1,7 +1,10 @@
 <?php
 namespace Entity;
 use Doctrine\Common\Collections\ArrayCollection;
-/** @Entity */
+/** 
+* @Entity 
+* @Table(name="`Order`")
+*/
 class Order
 {
 	/**
@@ -13,7 +16,7 @@ class Order
 	/**
      * @Column(type="float")
      */
-	private $price_df;
+	private $priceDf;
 	/**
      * @Column(type="float")
      */
@@ -21,42 +24,43 @@ class Order
 	/**
      * @Column(type="integer")
      */
-	private $order_num;
+	private $orderNum;
 
     /**
      * @Column(type="boolean")
      */
-    private $eat_in;
+    private $eatIn;
 
     /**
      * @Column(type="boolean")
      */
-    private $take_out;
+    private $takeOut;
 
     /**
      * One order has Many order items.
-     * @OneToMany(targetEntity="OrderItem", mappedBy="order")
+     * @OneToMany(targetEntity="OrderItem", mappedBy="order", cascade={"persist","remove"})
      */
     private $orderItems;
 
     /**
      * Many order item have one user.
-     * @ManyToOne(targetEntity="User", inversedBy="orders")
+     * @ManyToOne(targetEntity="User", inversedBy="orders", cascade={"persist"})
      */
     private $user;
 
-    public function __construct($id, $price_df, $price, $order_num, $eat_in, $take_out, $orderItems, $user)
+    public function __construct($priceDf, $price, $orderNum, $eatIn, $takeOut, $user)
     {
-        $this->id = $id;
-        $this->price_df = $price_df;
+        $this->priceDf = $priceDf;
         $this->price = $price;
-        $this->order_num = $order_num;
-        $this->eat_in = $eat_in;
-        $this->take_out = $take_out;
+        $this->orderNum = $orderNum;
+        $this->eatIn = $eatIn;
+        $this->takeOut = $takeOut;
         $this->orderItems = new ArrayCollection();
         $this->user = $user;
     }
-
+    public function addOrderItem($orderItem){
+        $this->orderItems->add($orderItem);
+    }
     public function getId()
     {
         return $this->id;
@@ -64,12 +68,12 @@ class Order
 
     public function getPriceDf()
     {
-        return $this->price_df;
+        return $this->priceDf;
     }
 
-    public function setPriceDf($price_df)
+    public function setPriceDf($priceDf)
     {
-        $this->price_df = $price_df;
+        $this->priceDf = $priceDf;
 
         return $this;
     }
@@ -88,12 +92,12 @@ class Order
 
     public function getOrderNum()
     {
-        return $this->order_num;
+        return $this->orderNum;
     }
 
-    public function setOrderNum($order_num)
+    public function setOrderNum($orderNum)
     {
-        $this->order_num = $order_num;
+        $this->orderNum = $orderNum;
 
         return $this;
     }
