@@ -12,7 +12,6 @@
 				<tr>
 				<th>Articles</th>
 				<th>Nom du produit</th>
-				<th>Description</th>
 				<th>Quantité</th>
 				<th>Prix (p * qte)</th>
 			</tr>
@@ -22,7 +21,6 @@
 					<tr>
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
 						<td class="w-25">{{cartItem.name}}</td>
-						<td >{{cartItem.description}}</td>
 						<td>{{cartItem.quantity}}</td>
 						<td class="w-25">{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
 						</td>
