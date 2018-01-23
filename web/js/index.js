@@ -75,7 +75,7 @@ initFlick();
             '</select>'+
             '</form>'+
             '<div class="input-group-append">'+
-              '<button class="btn btn-outline-secondary" type="submit" name="btnBMenus">Button</button>'+
+              '<button class="btn btn-outline-secondary" type="submit" name="btnBMenus">Ajouter au Panier</button>'+
             '</div>'+
           '</div>'
         }
