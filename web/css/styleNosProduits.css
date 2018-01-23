@@ -1,0 +1,48 @@
+.parallax {
+	background-image: url('/img/paraBackground.jpg');
+	height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.productBoxPair, .productBoxImpair {
+	background-color: #EAEAEB;
+	width: 50%;
+	color:#222;
+	clear:both;
+}
+
+.maskProductBox {
+	width: 50%;
+	transition: width 3s;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.maskProductBox:hover {
+	width: 100%;
+}
+
+
+.imgProductBox {
+	width: 60%;
+	margin-left:20%;
+	margin-right:20%;
+}
+
+.productBoxPair h2 , .productBoxImpair h2 {
+		color:#222;
+}
+
+.productBoxPair p , .productBoxImpair p {
+	text-align: center;
+	margin-bottom: 20%;
+}
+
+.productBoxPair {
+	float: right;
+}
+.productBoxImpair {
+	float: left;
+}
