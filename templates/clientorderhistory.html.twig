@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 {% block clientorderhistory %}
 	<div class="container-fluid">
-		<h1 class="display-4"><i class="fa fa-archive" aria-hidden="true"></i>Vos commandes</h1><hr>
+		<h1 class="display-4">{% include "carticone.html.twig" %}Vos commandes</h1><hr>
 	</div>
 	<div class="container-fluid ">
 		{% if orders != NULL and orders is defined %}
