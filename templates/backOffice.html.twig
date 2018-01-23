@@ -14,36 +14,40 @@
 		    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Historique des commandes</a>
 		  </li>
 		</ul>
-		<div class="tab-content" id="myTabContent">
-		  <div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="product-tab">		<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">	
+		<div class="tab-content container-fluid" id="myTabContent">
+		  <div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="product-tab">
+		  	<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">	
 				<label for="productName"> Nom du produit : <br>
-					<input type="text" name="productName" id="productName">
-				</label> <br>
-				<label for="productDescription"> Description du produit : <br>
-					<input type="text" name="productDescription" id="productDescription">
+					<input type="text" class="form-control" name="productName" id="productName">
 				</label> <br>
 				<label for="productPrice"> Prix du produit : <br>
-					<input type="text" name="productPrice" id="productPrice">
+					<input type="text" class="form-control" name="productPrice" id="productPrice">
 				</label> <br>
 				<label for="productCal"> Nombre de calorie : <br>
-					<input type="text" name="productCal" id="productCal">
-				</label> <br>
-				<label for="productIngredient"> Ingrédient : <br>
-					<input type="text" name="productIngredient" id="productIngredient">
-				</label> <br>
-		<label for="productCategory"> Ingrédient :
-			<select name="productCategory" id="productCategory">
-				<option value="drink">Boisson</option>
-				<option value="suppl">Accompagnement</option>
-				<option value="sandwich">Sandwich</option>
-				<option value="child">Menu enfant</option>
-				<option value="menu">Menu</option>
-			</select>
-		</label><br>
+					<input type="text" class="form-control" name="productCal" id="productCal">
+				</label> <br>	
+				<div class="form-group">
+				<label for="productCategory"> Ingrédient :
+				<select multiple class="form-control" name="productCategory" id="productCategory">
+					<option value="drink">Boisson</option>
+					<option value="suppl">Accompagnement</option>
+					<option value="sandwich">Sandwich</option>
+					<option value="child">Menu enfant</option>
+					<option value="menu">Menu</option>
+				</select>
+				</label><br>
+				</div>
+				<div class="form-group">
+				<label for="productDescription"> Description du produit : <br>
+					<textarea class="form-control" name="productDescription" id="productDescription" rows="3"></textarea>
+				</label>
+				</div>
+				<div class="form-group">
 				<label for="productIngredient"> Insertion de l'image dans la fiche produit : <br>
-					<input type="file" name="productPath" id="productPath">
+					<input type="file" class="form-control-file" name="productPath" id="productPath">
 				</label> <br>
-				<input type="submit" name="btnAddProduct" id="btnAddProduct">
+				</div>
+				<input type="submit" class="btn btn-primary btn-lg btn-block btn btn-outline-dark" name="btnAddProduct" id="btnAddProduct">
 			</form>
 		</div>
 		<div class="tab-pane fade" id="addUser" role="tabpanel" aria-labelledby="addUser-tab">
