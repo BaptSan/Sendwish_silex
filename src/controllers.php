@@ -76,6 +76,62 @@ $app->get('/orderhistory', function () use ($app) {
             'orders'=> $userOrders ?? NULL));
 });
 
+// GET CART ROUTE FOR UPDATE IT IN THE NAVBAR
+$app->get('/getPanier', function (Request $request) use ($app) {
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
+    $userCartItems = $user->getCartItems();
+    $cleanCartItems=[];
+    $totalPrice = 0;
+    if(count($userCartItems) === 0){
+        $cartHtmlGenerate = "<p class='text-center'>Votre panier est actuellement vide !</p>";
+    }else{
+    for ($i = 0; $i < count($userCartItems); $i++) {
+        if (!array_key_exists($userCartItems[$i]->getProduct()->getId(),$cleanCartItems)){
+             $cleanCartItems[$userCartItems[$i]->getProduct()->getId()]=[
+                'name' => $userCartItems[$i]->getProduct()->getName(), 
+                'id' => $userCartItems[$i]->getProduct()->getId(), 
+                'description' => $userCartItems[$i]->getProduct()->getDescription(),
+                'price' => $userCartItems[$i]->getProduct()->getPrice(),
+                'imagepath' => $userCartItems[$i]->getProduct()->getImagePath(),
+                'quantity'=>1
+            ];
+        }else{
+            $cleanCartItems[$userCartItems[$i]->getProduct()->getId()]['quantity']++;          
+        }
+    }
+    $test = "";
+    foreach($cleanCartItems as $key=>$value){
+        $totalPrice += $value['quantity'] * $value['price'];
+    }
+    $cleanCartItems['totalPrice'] = $totalPrice;
+    $cartHtmlGenerate = "<table class='table table-sm text-center'>".
+    "<thead>"."<tr>"."<th>Articles</th>"."<th>Quantité</th>"."<th>Prix</th>"."<th></th>"."</tr>"."</thead>"."<tbody>";
+
+                    foreach ($cleanCartItems as $testKey=>$item) {
+                        if($testKey=='totalPrice'){
+                            $cartHtmlGenerate.="<tr>";
+                            $cartHtmlGenerate.="<td><strong>Prix Total :</strong></td>";
+                            $cartHtmlGenerate.="<td></td>";
+                            $cartHtmlGenerate.="<td></td>";
+                            $cartHtmlGenerate.="<td>".$item."€</td>";
+                            $cartHtmlGenerate.="</tr>";
+                            $cartHtmlGenerate.="</tbody>";
+                            $cartHtmlGenerate.="</table>";
+                            $cartHtmlGenerate.='<a href="/ajoutPanier" class="btn btn-block btn-danger">Commander !</a>';
+                        }else{
+                            $cartHtmlGenerate.="<tr>";
+                            $cartHtmlGenerate.="<td>".$item['name']."</td>";
+                            $cartHtmlGenerate.="<td>".$item['quantity']."</td>";
+                            $cartHtmlGenerate.="<td>".$item['price']."€</td>";
+                            $cartHtmlGenerate.="<td></td>";
+                            $cartHtmlGenerate.="</tr>";
+                        }
+                    }
+                }
+    return ($cartHtmlGenerate);
+});
+
 
 // CART INFOS ROUTE
 $app->get('/ajoutPanier', function () use ($app) {
@@ -107,7 +163,7 @@ $app->get('/ajoutPanier', function () use ($app) {
                 'cartItems' => $cleanCartItems,
                 'totalPrice' => $totalPrice
             ));
-});
+    });
 
 $app->get('/suppPanier',  function (Request $request) use ($app) {
     $userSession = $app['session']->get('user');
@@ -156,7 +212,7 @@ $app->match('/connexion', function (Request $request) use ($app) {
             return $app->redirect('/?connect=true');
         }        
     }
-    return $app['twig']->render('errorLog.html.twig');
+    return $app['twig']->render('errorLog.html.twig',array('theUser'=>$app['session']->get('user') ?? null));
 });
 
 // DISCONNECTION ROUTE
@@ -290,9 +346,7 @@ $app->match('/admin', function (Request $request) use ($app) {
                     $em->persist($sd);
                     $em->flush();
                     return $app->redirect('/admin');
-
-        return dump($_POST);
-        }
+        }        
 
     return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
 });

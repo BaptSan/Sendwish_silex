@@ -1,6 +1,6 @@
 $(document).ready( function(){ 
 initFlick();
-
+updateCart();
  });
 
 
@@ -27,6 +27,7 @@ initFlick();
         Pbadge++;
         $('#idPanier').text(Pbadge);
       }
+      updateCart();
     });
   });
   // fonction suppression de badge.

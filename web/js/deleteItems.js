@@ -19,5 +19,6 @@ $('.binCase svg').click(function() {
 			$('#contentJumbotronCart').html("<h1>Il n'y a actuellement aucun produits dans votre panier !</h1>");
 			$('#contentTableCart').html("");
 		}
+		updateCart();
 	});
 });
