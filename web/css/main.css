@@ -40,3 +40,17 @@
 	width:100%;
 }
 
+#idPanier{
+	position: absolute !important;
+	right:28px !important;
+	bottom: 84px !important;
+	opacity: 0;
+}
+
+#bgpanier:hover #clpanier span{
+	color:red;
+	background-color: white !important;
+}
+#bgpanier:hover #clpanier span:hover{
+	color:red;
+}

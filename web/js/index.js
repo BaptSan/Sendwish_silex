@@ -20,13 +20,20 @@ updateCart();
       url: '/panier'
     }).done(function(data){
       //fonction ajout des produits dans le petit panier.
-      $('#idPanier').addClass('badge badge-light');
+     
       if($('#idPanier').text() == ""){
+        $('#idPanier').addClass('badge badge-light badgetest').animate({opacity:'1'});
+        $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
         $('#idPanier').text('1');
       }else{
         Pbadge = parseInt($('#idPanier').text());
-        Pbadge++;
-        $('#idPanier').text(Pbadge);
+
+        $('#idPanier').fadeOut(100,function(){
+          $('#idPanier').removeClass('badge badge-light badgetest');
+          Pbadge++;
+          $('#idPanier').text(Pbadge);
+          $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
+        });
       }
       updateCart();
     });
