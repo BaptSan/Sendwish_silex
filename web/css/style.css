@@ -116,7 +116,12 @@ nav.navProduct ul .liNavProduct a:hover:after {
 .carousel-nav .carousel-cell.is-nav-selected {
   background: #37bace;
 }
-
+.btnBMenus{
+position: absolute;
+bottom: 0;
+align-self: center;
+margin-bottom: 5px !important;
+}
 
 * { box-sizing: border-box; } 
  
@@ -135,35 +140,13 @@ body { font-family: sans-serif; }
   counter-increment: carousel-cell; 
 } 
  
-/* cell number */ 
-.carousel-cell:before { 
-  display: block; 
-  text-align: center; 
-  line-height: 200px; 
-  font-size: 80px; 
-  color: white; 
-} 
- 
-.carousel-nav .carousel-cell { 
-  height: 140px; 
-  width: 140px; 
-} 
-.carousel-nav .carousel-cell:before { 
-  font-size: 50px; 
-  line-height: 80px; 
-} 
- 
-.carousel-nav .carousel-cell.is-nav-selected { 
-  background: #37bace; 
-} 
-
 /*Carousel*/
 .carousel {
   margin-bottom: 40px;
 }
 
 .carousel-cell {
-  width: 100%;
+  width: 50%;
   height: 300px;
   margin-right: 10px;
   background:  ;
@@ -195,6 +178,7 @@ body { font-family: sans-serif; }
 .carousel-nav .carousel-cell.is-nav-selected {
   background: #37bace;
 }
+
 
 
 

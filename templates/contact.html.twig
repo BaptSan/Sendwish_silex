@@ -1,18 +1,35 @@
 {% extends "layout.html.twig" %}
 {% block contact %}
-	<br><br>
-		<form>
-			<fieldset>
-				<legend>Nos Coordonnées </legend>
-					<input type="text" name="firstnameContact">
-					<input type="text" name="lastnameContact">
-					<br>
-					<input type="email" name="mailContact">
-					<br>
-					<input type="textarea" name="messageContact">
-					<input type="submit" name="btnContact">
+	<br /><br />
+	{# FORMULAIRE #}
+	<div class="container">
+	<div class="row">
+	<div class="col-4 formcontact">
+			<form action="/contact" enctype="multipart/form-data" method="get">
+			{# ENCADREMENT #}
+			<fieldset id="cadre">
+				{# TITRE #}
+				<div id="formulaireTitre">
+				<h1 id="titreContact">Nous Contacter</h1>
+					{# FORMULAIRE #}
+					<input class="form-control" id="prenom" type="text" name="firstnameContact" placeholder="Prénom" required="required">
+					<br /><br />
+					<input class="form-control" type="text" name="lastnameContact" placeholder="Nom" required="required">
+					<br /><br />
+					<input class="form-control" type="email" name="mailContact" placeholder="Email">
+					<br /><br />
+					<textarea class="form-control" rows="4" cols="50" name="messageContact" placeholder="Ecrit ton message" required="required"></textarea><br /><br />
+					<input class="form-control" id="submit" type="submit" name="btnContact" placeholder="Envoyer">
+				</div>
 				</fieldset>
 		</form>
-	<br><br>
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.3083304859547!2d0.08719151509964126!3d48.43142183862896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e20c8380f2fe81%3A0xa71d1f6718b5aa10!2s8+Cours+Cl%C3%A9menceau%2C+61000+Alen%C3%A7on!5e0!3m2!1sfr!2sfr!4v1516097975762" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+	<br /><br />
+	{# MAP GOOGLE #}
+	<div class="col-6 formcontact">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.3083304859547!2d0.08719151509964126!3d48.43142183862896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e20c8380f2fe81%3A0xa71d1f6718b5aa10!2s8+Cours+Cl%C3%A9menceau%2C+61000+Alen%C3%A7on!5e0!3m2!1sfr!2sfr!4v1516097975762" width="600" height="440" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+
 {% endblock %}

@@ -23,9 +23,14 @@ $app->get('/', function () use ($app) {
 ->bind('homepage');
 
 // CONTACT ROUTE
-$app->get('/contact', function () use ($app) {
+$app->get('/contact', function (Request $request) use ($app) {
+    $firstname=$request->get('firstnameContact');
+    $lastname=$request->get('lastnameContact');
+    $mail=$request->get('mailContact');
+    $message=$request->get('messageContact');
     return $app['twig']->render('contact.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
+
 
 
 // MENUS ROUTE

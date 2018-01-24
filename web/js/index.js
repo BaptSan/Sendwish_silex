@@ -1,4 +1,4 @@
-$(document).ready( function(){ 
+$(document).ready( function(){
 initFlick();
 updateCart();
  });
@@ -7,9 +7,10 @@ updateCart();
  function initFlick(){
  	$('.carousel-main').flickity({
     pageDots: true,
+    contain:true,
     });
   //Envoie des différents id des différentes image + 
-  $('#secondCar .card img').click(function() {  
+  $('#secondCar .btnBMenus').click(function() {  
     var idCarrousel = $(this).attr('data-id');
     $.ajax({
       type:'GET',
@@ -30,12 +31,6 @@ updateCart();
       updateCart();
     });
   });
-  // fonction suppression de badge.
- /* $('clpanier').click(function() {
-    if ($('#idPanier').text() != "") {
-      $('#idPanier').text() = "";
-    }
-  });*/
   
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
@@ -61,27 +56,11 @@ updateCart();
       for (let product of test){
         i++;
         btnBoisson = '';
-        if(product.category == 'menu') {
-          btnBoisson = '<div class="input-group">'+
-          '<form method="get">'+
-            '<select class="custom-select" id="">'+
-              '<option disabled selected>--Sélectionnez Votre Boisson--</option>'+
-              '<option>Coca-Cola</option>'+
-              '<option>Coca-Cola Light</option>'+
-              '<option>Coca-Cola Zéro</option>'+
-              '<option>Fanta</option>'+
-              '<option>Nestea</option>'+
-              '<option>Sprite</option>'+
-              '<option>Vitel</option>'+
-            '</select>'+
-            '</form>'+
-            '<div class="input-group-append">'+
-              '<button class="btn btn-outline-secondary" type="submit" name="btnBMenus">Ajouter au Panier</button>'+
-            '</div>'+
-          '</div>'
+        if(product.category == 'menu' || product.category == 'drink' || product.category == 'sandwich' || product.category == 'suppl' ) {
+          btnBoisson = '<button class="btn btn-danger btnBMenus w-50 " type="submit"  data-id="'+product.id+'">Ajouter au Panier</button>'
         }
        string +='<div class="carousel-cell card img'+i+'">'+
-                  '<img data-id="'+product.id+'" src="../'+product.imagePath+'" alt="" class="w-25 align-self-center" >'+
+                  '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="img w-50 align-self-center">'+
                   btnBoisson+  
                 '</div>';
         }
