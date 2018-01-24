@@ -16,6 +16,7 @@
             <link rel="stylesheet" href="css/styleBackOffice.css">
             <link rel="stylesheet" href="css/styleNavbar.css">
             <link rel="stylesheet" href="css/styleNosProduits.css">
+            <link rel="stylesheet" href="css/stylePanier.css">
             <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
@@ -35,6 +36,7 @@
                         {% block content %}{% endblock %}
                         {% block Header %}{% endblock %}
                         {% block cardaccueil %}{% endblock %}
+                        {% block clientorderhistory %}{% endblock %}
                         {% block Carrousel %}{% endblock %}
                         {% block contact %}{% endblock %}
                         {% block inscrip %}{% endblock %}
@@ -65,5 +67,6 @@
         <script src="js/validationFormulaire.js"></script>
         <script src="js/index.js"></script>
         <script src="js/ajoutPanier.js"></script>
+        <script src="js/deleteItems.js" ></script>
     </body>
 </html> 

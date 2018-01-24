@@ -154,6 +154,15 @@ color: #4286f4;
 #bgclient:hover :not(i){
 background-color: #4286f4;
 }
+
+#clclientorderhistory {
+color: #4286f4;
+}
+#bgclientorderhistory:hover :not(i){
+background-color: #4286f4;
+}
+
+
 #claccount {
   color: #6a2bff;
 }

@@ -37,6 +37,11 @@ class Order
     private $takeOut;
 
     /**
+     * @Column(type="datetime")
+     */
+    private $orderDate;
+
+    /**
      * One order has Many order items.
      * @OneToMany(targetEntity="OrderItem", mappedBy="order", cascade={"persist","remove"})
      */
@@ -48,7 +53,7 @@ class Order
      */
     private $user;
 
-    public function __construct($priceDf, $price, $orderNum, $eatIn, $takeOut, $user)
+    public function __construct($priceDf, $price, $orderNum, $eatIn, $takeOut, $orderDate, $user)
     {
         $this->priceDf = $priceDf;
         $this->price = $price;
@@ -57,6 +62,7 @@ class Order
         $this->takeOut = $takeOut;
         $this->orderItems = new ArrayCollection();
         $this->user = $user;
+        $this->orderDate = $orderDate;
     }
     public function addOrderItem($orderItem){
         $this->orderItems->add($orderItem);
@@ -101,4 +107,44 @@ class Order
 
         return $this;
     }
+
+        public function getEatIn()
+    {
+        return $this->eatIn;
+    }
+
+    public function setEatIn($eatIn)
+    {
+        $this->eatIn = $eatIn;
+
+        return $this;
+    }
+
+
+    public function getTakeOut()
+    {
+        return $this->takeOut;
+    }
+
+    public function setTakeOut($takeOut)
+    {
+        $this->takeOut = $takeOut;
+
+        return $this;
+    }
+
+
+
+        public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
+
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+
+        return $this;
+    }
+
 }
