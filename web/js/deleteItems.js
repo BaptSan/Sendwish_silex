@@ -1,20 +1,20 @@
 $('.binCase svg').click(function() {
 	idProductBin = $(this).parent().attr('data-id');
+	priceProductsBin = $(this).parent().attr('data-price');
 	$.ajax({
 		url:"/suppPanier",
 		type:'GET',
 		data: {
-			"productItemId" : idProductBin
+			"productItemId" : idProductBin,
+			"productsItemPrice" : priceProductsBin
 		}
 	}).done(function(data){
 		infos = JSON.parse(data);
-		newPrice = prixTotal - infos.substractPrice
-		formattedPrice = "Prix total : "+ newPrice +' €';
-		console.log(formattedPrice);
+		formattedPrice = "Prix total : "+ String((prixTotal - infos.productsItemPrice).toPrecision(3)) +' €';
+
 		$('#totalPriceCart').html(formattedPrice);
-		prixTotal -= infos.substractPrice; 
+		prixTotal = (prixTotal - infos.productsItemPrice).toPrecision(3); 
 		$('#item'+infos.idDivItem).remove();
-		console.log($('.itemRow').length);
 		if($('.itemRow').length == 0){
 			$('#contentJumbotronCart').html("<h1>Il n'y a actuellement aucun produits dans votre panier !</h1>");
 			$('#contentTableCart').html("");
