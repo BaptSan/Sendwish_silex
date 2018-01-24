@@ -101,14 +101,20 @@
             
 
                 {# PAGE PANIER #}
-{% endif %}
-<li id="bgpanier">
-<a id="clpanier" href="/ajoutPanier" data-toggle="popover" title="yoooo" data-content="Some content inside the popover">
-{% include 'shoppingBasket.html.twig' %}
-<span class="" id="idPanier"></span><br>
-Panier
-</a>
-</li>
-</ul>
+    {% endif %}
+    <div class="dropdown">
+        <li id="bgpanier" class="dropdown-toggle">
+            <a id="clpanier" href="/ajoutPanier">
+            {% include 'shoppingBasket.html.twig' %}
+            <span class="" id="idPanier"></span><br>
+            Panier
+            </a>
+        </li>
+
+        <div class="list-unstyled collapse dropdown-menu" id="pageSubCart" role="menu" aria-expanded="false">
+            
+    </div>
+    </ul>
+    </div>
 </nav>
 </div>

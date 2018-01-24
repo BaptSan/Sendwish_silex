@@ -82,7 +82,7 @@ CONTENT STYLE
 padding: 20px;
 min-height: 100vh;
 }
-.wrapper #sidebar :hover {
+.wrapper #sidebar :hover{
 color: white;
 }
 .collapse.in {
@@ -197,6 +197,9 @@ background-color: red;
 #bgclient::after{
   display: none;
 }
+#bgpanier::after{
+  display: none;
+}
 .dropdown:hover #pageSubmenu{
   display: block;
 }
@@ -206,6 +209,23 @@ background-color: red;
   left: 100.8px;
   top:0;
   z-index: 2;
+}
+
+.dropdown:hover #pageSubCart{
+  display: block;
+}
+#pageSubCart{
+  color:black !important;
+  display: none;
+  position: absolute;
+  left: 100.8px;
+  top:0;
+  z-index: 2;
+  font-size: 0.8em;
+  min-height: 120px;
+}
+#pageSubCart:hover{
+  color: black !important;
 }
 /* ---------------------------------------------------
 MEDIAQUERIES
