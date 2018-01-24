@@ -7,7 +7,7 @@
 			{% for drink in drinks %}
 				{% set i = i+1 %}
 					{% if i%2 != 0 %}
-						<div class="contentProductBox">
+						<div class="contentProductBoxPair">
 							<div class="productBoxPair">
 								<img class="imgProductBox" src="{{drink.imagePath}}">
 								<h2>{{drink.name}} <br> {{drink.price}}€</h2>	
@@ -15,7 +15,7 @@
 							<p>{{drink.description}}</p>
 						</div>
 					{% else %}	
-						<div class="contentProductBox">
+						<div class="contentProductBoxImpair">
 							<div class="productBoxImpair">
 								<img class="imgProductBox" src="{{drink.imagePath}}">
 								<h2>{{drink.name}} <br> {{drink.price}}€</h2>
