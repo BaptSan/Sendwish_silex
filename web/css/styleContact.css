@@ -1,7 +1,9 @@
+/*COL 4 LE FORMULAIRE*/
 .formcontact {
  margin-left: 3%; 
  margin-right: 3%; 
 }
+/*ENCADREMENT DU FORMULAIRE*/
 #cadre {
 	color: #979899;		
 	border: solid;
@@ -9,10 +11,12 @@
 	padding: auto;
 	margin-left: 0;
 }
+/*TITRE DU FORMULAIRE*/
 #titreContact {
 	color: black;
 	font-size: 1.5em;
 }
+/*DIV CONTENANT TITRE ET LE FORMULAIRE*/
 #formulaireTitre {
 	text-align: center;
 	margin-top: 5%;
