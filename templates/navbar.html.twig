@@ -1,19 +1,19 @@
 <div class="wrapper">
-            <!-- Sidebar Holder -->
-                {# PAGE D'ACCUEIL #}
+    <!-- Sidebar Holder -->
+    {# PAGE D'ACCUEIL #}
     <nav id="sidebar" class="active">
         <ul class="list-unstyled components active scroll-menu">
             <li id="bgaccueil" class="clhover">
                 <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
-                <i class="fa fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-home" aria-hidden="true"></i>
                     Accueil
                 </a>
             </li>
-                {# DROPDOWN NOS PRODUITS #}
+            {# DROPDOWN NOS PRODUITS #}
             <div class="dropdown">
                 <li id="bgproduits" class="dropdown-toggle clhover">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
                         Nos produits
                     </a>
                 </li>
@@ -21,96 +21,87 @@
                 <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
                     <li id="bgmenus"><a id="clmenus" href="/nosMenus">
                         {% include 'fastfood.html.twig' %} <br>
-                        Nos Menus</a>
-                    </li>
+                    Nos Menus</a>
+                </li>
                 {# SOUS MENU SANDWICHS #}
-                    <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
-                        {% include 'hamburger.html.twig' %} <br>
-                        Sandwichs</a>
-                    </li>
-                {# SOUS MENU BOISSONS #}
-                    <li id="bgboissons"><a id="clboissons" href="/boissons">
-                        {% include 'soda.html.twig' %} <br>
-                        Boissons</a>
-                    </li>
-                {# SOUS MENU PETITES FAIMS #}
-                    <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
-                        {% include 'frenchfries.html.twig' %} <br>
-                        Petites faims</a>
-                    </li>
-                </ul>
-            </div>
-
-                {# PAGE CONTACT #}
-            <li id="bgcontact">
-                <a id="clcontact" href="/contact">
-                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                        Contact
-                </a>
+                <li id="bgsandwichs"><a id="clsandwichs" href="/sandwichs">
+                    {% include 'hamburger.html.twig' %} <br>
+                Sandwichs</a>
             </li>
-
-            {# DROPDOWN DE CONNEXION #}
-                {# PAGE CLIENT #}
-            {% if theUser != NULL %}
-                <div class="dropdown">        
-                    <li id="bgclient" class="dropdown-toggle">
-                        <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                        <i style="font-size:35px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>  
-                                Client
-                        </a>
-                    </li>
-
-                {# PAGE COMPTE #}
-                    <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
-                        <li id="bgaccount"><a id="claccount" href="/client">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                Mon Compte</a>
-                        </li>
-
-                        <li id="bgclientorderhistory"><a id="clclientorderhistory" href="/orderhistory">
-                            <i class="fa fa-archive" aria-hidden="true"></i>
-                                Mes Commandes</a>
-                        </li>
-                {# PAGE ADMIN #}
-                        {% if theUser.admin == 1 %}
-                        <li id="bgadmin"><a id="cladmin" href="/admin">
-                            <i class="fa fa-key" aria-hidden="true"></i>
-                                Accès Admin</a>
-                        </li>
-                {# PAGE DECONNEXION #}
-                        {%  endif %}
-                        <li id="bgdeco"><a id="cldeco" href="/deconnexion">
-                            <i class="fa fa-power-off" aria-hidden="true"></i>
-                                Déconnexion</a>
-                        </li>
-                    </ul>
-
-                        </div>
-                {# PAGE CONNEXION #}
-            {% else %}
-                    <li id="bgclient">
-                        <a id="clclient" href="/inscription" aria-expanded="false">
-                        <i class="fa fa-user-o" aria-hidden="true"></i>
-                                Connexion
-                        </a>
-                    </li>
-            
-
-                {# PAGE PANIER #}
-    {% endif %}
-    <div class="dropdown">
-        <li id="bgpanier" class="dropdown-toggle">
-            <a id="clpanier" href="/ajoutPanier">
-            {% include 'shoppingBasket.html.twig' %}
-            <span class="" id="idPanier"></span><br>
-            Panier
-            </a>
+            {# SOUS MENU BOISSONS #}
+            <li id="bgboissons"><a id="clboissons" href="/boissons">
+                {% include 'soda.html.twig' %} <br>
+            Boissons</a>
         </li>
-
-        <div class="list-unstyled collapse dropdown-menu" id="pageSubCart" role="menu" aria-expanded="false">
-            
-    </div>
+        {# SOUS MENU PETITES FAIMS #}
+        <li id="bgfaim"><a id="clfaim" href="/petitesFaims">
+            {% include 'frenchfries.html.twig' %} <br>
+        Petites faims</a>
+    </li>
+</ul>
 </div>
-    </ul>
+{# PAGE PANIER #}
+<div class="dropdown">
+<li id="bgpanier" class="dropdown-toggle">
+    <a id="clpanier" href="/ajoutPanier">
+        {% include 'shoppingBasket.html.twig' %}
+        <span class="" id="idPanier"></span><br>
+        Panier
+    </a>
+</li>
+<div class="list-unstyled collapse dropdown-menu" id="pageSubCart" role="menu" aria-expanded="false">
+</div>
+</div>
+{# DROPDOWN DE CONNEXION #}
+{# PAGE CLIENT #}
+{% if theUser != NULL %}
+<div class="dropdown">
+    <li id="bgclient" class="dropdown-toggle">
+        <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
+            <i style="font-size:35px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
+            Client
+        </a>
+    </li>
+    {# PAGE COMPTE #}
+    <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
+        <li id="bgaccount"><a id="claccount" href="/client">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+        Mon Compte</a>
+    </li>
+    <li id="bgclientorderhistory"><a id="clclientorderhistory" href="/orderhistory">
+        <i class="fa fa-archive" aria-hidden="true"></i>
+    Mes Commandes</a>
+</li>
+{# PAGE ADMIN #}
+{% if theUser.admin == 1 %}
+    <li id="bgadmin"><a id="cladmin" href="/admin">
+        <i class="fa fa-key" aria-hidden="true"></i>
+    Accès Admin</a>
+</li>
+{# PAGE DECONNEXION #}
+{%  endif %}
+<li id="bgdeco"><a id="cldeco" href="/deconnexion">
+    <i class="fa fa-power-off" aria-hidden="true"></i>
+Déconnexion</a>
+</li>
+</ul>
+</div>
+{# PAGE CONNEXION #}
+{% else %}
+<li id="bgclient">
+<a id="clclient" href="/inscription" aria-expanded="false">
+<i class="fa fa-user-o" aria-hidden="true"></i>
+Connexion
+</a>
+</li>
+{% endif %}
+{# PAGE CONTACT #}
+<li id="bgcontact">
+<a id="clcontact" href="/contact">
+<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+Contact
+</a>
+</li>
+</ul>
 </nav>
-    </div>
+</div>
