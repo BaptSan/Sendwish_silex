@@ -245,6 +245,7 @@ $app->get('/generateCarrousel', function (Request $request) use ($app) {
 
 
 $app->match('/admin', function (Request $request) use ($app) {
+    // $orders = $app['em']->getRepository(Order::class)->findAll(); 
     if (null !== $request->get('productName') && !empty($request->get('productName')) && null !== $request->get('productDescription') && !empty($request->get('productDescription')) &&  null !== $request->get('productPrice') && !empty($request->get('productPrice')) && null !== $request->get('productCal') && !empty($request->get('productCal')) && null !== $request->get('productIngredient') && !empty($request->get('productIngredient')) && null !== $_FILES['productPath'] && !empty($_FILES['productPath']) && null !== $request->get('productCategory') && !empty($request->get('productCategory'))) {
 
             $varProductName = htmlspecialchars($request->get('productName'));
@@ -353,9 +354,28 @@ $app->match('/admin', function (Request $request) use ($app) {
                     return $app->redirect('/admin');
         }        
 
-    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
+    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL,
+        // 'ordersAdmin' => $orders
+    ));
 });
-
+$app->match('/backOfficeRefresh', function(Request $request) use ($app) {
+    $ordersR = $app['em']->getRepository(Order::class)->findAll();
+    
+    $orders = [];
+    foreach ($ordersR as $order) {
+        
+        $orders[] = [
+            'orderDate' => $order->getorderDate(),
+            'priceDf' => $order->getPriceDf(),
+            'price' => $order->getPrice(),
+            'orderNum' => $order->getorderNum(),
+            'eatIn' => $order->geteatIn(),
+            'takeOut' => $order->gettakeOut(),
+        ];
+        
+    }
+    return new JsonResponse($orders);
+});
 $app->match('/inscription', function (Request $request) use ($app) {
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
