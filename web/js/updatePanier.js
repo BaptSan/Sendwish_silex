@@ -1,5 +1,4 @@
 function updateCart(){
-	console.log('coucou');
 	$.ajax(
 		{
 			url:'/getPanier',
