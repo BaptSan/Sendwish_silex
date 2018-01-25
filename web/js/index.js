@@ -1,6 +1,7 @@
 $(document).ready( function(){
   initFlick();
   updateCart();
+  generateCarousel('menu');
  });
 
 
@@ -53,8 +54,15 @@ $(document).ready( function(){
     
     });
 }
+
+ 
  $('#carrouselCat .card').click(function(){
-  category = $(this).attr('data-cat');
+  generateCarousel($(this).attr('data-cat'));
+ });
+ 
+ function generateCarousel(cat='menu'){
+
+  category = cat;
 
   $.ajax({
       type:'GET',
@@ -72,16 +80,32 @@ $(document).ready( function(){
         if(product.category == 'menu' || product.category == 'drink' || product.category == 'sandwich' || product.category == 'suppl' || product.category == 'child' ) {
           btnBoisson = '<button class="btn btn-danger btnBMenus w-50 " type="submit"  data-id="'+product.id+'">Ajouter au Panier</button>'
         }
+       if(product.category =='menu'){
+        redirect = '/nosMenus';
+       }
+       if(product.category =='drink'){
+        redirect = '/boissons';
+       }
+       if(product.category =='sandwich'){
+        redirect = '/sandwichs';
+       }
+       if(product.category =='suppl'){
+        redirect = '/petitesFaims';
+       }
+       if(product.category =='child'){
+        redirect = '/nosMenus';
+       }
+
        string +='<div class="carousel-cell card img'+i+'">'+
                   '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="imgCard w-50 align-self-left">'+
                   btnBoisson+  
                   "<div class='productNameCarousel'><h3>"+product.name+"</h3></div>"+
                   "<div class='productPriceCarousel'><h2><small class='text-muted'>"+product.price+" €</small></h2></div>"+
-                  '<div class="productInfo"><p><a href="#">En savoir plus</a></p></div>'+
+                  '<div class="productInfo"><p><a href="'+redirect+'#'+product.id+'">En savoir plus</a></p></div>'+
                 '</div>';
         }
       string+="</div>";
       $('#secondCar').html(string);
       initFlick();
     });
- });
+ }
