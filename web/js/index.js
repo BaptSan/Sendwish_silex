@@ -1,9 +1,38 @@
 $(document).ready( function(){
-  initFlick();
-  updateCart();
+initFlick();
+updateCart();
   generateCarousel('menu');
+ajaxHisto();
  });
 
+
+
+  function ajaxHisto() {
+    
+    $.ajax({
+      type:'GET',
+      data: {
+        'historique': true
+      }, 
+      url: '/backOfficeRefresh'
+    }).done(function(data) {
+      
+      $('#addHisto').html('');
+      for( var i = 0 ; i < data.length ; i++ ) {
+        if (data[i].eatIn == true ) {
+          eatIn = '1';
+          takeOut = '0';
+        } else {
+          eatIn = '0';
+          takeOut = '1';
+        }
+        $('#addHisto').append('<tr><td>'+data[i].orderDate+'</td><td>'+data[i].priceDf+'</td><td>'+data[i].price+'</td>'+
+          '<td>'+data[i].orderNum+'</td><td>'+eatIn+'</td><td>'+takeOut+'</td></tr>');
+      }
+      setTimeout(ajaxHisto, 30000);
+    });
+  
+  }
 
  function initFlick(){
  	$('.carousel-main').flickity({
@@ -45,6 +74,11 @@ $(document).ready( function(){
  
     });
   });
+  
+
+
+
+  
   
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
