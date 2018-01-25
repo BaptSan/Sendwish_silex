@@ -3,7 +3,7 @@
                 {# PAGE D'ACCUEIL #}
     <nav id="sidebar" class="active">
         <ul class="list-unstyled components active scroll-menu">
-            <li id="bgaccueil">
+            <li id="bgaccueil" class="clhover">
                 <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
                 <i class="fa fa-home" aria-hidden="true"></i>
                     Accueil
@@ -11,7 +11,7 @@
             </li>
                 {# DROPDOWN NOS PRODUITS #}
             <div class="dropdown">
-                <li id="bgproduits" class="dropdown-toggle">
+                <li id="bgproduits" class="dropdown-toggle clhover">
                     <a id="clproduits" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="collapsed">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                         Nos produits
@@ -71,10 +71,6 @@
                             <i class="fa fa-archive" aria-hidden="true"></i>
                                 Mes Commandes</a>
                         </li>
-
-                        
-
-
                 {# PAGE ADMIN #}
                         {% if theUser.admin == 1 %}
                         <li id="bgadmin"><a id="cladmin" href="/admin">
@@ -114,7 +110,7 @@
         <div class="list-unstyled collapse dropdown-menu" id="pageSubCart" role="menu" aria-expanded="false">
             
     </div>
-    </ul>
-    </div>
-</nav>
 </div>
+    </ul>
+</nav>
+    </div>
