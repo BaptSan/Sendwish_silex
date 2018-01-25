@@ -2,7 +2,7 @@
 	width: 80%;
 	height: auto;
 	margin:10%;
-	background-color: white;
+	background-color: #aaa;
 	border: solid 1px;
 	border-radius: 10px;
 	border-color: #000000;
@@ -43,14 +43,25 @@
 }
 
 #formBackOfficeProduct {
-	width: 60%;
-	margin:auto;
-	padding-left: 15%;
-	padding-right: 15%;
+	margin-top:2%;
 	font-size: 1.3em;
-	padding-top: 2%;
 }
 
 #btnAddProduct {
-	
+	width: 15%;
+	margin:auto;
+}
+
+.colBackOffice {
+	text-align: center;
+}
+
+.colBackOffice label {
+	width: 90%;
+}
+
+.contentFile {
+	width: 30%;
+	margin:auto;
+	margin-bottom:20px;
 }
