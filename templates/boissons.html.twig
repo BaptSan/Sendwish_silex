@@ -5,24 +5,41 @@
 		{% if drinks != null %}
 			{% set i = 0 %}
 			{% for drink in drinks %}
+				<div class="lineProduct text-center mb-3">
 				{% set i = i+1 %}
 					{% if i%2 != 0 %}
-						<div class="contentProductBoxPair">
-							<div class="productBoxPair">
-								<img class="imgProductBox" src="{{drink.imagePath}}">
-								<h2>{{drink.name}} <br> {{drink.price}}€</h2>	
-							</div>
-							<p>{{drink.description}}</p>
+						<div class="d-flex flex-row justify-content-center align-items-center">
+					<div class="col-md-4 p-0 productImageBox">
+						<h3 class="mb-0">{{drink.name}}</h3>
+						<img class="w-75 mt-3" src="{{drink.imagePath}}">
+						<p>{{drink.price|number_format(2, '.', ',')}} €</p>
+					</div>
+					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
+						<div class="productDescription">
+							<p class="m-0 p-0">{{drink.description}}</p>
 						</div>
+					</div>
+				</div>
+						
 					{% else %}	
-						<div class="contentProductBoxImpair">
-							<div class="productBoxImpair">
-								<img class="imgProductBox" src="{{drink.imagePath}}">
-								<h2>{{drink.name}} <br> {{drink.price}}€</h2>
-							</div>
-							<p>{{drink.description}}</p>
+
+
+						<div class="d-flex flex-row-reverse justify-content-center align-items-center">
+					<div class="col-md-4 p-0 productImageBox">
+						<h3 class="mb-0">{{drink.name}}</h3>
+						<img class="w-75 mt-3" src="{{drink.imagePath}}">
+						<p>{{drink.price|number_format(2, '.', ',')}} €</p>
+					</div>
+					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
+						<div class="productDescription">
+							<p class="m-0 p-0">{{drink.description}}</p>
 						</div>
+					</div>
+				</div>
+						
 				{% endif %}
+
+				</div>
 			{% endfor %}
 		{% endif %}
 		</div>
