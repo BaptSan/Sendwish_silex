@@ -85,6 +85,11 @@ min-height: 100vh;
 .wrapper #sidebar :hover{
 color: white;
 }
+
+#pageSubCart th, #pageSubCart td {
+  color:black !important;
+}
+
 .collapse.in {
 display: block;
 }
