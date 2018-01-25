@@ -365,7 +365,7 @@ $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
     foreach ($ordersR as $order) {
         
         $orders[] = [
-            'orderDate' => $order->getorderDate(),
+            'orderDate' => date_format($order->getorderDate(), 'd/m/Y H:i:s'),
             'priceDf' => $order->getPriceDf(),
             'price' => $order->getPrice(),
             'orderNum' => $order->getorderNum(),

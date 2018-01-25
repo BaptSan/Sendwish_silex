@@ -15,11 +15,18 @@ ajaxHisto();
       }, 
       url: '/backOfficeRefresh'
     }).done(function(data) {
-      console.log(data);
+      
       $('#addHisto').html('');
       for( var i = 0 ; i < data.length ; i++ ) {
+        if (data[i].eatIn == true ) {
+          eatIn = '1';
+          takeOut = '0';
+        } else {
+          eatIn = '0';
+          takeOut = '1';
+        }
         $('#addHisto').append('<tr><td>'+data[i].orderDate+'</td><td>'+data[i].priceDf+'</td><td>'+data[i].price+'</td>'+
-          '<td>'+data[i].orderNum+'</td><td>'+data[i].eatIn+'</td><td>'+data[i].takeOut+'</td></tr>');
+          '<td>'+data[i].orderNum+'</td><td>'+eatIn+'</td><td>'+takeOut+'</td></tr>');
       }
       setTimeout(ajaxHisto, 30000);
     });
