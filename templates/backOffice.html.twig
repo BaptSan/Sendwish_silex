@@ -16,36 +16,45 @@
 		</ul>
 		<div class="tab-content container-fluid" id="myTabContent">
 		  <div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="product-tab">
-		  	<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">	
-				<label for="productName"> Nom du produit : <br>
-					<input type="text" class="form-control" name="productName" id="productName">
-				</label> <br>
-				<label for="productPrice"> Prix du produit : <br>
-					<input type="text" class="form-control" name="productPrice" id="productPrice">
-				</label> <br>
-				<label for="productCal"> Nombre de calorie : <br>
-					<input type="text" class="form-control" name="productCal" id="productCal">
-				</label> <br>	
-				<div class="form-group">
-				<label for="productCategory"> Ingrédient :
-				<select multiple class="form-control" name="productCategory" id="productCategory">
-					<option value="drink">Boisson</option>
-					<option value="suppl">Accompagnement</option>
-					<option value="sandwich">Sandwich</option>
-					<option value="child">Menu enfant</option>
-					<option value="menu">Menu</option>
-				</select>
-				</label><br>
+		  	<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">
+				<div class="row">
+				  	<div class="col-6 colBackOffice">
+						<label for="productName"> Nom du produit : <br>
+							<input type="text" class="form-control" name="productName" id="productName">
+						</label> <br>
+						<label for="productPrice"> Prix du produit : <br>
+							<input type="text" class="form-control" name="productPrice" id="productPrice">
+						</label> <br>
+						<label for="productCal"> Nombre de calorie : <br>
+							<input type="text" class="form-control" name="productCal" id="productCal">
+						</label> <br>
+						<label for="productIngredient"> Ingrédients :
+							<input type="text" class="form-control" name="productIngredient" id="productIngredient">
+						</label>
+					</div>
+					<div class="col-6 colBackOffice">		
+						<div class="form-group">
+						<label for="productCategory"> Catégorie :
+						<select multiple class="form-control" name="productCategory" id="productCategory">
+							<option value="drink">Boisson</option>
+							<option value="suppl">Accompagnement</option>
+							<option value="sandwich">Sandwich</option>
+							<option value="child">Menu enfant</option>
+							<option value="menu">Menu</option>
+						</select>
+						</label><br>
+						</div>
+						<div class="form-group">
+						<label for="productDescription"> Description du produit : <br>
+							<textarea class="form-control" name="productDescription" id="productDescription" rows="3"></textarea>
+						</label>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-				<label for="productDescription"> Description du produit : <br>
-					<textarea class="form-control" name="productDescription" id="productDescription" rows="3"></textarea>
-				</label>
-				</div>
-				<div class="form-group">
-				<label for="productIngredient"> Insertion de l'image dans la fiche produit : <br>
+				<div class="form-group contentFile">
+					<label for="productIngredient"> Insertion de l'image dans la fiche produit : <br>
 					<input type="file" class="form-control-file" name="productPath" id="productPath">
-				</label> <br>
+					</label> <br>
 				</div>
 				<input type="submit" class="btn btn-primary btn-lg btn-block btn btn-outline-dark" name="btnAddProduct" id="btnAddProduct">
 			</form>
