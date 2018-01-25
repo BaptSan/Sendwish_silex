@@ -180,15 +180,26 @@ body { font-family: sans-serif; }
 }
  .imgCard{
 margin-top: 8%;
+align-self: center;
 
  }
 
 .productNameCarousel{
   position: absolute;
   top:20px;
-  right: 20px;
+  left: 20px;
+  border-bottom: 1px solid grey;
 }
-
+.productPriceCarousel{
+  position: absolute;
+  top: 200px;
+  right: 30px
+}
+.productInfo{
+  position: absolute;
+  top: 250px;
+  right: 30px
+}
 
 /*Style Font*/
 

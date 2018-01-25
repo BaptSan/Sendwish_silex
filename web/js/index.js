@@ -79,8 +79,9 @@ updateCart();
        string +='<div class="carousel-cell card img'+i+'">'+
                   '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="imgCard w-50 align-self-left">'+
                   btnBoisson+  
-                  "<div class='productNameCarousel'><h1>"+product.name+"</h1></div>"+
-                  "<div>"+product.price+" €</div>"+
+                  "<div class='productNameCarousel'><h3>"+product.name+"</h3></div>"+
+                  "<div class='productPriceCarousel'><h2><small class='text-muted'>"+product.price+" €</small></h2></div>"+
+                  '<div class="productInfo"><p><a href="#">En savoir plus</a></p></div>'+
                 '</div>';
         }
       string+="</div>";
