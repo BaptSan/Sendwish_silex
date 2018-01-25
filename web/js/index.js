@@ -1,7 +1,6 @@
 $(document).ready( function(){
-initFlick();
-updateCart();
- 
+  initFlick();
+  updateCart();
  });
 
 
@@ -40,9 +39,6 @@ updateCart();
           $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
  
         });
- 
-        Pbadge++;
-        $('#idPanier').text(Pbadge);
       }
        updateCart();
  

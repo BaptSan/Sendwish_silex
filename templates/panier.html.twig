@@ -7,13 +7,13 @@
 		  </div>
 		</div>
 	<div id="contentTableCart" class="container-fluid">
-		<table class="table table-hover table-light mb-0">
+		<table id="tableCart" class="table table-hover table-light text-center mb-0">
 			<thead class="bg-danger">
 				<tr>
 				<th>Articles</th>
 				<th>Nom du produit</th>
 				<th>Quantité</th>
-				<th>Prix (p * qte)</th>
+				<th>Prix</th>
 				<th></th>
 			</tr>
 			</thead>
@@ -21,9 +21,9 @@
 				{% for cartItem in cartItems %}
 					<tr class="itemRow" id="item{{cartItem.id}}">
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
-						<td class="w-25">{{cartItem.name}}</td>
+						<td>{{cartItem.name}}</td>
 						<td>{{cartItem.quantity}}</td>
-						<td>{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
+						<td>{{cartItem.price * cartItem.quantity}} €
 						</td>
 						<td class="binCase" data-price="{{cartItem.price * cartItem.quantity}}" data-id='{{cartItem.id}}'>{% include 'bin.html.twig' %}</td>
 					</tr>
