@@ -168,7 +168,7 @@ body { font-family: sans-serif; }
   width: 140px;
 }
 .carousel-cell {
-  height: 270px;
+  height: 350px;
 }
 .carousel-nav .carousel-cell:before {
   font-size: 50px;
@@ -178,7 +178,10 @@ body { font-family: sans-serif; }
 .carousel-nav .carousel-cell.is-nav-selected {
   background: #37bace;
 }
+ .imgCard{
+margin-top: 8%;
 
+ }
 
 
 

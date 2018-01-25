@@ -1,6 +1,6 @@
 $(document).ready( function(){
 initFlick();
-updateCart();
+
  });
 
 
@@ -20,22 +20,14 @@ updateCart();
       url: '/panier'
     }).done(function(data){
       //fonction ajout des produits dans le petit panier.
-     
+      $('#idPanier').addClass('badge badge-light');
       if($('#idPanier').text() == ""){
-        $('#idPanier').addClass('badge badge-light badgetest').animate({opacity:'1'});
-        $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
         $('#idPanier').text('1');
       }else{
         Pbadge = parseInt($('#idPanier').text());
-
-        $('#idPanier').fadeOut(100,function(){
-          $('#idPanier').removeClass('badge badge-light badgetest');
-          Pbadge++;
-          $('#idPanier').text(Pbadge);
-          $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
-        });
+        Pbadge++;
+        $('#idPanier').text(Pbadge);
       }
-      updateCart();
     });
   });
   
@@ -63,11 +55,11 @@ updateCart();
       for (let product of test){
         i++;
         btnBoisson = '';
-        if(product.category == 'menu' || product.category == 'drink' || product.category == 'sandwich' || product.category == 'suppl' ) {
+        if(product.category == 'menu' || product.category == 'drink' || product.category == 'sandwich' || product.category == 'suppl' || product.category == 'child' ) {
           btnBoisson = '<button class="btn btn-danger btnBMenus w-50 " type="submit"  data-id="'+product.id+'">Ajouter au Panier</button>'
         }
        string +='<div class="carousel-cell card img'+i+'">'+
-                  '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="img w-50 align-self-center">'+
+                  '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="imgCard w-50 align-self-left">'+
                   btnBoisson+  
                 '</div>';
         }
