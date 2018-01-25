@@ -395,6 +395,11 @@ $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
     return new JsonResponse($orders);
 });
 $app->match('/inscription', function (Request $request) use ($app) {
+
+    $currentUserSession = $app['session']->get('user'); 
+    $currentUserID = $currentUserSession['id'];
+    $currentUser = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$currentUserID));
+
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
             null !== $request->get('inputLat') && !empty($request->get('inputLat')) &&
@@ -424,10 +429,6 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $varGender = htmlspecialchars($request->get('inputGender'));
 
                 $password = password_hash($varPassWord,PASSWORD_DEFAULT);
-
-                $currentUserSession = $app['session']->get('user'); 
-                $currentUserID = $currentUserSession['id'];
-                $currentUser = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$currentUserID));
                 if($currentUser->getIsGuest() == true){
 
                     $currentUser->setFirstname($varFirstName);
@@ -450,14 +451,19 @@ $app->match('/inscription', function (Request $request) use ($app) {
                     $em->persist($currentUser);
                 }
                 else{
-                    $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, false, false, false,true, new DateTime());
-                    $em = $app['em'];
-                    $em->persist($sd);
+                    // $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, false, false, false,true, new DateTime());
+                    // $em = $app['em'];
+                    // $em->persist($sd);
                 }
                 $em->flush();
                 $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
                 $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
             return $app->redirect('/?register=true');
+        }
+    }else{
+        if($currentUser->getIsGuest()){
+
+        return $app['twig']->render('logForOrder.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
         }
     }
     return $app['twig']->render('inscription.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
