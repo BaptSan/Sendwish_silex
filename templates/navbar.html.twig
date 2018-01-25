@@ -54,7 +54,7 @@
 </div>
 {# DROPDOWN DE CONNEXION #}
 {# PAGE CLIENT #}
-{% if theUser != NULL %}
+{% if theUser != NULL and theUser.guest != true %}
 <div class="dropdown">
     <li id="bgclient" class="dropdown-toggle">
         <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
