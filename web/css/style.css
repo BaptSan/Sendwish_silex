@@ -81,19 +81,6 @@ nav.navProduct ul .liNavProduct a:hover:after {
   height: 100%; 
 } 
 
-/*Carousel*/
-.carousel {
-  margin-bottom: 40px;
-}
-
-.carousel-cell {
-  width: 100%;
-  margin-right: 10px;
-  background:  ;
-  border-radius: 5px;
-  counter-increment: carousel-cell;
-}
-
 /* cell number */
 .carousel-cell:before {
   display: block;
