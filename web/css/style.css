@@ -183,7 +183,11 @@ margin-top: 8%;
 
  }
 
-
+.productNameCarousel{
+  position: absolute;
+  top:20px;
+  right: 20px;
+}
 
 
 /*Style Font*/

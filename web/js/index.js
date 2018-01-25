@@ -79,6 +79,8 @@ updateCart();
        string +='<div class="carousel-cell card img'+i+'">'+
                   '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="imgCard w-50 align-self-left">'+
                   btnBoisson+  
+                  "<div class='productNameCarousel'><h1>"+product.name+"</h1></div>"+
+                  "<div>"+product.price+" €</div>"+
                 '</div>';
         }
       string+="</div>";
