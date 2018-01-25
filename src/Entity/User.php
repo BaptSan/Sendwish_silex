@@ -76,6 +76,17 @@ class User
      */
     private $isDelivery;
 
+    /**
+     * @Column(type="boolean", nullable=true)
+     */
+    private $isGuest;
+
+
+    /**
+     * @Column(type="datetime", nullable=true)
+     */
+    private $memberSince;
+
 
     /**
      * One user has Many cart items.
@@ -94,7 +105,7 @@ class User
      */
     private $gender;
 
-    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formattedAddr, $lat, $lng, $distance, $tel, $isAdmin, $isClient, $isDelivery)
+    public function __construct($lastname, $firstname, $thegender, $mail, $password, $birthdate, $formattedAddr, $lat, $lng, $distance, $tel, $isAdmin, $isClient, $isDelivery, $isGuest,$memberSince)
     {
         $this->lastname = $lastname;
         $this->firstname = $firstname;
@@ -109,9 +120,11 @@ class User
         $this->isAdmin = $isAdmin;
         $this->isClient = $isClient;
         $this->isDelivery = $isDelivery;
+        $this->isGuest = $isGuest;
         $this->gender = $thegender;
         $this->cartItems = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->memberSince = $memberSince;
     }
     
     public function getId()
@@ -270,6 +283,29 @@ class User
     public function setIsDelivery($isDelivery)
     {
         $this->isDelivery = $isDelivery;
+
+        return $this;
+    }
+    public function getIsGuest()
+    {
+        return $this->isGuest;
+    }
+
+    public function setIsGuest($isGuest)
+    {
+        $this->isGuest = $isGuest;
+
+        return $this;
+    }
+
+    public function getMemberSince()
+    {
+        return $this->memberSince;
+    }
+
+    public function setMemberSince($memberSince)
+    {
+        $this->memberSince = $memberSince;
 
         return $this;
     }
