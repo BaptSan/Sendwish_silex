@@ -1,8 +1,14 @@
 .binSVG {
 	fill:#FF4747;
-	padding-top: 25px;
+/*	padding-top: 25px;*/
+
 }
 
 .binCase svg{
 	cursor:pointer;
+	width: 40px;
+}
+
+#tableCart th{
+	width: 25%;
 }
