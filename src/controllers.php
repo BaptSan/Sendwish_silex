@@ -123,7 +123,7 @@ $app->get('/getPanier', function (Request $request) use ($app) {
                             $cartHtmlGenerate.="</tr>";
                             $cartHtmlGenerate.="</tbody>";
                             $cartHtmlGenerate.="</table>";
-                            $cartHtmlGenerate.='<a href="/ajoutPanier" class="btn btn-block btn-danger">Voir le panier</a>';
+                            $cartHtmlGenerate.='<a href="/ajoutPanier" class="btn btn-block btn-danger w-75 ml-4">Voir le panier</a>';
                         }else{
                             $cartHtmlGenerate.="<tr>";
                             $cartHtmlGenerate.="<td>".$item['name']."</td>";
