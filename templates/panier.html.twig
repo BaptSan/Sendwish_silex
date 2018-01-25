@@ -13,7 +13,7 @@
 				<th>Articles</th>
 				<th>Nom du produit</th>
 				<th>Quantité</th>
-				<th>Prix (p * qte)</th>
+				<th>Prix</th>
 				<th></th>
 			</tr>
 			</thead>
@@ -23,7 +23,7 @@
 						<td><img style="width:30%;" src="{{cartItem.imagepath}}"></td>
 						<td class="w-25">{{cartItem.name}}</td>
 						<td>{{cartItem.quantity}}</td>
-						<td>{{cartItem.price * cartItem.quantity}} € ({{cartItem.quantity}} * {{cartItem.price}}€)
+						<td>{{cartItem.price * cartItem.quantity}} €
 						</td>
 						<td class="binCase" data-price="{{cartItem.price * cartItem.quantity}}" data-id='{{cartItem.id}}'>{% include 'bin.html.twig' %}</td>
 					</tr>
