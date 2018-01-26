@@ -36,8 +36,9 @@ ajaxHisto();
  	$('.carousel-main').flickity({
     pageDots: true,
     contain:true,
-    freeScroll: true,
-    wrapAround: true
+    // On ajoute des produits et on décommente !
+    // freeScroll: true,
+    // wrapAround: true
     });
   //Envoie des différents id des différentes image + 
   $('#secondCar .btnBMenus').click(function() {  
