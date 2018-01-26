@@ -13,6 +13,13 @@ use Entity\OrderItem;
 // MAIN ROUTE
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {     
+    if(!$app['session']->get('user')){
+        $guest = new User("", "Invité", "", "", "", new DateTime(), "", "", "", "", "", "", "", "", true, new DateTime());
+        $em = $app['em'];
+        $em->persist($guest);
+        $em->flush();
+        $app['session']->set('user', array('mail' => $guest->getMail(), 'admin' => $guest->getIsAdmin(), 'id'=> $guest->getId(), 'firstname' => $guest->getFirstname(),'guest'=>$guest->getIsGuest()));
+    }
     return $app['twig']->render('index.html.twig', array( 
         'isRegister' => $_GET['register'] ?? NULL,
         'connect' => $_GET['connect'] ?? NULL,
@@ -186,6 +193,9 @@ $app->get('/suppPanier',  function (Request $request) use ($app) {
 // ORDER ROUTE
 $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');
+    if ($userSession['guest'] == true){
+        return $app->redirect('/inscription');
+    }
     $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
     $cartItems = $user->getCartItems();
     $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
@@ -213,7 +223,7 @@ $app->match('/connexion', function (Request $request) use ($app) {
     if (null !== $user && $db_password) {
         $password_client = htmlspecialchars($request->get('password'));
         if (password_verify($password_client, $db_password)) {
-            $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname()));
+                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
             return $app->redirect('/?connect=true');
         }        
     }
@@ -333,21 +343,29 @@ $app->match('/admin', function (Request $request) use ($app) {
                 $varIsClient = true;
                 $varIsDelivery = false;
                 $varIsAdmin = false;
+                $varIsGuest = false;
             }else if($request->get('inputRight') === "DeliveryMan"){
                 $varIsClient = false;
                 $varIsDelivery = true;
                 $varIsAdmin = false;
+                $varIsGuest = false;
             }else if($request->get('inputRight') === "Admin"){
                 $varIsClient = false;
                 $varIsDelivery = false;
                 $varIsAdmin = true;
+                $varIsGuest = false;                
+            }else if($request->get('inputRight') === "Guest"){
+                $varIsClient = false;
+                $varIsDelivery = false;
+                $varIsAdmin = false;
+                $varIsGuest = true;
             }
             $varLat = htmlspecialchars($request->get('inputLat'));
             $varLng = htmlspecialchars($request->get('inputLng'));
             $varDist = htmlspecialchars($request->get('inputDist'));
 
 
-             $sd = new User($varLastname, $varFirstname, $varGender, $varMail, $varPassword, $varBirthday, $varAddress, $varLat, $varLng, $varDist, $varTel, $varIsAdmin, $varIsClient, $varIsDelivery);
+             $sd = new User($varLastname, $varFirstname, $varGender, $varMail, $varPassword, $varBirthday, $varAddress, $varLat, $varLng, $varDist, $varTel, $varIsAdmin, $varIsClient, $varIsDelivery, $varIsGuest, new DateTime());
                     $em = $app['em'];
                     $em->persist($sd);
                     $em->flush();
@@ -377,6 +395,11 @@ $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
     return new JsonResponse($orders);
 });
 $app->match('/inscription', function (Request $request) use ($app) {
+
+    $currentUserSession = $app['session']->get('user'); 
+    $currentUserID = $currentUserSession['id'];
+    $currentUser = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$currentUserID));
+
     if ($request->get('inscripValid') !== NULL) {
         if (null !== $request->get('firstname') && !empty($request->get('firstname')) &&
             null !== $request->get('inputLat') && !empty($request->get('inputLat')) &&
@@ -406,14 +429,41 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 $varGender = htmlspecialchars($request->get('inputGender'));
 
                 $password = password_hash($varPassWord,PASSWORD_DEFAULT);
+                if($currentUser->getIsGuest() == true){
 
-                $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, true, false, false);
-                $em = $app['em'];
-                $em->persist($sd);
+                    $currentUser->setFirstname($varFirstName);
+                    $currentUser->setLastname($varLastName);
+                    $currentUser->setMail($varEmail);
+                    $currentUser->setPassword($password);
+                    $currentUser->setBirthdate(new DateTime($varBirthday));
+                    $currentUser->setFormattedAddr($varAddress);
+                    $currentUser->setLat($varLat);
+                    $currentUser->setLng($varLng);
+                    $currentUser->setDistance($varDist);
+                    $currentUser->setTel($varTel);
+                    $currentUser->setIsAdmin(false);
+                    $currentUser->setIsClient(true);
+                    $currentUser->setIsDelivery(false);
+                    $currentUser->setIsGuest(false);
+                    $currentUser->setMemberSince(new DateTime());
+                    $currentUser->setGender($varGender);
+                    $em = $app['em'];
+                    $em->persist($currentUser);
+                }
+                else{
+                    // $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, false, false, false,true, new DateTime());
+                    // $em = $app['em'];
+                    // $em->persist($sd);
+                }
                 $em->flush();
                 $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
-                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname()));
+                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
             return $app->redirect('/?register=true');
+        }
+    }else{
+        if($currentUser->getIsGuest()){
+
+        return $app['twig']->render('logForOrder.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
         }
     }
     return $app['twig']->render('inscription.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
