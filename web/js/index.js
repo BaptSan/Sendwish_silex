@@ -38,6 +38,8 @@ ajaxHisto();
  	$('.carousel-main').flickity({
     pageDots: true,
     contain:true,
+    freeScroll: true,
+    wrapAround: true
     });
   //Envoie des différents id des différentes image + 
   $('#secondCar .btnBMenus').click(function() {  
@@ -85,7 +87,6 @@ ajaxHisto();
     contain: true,
     pageDots: false,
     prevNextButtons: false,
-    
     });
 }
 
