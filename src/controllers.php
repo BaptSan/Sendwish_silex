@@ -450,19 +450,13 @@ $app->match('/inscription', function (Request $request) use ($app) {
                     $em = $app['em'];
                     $em->persist($currentUser);
                 }
-                else{
-                    // $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, false, false, false,true, new DateTime());
-                    // $em = $app['em'];
-                    // $em->persist($sd);
-                }
                 $em->flush();
                 $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
                 $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
             return $app->redirect('/?register=true');
         }
     }else{
-        if($currentUser->getIsGuest()){
-
+        if($currentUser->getIsGuest() && count($currentUser->getCartItems()) != 0){
         return $app['twig']->render('logForOrder.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
         }
     }
