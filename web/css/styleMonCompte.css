@@ -1,0 +1,14 @@
+#titreCompte {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.table {
+	text-align: center;
+}
+.tableauClient {
+	margin: 3%;
+	width: 25%;
+}
+tr td {
+	padding: 5%;
+}
