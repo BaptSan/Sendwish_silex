@@ -75,7 +75,17 @@ $app->get('/petitesFaims', function () use ($app) {
 
 // ACCOUNT INFOS ROUTE
 $app->get('/client', function () use ($app) {
-    return $app['twig']->render('espaceClient.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->getRepository(User::class)->findOneBy(array("id"=>$userSession['id']));
+    // return dump($user);
+    return $app['twig']->render('espaceClient.html.twig',array(
+        'theUser'=>$app['session']->get('user') ?? NULL,
+        'infosUserFirstname'=>$user->getFirstname() ?? NULL,
+        'infosUserLastname'=>$user->getLastname() ?? NULL,
+        'infosUseremail'=>$user->getMail() ?? NULL,
+        'infosUserAdress'=>$user->getFormattedAddr() ?? NULL,
+        'infosUsertel'=>$user->getTel() ?? NULL,
+    ));
 });
 
 // ACCOUNT INFOS ROUTE

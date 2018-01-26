@@ -1,6 +1,27 @@
 {% extends "layout.html.twig" %}
 {% block client %}
-	{% for key, info in theUser %}
-		{{key}}: {{info}}
-	{% endfor %}
+		<div class="container">
+  <h2 id="titreCompte">Mon Compte</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Adress</th>
+        <th>Telephone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{infosUserFirstname}}</td>
+        <td>{{infosUserLastname}}</td>
+        <td>{{infosUseremail}}</td>
+        <td>{{infosUserAdress}}</td>
+        <td>{{infosUsertel}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+		
 {% endblock %}
