@@ -2,7 +2,7 @@
 {% block inscrip %}
 {% block errorLogin %}{% endblock %}
 {% block errorOrderForLogin %}{% endblock %} 
-<div class="container-fluid">
+<div class="row">
 	<div class="col-md-8">
 		<form method="post" onsubmit="return validateForm();" >
 			<br />
@@ -29,11 +29,9 @@
 			<input class="form-control formInscriptionCo" type="date" name="birthday" required="required" placeholder="Date de Naissance">
 			<br>
 			<br>
-			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" data-toggle="collapse" data-target="#demo" aria-hidden="true">
+			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" data-toggle="collapse" data-target="#demo" aria-hidden="true"></i></a>
 			<input class="form-control formInscriptionCo" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
-  			<div id="demo" class="collapse">
-			<p id="addressMessage" style="display: none;">
-			</p></div></i></a>
+			<p id="addressMessage" style="display: none;"></p>
 			<br>
 			<br>	
 			<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -76,5 +74,4 @@
 		</form>
 	</div>
 </div>
-<br />
 {% endblock %}
