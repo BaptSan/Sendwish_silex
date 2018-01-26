@@ -40,7 +40,11 @@
 			</tr>
 			</tbody>
 		</table>
-		<a href="/order" class="btn btn-lg btn-primary">Commander !</a>
+		<a href="#" id="orderButton" class="btn btn-lg btn-primary">Commander !</a>
+		<form id="formOrder" method="post" action="/checkOrderOption">
+			<input id="inputChoiceOrderMode" name="inputChoiceOrderMode" type="hidden">
+			<input id="inputChoicePaiementMode" name="inputChoicePaiementMode" type="hidden">
+		</form>
 	</div>
 	{% else %}
 		<h1>Il n'y a actuellement aucun produits dans votre panier !</h1>

@@ -86,7 +86,7 @@ min-height: 100vh;
 color: white;
 }
 
-#pageSubCart th, #pageSubCart td, #pageSubCart td strong {
+#pageSubCart th, #pageSubCart td, #pageSubCart td strong, #pageSubCart p {
   color:black !important;
 }
 

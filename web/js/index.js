@@ -5,8 +5,6 @@ updateCart();
 ajaxHisto();
  });
 
-
-
   function ajaxHisto() {
     
     $.ajax({
@@ -38,6 +36,8 @@ ajaxHisto();
  	$('.carousel-main').flickity({
     pageDots: true,
     contain:true,
+    freeScroll: true,
+    wrapAround: true
     });
   //Envoie des différents id des différentes image + 
   $('#secondCar .btnBMenus').click(function() {  
@@ -76,16 +76,11 @@ ajaxHisto();
   });
   
 
-
-
-  
-  
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
     contain: true,
     pageDots: false,
     prevNextButtons: false,
-    
     });
 }
 
