@@ -190,6 +190,31 @@ $app->get('/suppPanier',  function (Request $request) use ($app) {
     return json_encode(['productsItemPrice' => $productsItemPrice,'idDivItem'=>$productItemId]);
 });
 
+
+$app->match('/checkOrderOption', function (Request $request) use ($app) {
+    if ($request->get('inputChoiceOrderMode') !== null && 
+        ($request->get('inputChoiceOrderMode') === "eatIn" || $request->get('inputChoiceOrderMode') === "eatOut") &&
+         $request->get('inputChoicePaiementMode') !== null &&
+          ($request->get('inputChoicePaiementMode') === "payIn" || $request->get('inputChoicePaiementMode') === "payOnline")){
+
+            if($request->get('inputChoiceOrderMode') === "eatIn"){
+                if($request->get('inputChoicePaiementMode') === "payIn"){
+                    $app->redirect('/order');
+                }else{
+                    $app->redirect('/payment');
+                }
+            }else{
+                if($request->get('inputChoicePaiementMode') === "payIn"){
+                        //AFFICHER LA ROUTE DE CHOIX D'ADDRESSE AVEC LE PAIEMENT EN RESTO
+                }else{
+                    $app->redirect('/payment');
+                }
+            }
+    }else{
+        return "Erreurs d'échanges dans les options de commandes entre les 2 routes";
+    }
+});
+
 // ORDER ROUTE
 $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');
@@ -214,6 +239,10 @@ $app->get('/order', function () use ($app) {
     $app['em']->flush();
 
     return $app->redirect('/ajoutPanier');
+});
+
+$app->get('/payment', function () use ($app) {
+    return $app['twig']->render('payment.html.twig',array('theUser'=>$app['session']->get('user') ?? null));
 });
 
 // CONNECTION ROUTE
