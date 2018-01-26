@@ -200,6 +200,35 @@ $app->get('/suppPanier',  function (Request $request) use ($app) {
     return json_encode(['productsItemPrice' => $productsItemPrice,'idDivItem'=>$productItemId]);
 });
 
+
+$app->match('/checkOrderOption', function (Request $request) use ($app) {
+    if ($request->get('inputChoiceOrderMode') !== null && 
+        ($request->get('inputChoiceOrderMode') === "eatIn" || $request->get('inputChoiceOrderMode') === "eatOut") &&
+         $request->get('inputChoicePaiementMode') !== null &&
+          ($request->get('inputChoicePaiementMode') === "payIn" || $request->get('inputChoicePaiementMode') === "payOnline")){
+            if($request->get('inputChoiceOrderMode') === "eatIn"){
+                if($request->get('inputChoicePaiementMode') === "payIn"){
+                    return $app->redirect('/order');
+                }else{
+                    return $app->redirect('/payment');
+                }
+            }else{
+                if($request->get('inputChoicePaiementMode') === "payIn"){
+                        //AFFICHER LA ROUTE DE CHOIX D'ADDRESSE AVEC LE PAIEMENT EN RESTO
+                    return $app->redirect('/orderAdressChoice');
+                }else{
+                    return $app->redirect('/payment');
+                }
+            }
+    }else{
+        return "Erreurs d'échanges dans les options de commandes entre les 2 routes";
+    }
+});
+
+$app->get('/orderAdressChoice', function (Request $request) use ($app) {
+    return "Page choix d'adresse"; 
+});
+
 // ORDER ROUTE
 $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');
@@ -224,6 +253,10 @@ $app->get('/order', function () use ($app) {
     $app['em']->flush();
 
     return $app->redirect('/ajoutPanier');
+});
+
+$app->get('/payment', function () use ($app) {
+    return $app['twig']->render('payment.html.twig',array('theUser'=>$app['session']->get('user') ?? null));
 });
 
 // CONNECTION ROUTE
@@ -460,19 +493,13 @@ $app->match('/inscription', function (Request $request) use ($app) {
                     $em = $app['em'];
                     $em->persist($currentUser);
                 }
-                else{
-                    // $sd = new User($varLastName, $varFirstName, $varGender, $varEmail, $password, new DateTime($varBirthday), $varAddress, $varLat, $varLng, $varDist, $varTel, false, false, false,true, new DateTime());
-                    // $em = $app['em'];
-                    // $em->persist($sd);
-                }
                 $em->flush();
                 $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
                 $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
             return $app->redirect('/?register=true');
         }
     }else{
-        if($currentUser->getIsGuest()){
-
+        if($currentUser->getIsGuest() && count($currentUser->getCartItems()) != 0){
         return $app['twig']->render('logForOrder.html.twig', array('theUser' => $app['session']->get('user') ?? NULL));
         }
     }
