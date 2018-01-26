@@ -196,23 +196,27 @@ $app->match('/checkOrderOption', function (Request $request) use ($app) {
         ($request->get('inputChoiceOrderMode') === "eatIn" || $request->get('inputChoiceOrderMode') === "eatOut") &&
          $request->get('inputChoicePaiementMode') !== null &&
           ($request->get('inputChoicePaiementMode') === "payIn" || $request->get('inputChoicePaiementMode') === "payOnline")){
-
             if($request->get('inputChoiceOrderMode') === "eatIn"){
                 if($request->get('inputChoicePaiementMode') === "payIn"){
-                    $app->redirect('/order');
+                    return $app->redirect('/order');
                 }else{
-                    $app->redirect('/payment');
+                    return $app->redirect('/payment');
                 }
             }else{
                 if($request->get('inputChoicePaiementMode') === "payIn"){
                         //AFFICHER LA ROUTE DE CHOIX D'ADDRESSE AVEC LE PAIEMENT EN RESTO
+                    return $app->redirect('/orderAdressChoice');
                 }else{
-                    $app->redirect('/payment');
+                    return $app->redirect('/payment');
                 }
             }
     }else{
         return "Erreurs d'échanges dans les options de commandes entre les 2 routes";
     }
+});
+
+$app->get('/orderAdressChoice', function (Request $request) use ($app) {
+    return "Page choix d'adresse"; 
 });
 
 // ORDER ROUTE

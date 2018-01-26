@@ -5,8 +5,6 @@ updateCart();
 ajaxHisto();
  });
 
-
-
   function ajaxHisto() {
     
     $.ajax({
@@ -78,10 +76,6 @@ ajaxHisto();
   });
   
 
-
-
-  
-  
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
     contain: true,
