@@ -14,15 +14,6 @@ nav{
 footer{
   width: 100%;
 }
-
-* { 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box; 
-} 
- 
-body {  
-  font-family: 'Roboto', sans-serif; 
-} 
  
 nav ul { 
   list-style: none; 
@@ -109,11 +100,6 @@ bottom: 0;
 align-self: center;
 margin-bottom: 5px !important;
 }
-
-* { box-sizing: border-box; } 
- 
-body { font-family: sans-serif; } 
- 
  
 /*Carousel*/ 
 .carousel { 
