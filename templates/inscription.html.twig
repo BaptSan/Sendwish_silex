@@ -1,77 +1,67 @@
 {% extends "layout.html.twig" %}
 {% block inscrip %}
-{% block errorLogin %}{% endblock %}
-{% block errorOrderForLogin %}{% endblock %} 
-<div class="row">
-	<div class="col-md-8">
-		<form method="post" onsubmit="return validateForm();" >
-			<br />
-			<h2 id="titreIn">Inscription</h2>
-			<blockquote id="premierForm">
-			<hr>				
-			<i class="fa fa-user" aria-hidden="true"></i>
-			<input class="form-control doubleIp formInscriptionCo" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
-			<input class="form-control doubleIp formInscriptionCo" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
-			<br />
-			<br />
-			<i class="fa fa-transgender" aria-hidden="true"></i>
-			<select name="inputGender" id="questionType" class="form-control" required="required">
-				<option value="male">Homme</option>
-				<option value="female">Femme</option>
-			</select>
-			<br />
-			<br />
-			<i class="fa fa-phone" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
-			<br>
-			<br>
-			<i class="fa fa-birthday-cake" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="date" name="birthday" required="required" placeholder="Date de Naissance">
-			<br>
-			<br>
-			<a id="btnLoc"><i class="fa fa-map-marker fa-2x" data-toggle="collapse" data-target="#demo" aria-hidden="true"></i></a>
-			<input class="form-control formInscriptionCo" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
-			<p id="addressMessage" style="display: none;"></p>
-			<br>
-			<br>	
-			<i class="fa fa-envelope" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="email" name="email" required="required" placeholder="E-mail">
-			<br>
-			<br>
-			<i class="fa fa-lock" aria-hidden="true"></i>
-			<input class="form-control doubleIp formInscriptionCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
-			<input class="form-control doubleIp formInscriptionCo" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
-			<br>
-			<br>
-			<i class="fa fa-check-circle" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="submit" value="Envoyer" id="messValid">
-			<hr id="hrF1">
-			</blockquote>
-			<input type="hidden" name="inscripValid">
-			<input type="hidden" name="inputLat" id="inputLat">
-			<input type="hidden" name="inputLng" id="inputLng">
-			<input type="hidden" name="inputDist" id="inputDist">
-		</form>
+	{# {% block errorLogin %}{% endblock %}
+	{% block errorOrderForLogin %}{% endblock %} #}
+		{# HEADER #}
+
+	<div class="jumbotron pb-0 bg-light">
+		<div id="contentJumbotronCart" class="container">
+			<h1 class="display-4"> <i class="fa fa-user-o" aria-hidden="true"></i>  Inscription</h1><hr>
+		</div>
 	</div>
-	<div class="col-md-4 cln4">
-		<form id="formulaireConnetion" action="/connexion" method="post">
-			<br />
-			<h2 id="titreCo">Connexion</h2>
-			<blockquote id="deuxiemeForm">
-			<hr>				
-			<i class="fa fa-envelope" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="email" name="email" required="required" placeholder="E-mail">
-			<br>
-			<br>
-			<i class="fa fa-lock" aria-hidden="true"></i>
-			<input class="form-control formulaireCo formInscriptionCo" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
-			<br>
-			<br>
-			<i class="fa fa-check-circle" aria-hidden="true"></i>
-			<input class="form-control formInscriptionCo" type="submit" value="Connexion" id="messValid">
-			<hr id="hrF2">
-			</blockquote>
-		</form>
+	
+	{# Contenue du formulaire d'inscription #}
+	<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-8">
+			<form method="post" class="form-control" onsubmit="return validateForm();" >
+				
+				<h2 id="titreIn" class="text-center">Inscription</h2>
+				<blockquote id="premierForm">
+					<hr>
+					<input class="form-control doubleIp formInscriptionCo mb-3" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
+					<input class="form-control doubleIp formInscriptionCo mb-3" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
+					<select name="inputGender" id="questionType" class="form-control mb-3" required="required">
+						<option value="male">Homme</option>
+						<option value="female">Femme</option>
+					</select>
+					<input class="form-control formInscriptionCo mb-3" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
+					<input class="form-control formInscriptionCo mb-3" type="date" name="birthday" required="required" placeholder="Date de Naissance">
+					<a id="btnLoc"></a>
+					<input class="form-control formInscriptionCo mb-3" type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
+					<p id="addressMessage" style="display: none;"></p>
+					<input class="form-control formInscriptionCo mb-3" type="email" name="email" required="required" placeholder="E-mail">
+					<input class="form-control doubleIp formInscriptionCo mb-3" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+					<input class="form-control doubleIp formInscriptionCo mb-3" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
+					<input class="form-control formInscriptionCo mb-3 btn-outline-dark" type="submit" value="Envoyer" id="messValid">
+					<hr id="hrF1">
+				</blockquote>
+				<input type="hidden" name="inscripValid">
+				<input type="hidden" name="inputLat" id="inputLat">
+				<input type="hidden" name="inputLng" id="inputLng">
+				<input type="hidden" name="inputDist" id="inputDist">
+			</form>
+		</div>
+		<div class="col-md-4 border-dark">
+			<form id="formulaireConnection" class="form-control" action="/connexion" method="post">
+				
+				<h2 id="titreCo" class="text-center">Connexion</h2>
+				<blockquote id="deuxiemeForm">
+					<hr>
+					
+					<input class="form-control formInscriptionCo mb-3" type="email" name="email" required="required" placeholder="E-mail">
+					
+					
+					<input class="form-control formulaireCo formInscriptionCo mb-3" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
+					
+					
+					<input class="form-control formInscriptionCo mb-3 btn-outline-dark" type="submit" value="Connexion" id="messValid">
+					<hr id="hrF2">
+				</blockquote>
+			</form>
+		</div>
 	</div>
+	<hr>
 </div>
+
 {% endblock %}

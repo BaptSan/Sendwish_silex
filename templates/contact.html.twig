@@ -1,30 +1,32 @@
 {% extends "layout.html.twig" %}
 {% block contact %}
 	{# FORMULAIRE #}
-	<div class="jumbotron mb-0">
+	<div class="jumbotron pb-0 bg-light">
 		<div id="contentJumbotronCart" class="container">
 			<h1 class="display-4">{% include 'contactlogo.html.twig' %}</i>Contact</h1><hr>
 		</div>
 	</div>
 	
-	<div class="container mt-5">
-	<div class="row">
+	<div class="container mt-5 mb-5">
+	<div class="row mr-0">
 	<div class="col-4 formcontact">
-			<form action="/contact" enctype="multipart/form-data" method="get">
+			<form action="/contact" class="form-control" enctype="multipart/form-data" method="get">
 			{# ENCADREMENT #}
-			<fieldset id="cadre" class="border-secondary">
+			<fieldset id="cadre">
 				{# TITRE #}
-				<div class="container border-warning" id="formulaireTitre">
+				<div class="container border-secondary" id="formulaireTitre">
 				<h1 id="titreContact">Nous Contacter</h1>
+				<hr>
 					{# FORMULAIRE #}
-					<input class="form-control p-2 mb-3 border-warning" id="prenom" type="text" name="firstnameContact" placeholder="Prénom" required="required">
+					<input class="form-control p-2 mb-3 border-secondary" id="prenom" type="text" name="firstnameContact" placeholder="Prénom" required="required">
 					
-					<input class="form-control p-2 mb-3 border-warning" type="text" name="lastnameContact" placeholder="Nom" required="required">
+					<input class="form-control p-2 mb-3 border-secondary" type="text" name="lastnameContact" placeholder="Nom" required="required">
 					
-					<input class="form-control p-2 mb-3 border-warning" type="email" name="mailContact" placeholder="Email">
+					<input class="form-control p-2 mb-3 border-secondary" type="email" name="mailContact" placeholder="Email">
 					
-					<textarea class="form-control p-2 mb-3 border-warning" rows="4" cols="50" name="messageContact" placeholder="Ecrit ton message" required="required"></textarea>
-					<input class="form-control p-2 mb-3 border-warning btn-outline-warning" id="submit" type="submit" name="btnContact" placeholder="Envoyer">
+					<textarea class="form-control p-2 mb-3 border-secondary" rows="4" cols="50" name="messageContact" placeholder="Ecrit ton message" required="required"></textarea>
+					<input class="form-control p-2 mb-3 border-secondary btn-outline-dark" id="submit" type="submit" name="btnContact" placeholder="Envoyer">
+					<hr>
 				</div>
 				</fieldset>
 		</form>
@@ -32,10 +34,12 @@
 	
 	<hr>
 	{# MAP GOOGLE #}
-	<div class="col-6 formcontact">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.3083304859547!2d0.08719151509964126!3d48.43142183862896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e20c8380f2fe81%3A0xa71d1f6718b5aa10!2s8+Cours+Cl%C3%A9menceau%2C+61000+Alen%C3%A7on!5e0!3m2!1sfr!2sfr!4v1516097975762" width="600" height="440" frameborder="0" style="border:0" allowfullscreen></iframe>
+	<div class="col-6 formcontact ">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.3083304859547!2d0.08719151509964126!3d48.43142183862896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e20c8380f2fe81%3A0xa71d1f6718b5aa10!2s8+Cours+Cl%C3%A9menceau%2C+61000+Alen%C3%A7on!5e0!3m2!1sfr!2sfr!4v1516097975762" width="650" height="470" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 </div>
+<hr>
 </div>
+
 
 {% endblock %}

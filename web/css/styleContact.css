@@ -1,15 +1,8 @@
-/*COL 4 LE FORMULAIRE*/
-.formcontact {
- margin-left: 3%; 
- margin-right: 3%; 
-}
 /*ENCADREMENT DU FORMULAIRE*/
 #cadre {
-	color: #979899;		
-	border: solid;
+	background-color: white;		
 	border-radius: 5px;
-	margin-left: 0;
-	
+	height: 80%
 }
 /*TITRE DU FORMULAIRE*/
 #titreContact {

@@ -1,0 +1,17 @@
+/*ENCADREMENT FORMULAIRE INSCRIPTION*/
+#premierForm { 
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+#deuxiemeForm{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 7%
+}
+
+#formulaireConnection{
+	padding: 10px;
+	border-radius: 5px;
+}
