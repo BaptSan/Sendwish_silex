@@ -76,3 +76,33 @@
 	padding: 25px;
 }
 
+
+.addProductFromPageImpair{
+	font-size: 25px;
+	width: 35px;
+	height: 35px;
+	border:1px solid black;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	color: black;
+	transition: background-color 0.250s, color 0.250s;
+}
+.addProductFromPagePair{
+	font-size: 25px;
+	width: 35px;
+	height: 35px;
+	border:1px solid black;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	color: black;
+	transition: background-color 0.250s, color 0.250s;
+}
+
+.addProductFromPagePair:hover,.addProductFromPageImpair:hover{
+	border:1px solid black;
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}

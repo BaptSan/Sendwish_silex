@@ -13,6 +13,9 @@
 						<h3 class="mb-0">{{suppl.name}}</h3>
 						<img class="w-75 mt-3" src="{{suppl.imagePath}}">
 						<p>{{suppl.price|number_format(2, '.', ',')}} €</p>
+						<div data-id="{{ suppl.id }}" class="addProductFromPageImpair">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</div>						
 					</div>
 					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
 						<div class="productDescription">
@@ -29,6 +32,9 @@
 						<h3 class="mb-0">{{suppl.name}}</h3>
 						<img class="w-75 mt-3" src="{{suppl.imagePath}}">
 						<p>{{suppl.price|number_format(2, '.', ',')}} €</p>
+						<div data-id="{{ suppl.id }}" class="addProductFromPagePair">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</div>						
 					</div>
 					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
 						<div class="productDescription">

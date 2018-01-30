@@ -40,7 +40,9 @@ ajaxHisto();
     freeScroll: true,
     wrapAround: true
     });
-  //Envoie des différents id des différentes image + 
+
+
+//Envoie des différents id des différentes image + 
   $('#secondCar .btnBMenus').click(function() {  
     var idCarrousel = $(this).attr('data-id');
     $.ajax({
@@ -76,6 +78,7 @@ ajaxHisto();
     });
   });
   
+
 
   // 2nd carousel, navigation
  $('.carousel-nav').flickity({
