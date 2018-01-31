@@ -19,21 +19,30 @@
 				<h2 id="titreIn" class="text-center">Inscription</h2>
 				<blockquote id="premierForm">
 					<hr>
+					<i class="fa fa-address-card-o iconPosition" aria-hidden="true"></i>
 					<input class="form-control doubleIp formInscriptionCo mb-3" type="text" name="firstname" id="prenom" required="required" placeholder="Prénom">
+					<i class="fa fa-address-card" aria-hidden="true"></i>
 					<input class="form-control doubleIp formInscriptionCo mb-3" type="text" name="lastname" id="nom" required="required" placeholder="Nom">
+					<i class="fa fa-venus iconSex" aria-hidden="true"></i>
+					<i class="fa fa-mars iconSex2" aria-hidden="true"></i>
 					<select name="inputGender" id="questionType" class="form-control mb-3" required="required">
 						<option value="male">Homme</option>
 						<option value="female">Femme</option>
 					</select>
+					<i class="fa fa-phone iconPosition" aria-hidden="true"></i>
 					<input class="form-control formInscriptionCo mb-3" type="tel" name="tel" id="tel" required="required" placeholder="Numéro de Téléphone">
+					<i class="fa fa-birthday-cake iconPosition" aria-hidden="true"></i>
 					<input class="form-control formInscriptionCo mb-3" type="date" name="birthday" required="required" placeholder="Date de Naissance">
-					<i id="btnLoc" class="fa fa-map-marker fa-2x" title="Geolocalisation"  aria-hidden="true"></i>
+					<i id="btnLoc" class="fa fa-map-marker" title="Geolocalisation"  aria-hidden="true"></i>
 					<input class="form-control formInscriptionCo mb-3 " type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">
 					<p id="addressMessage" style="display: none;"></p>
+					
+					<i class="fa fa-envelope iconPosition" aria-hidden="true"></i>
 					<input class="form-control formInscriptionCo mb-3" type="email" name="email" required="required" placeholder="E-mail">
+					<i class="fa fa-key iconPosition" aria-hidden="true"></i>
 					<input class="form-control doubleIp formInscriptionCo mb-3" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
 					<input class="form-control doubleIp formInscriptionCo mb-3" type="password" name="passwordConf" id="cmdp" required="required" placeholder="Confirmation">
-					<input class="form-control formInscriptionCo mb-3 btn-outline-dark" type="submit" value="Envoyer" id="messValid">
+					<input class="form-control formInscriptionCo mb-3 btn-outline-info" type="submit" value="Envoyer" id="messValid">
 					<hr id="hrF1">
 				</blockquote>
 				<input type="hidden" name="inscripValid">
@@ -55,7 +64,7 @@
 					<input class="form-control formulaireCo formInscriptionCo mb-3" type="password" name="password" id="mdp" required="required" placeholder="Mot de passe">
 					
 					
-					<input class="form-control formInscriptionCo mb-3 btn-outline-dark" type="submit" value="Connexion" id="messValid">
+					<input class="form-control formInscriptionCo mb-3 btn-outline-info" type="submit" value="Connexion" id="messValid">
 					<hr id="hrF2">
 				</blockquote>
 			</form>
