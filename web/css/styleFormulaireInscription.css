@@ -15,3 +15,32 @@
 	padding: 10px;
 	border-radius: 5px;
 }
+#btnLoc{
+	position: absolute;
+	left: 8%;
+	cursor: pointer; 
+
+}
+
+#btnLoc {
+  transition: 0.50s;
+  -webkit-transition: 0.50s;
+  -moz-transition: 0.50s;
+  -ms-transition: 0.50s;
+  -o-transition: 0.50s;
+  display: block;
+
+}
+
+#btnLoc:hover {
+  transition: 0.50s;
+  -webkit-transition: 0.50s;
+  -moz-transition: 0.50s;
+  -ms-transition: 0.50s;
+  -o-transition: 0.50s;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
+} 

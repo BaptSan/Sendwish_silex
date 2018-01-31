@@ -73,3 +73,6 @@ function init(){
 	});
 }
 
+$(document).ready(function(){
+    $('#btnLoc').tooltip();   
+});
