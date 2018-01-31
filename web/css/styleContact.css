@@ -2,7 +2,7 @@
 #cadre {
 	background-color: white;		
 	border-radius: 5px;
-	height: 80%
+	height: 100%
 }
 /*TITRE DU FORMULAIRE*/
 #titreContact {
@@ -15,3 +15,8 @@
 	margin-top: 5%;
 	margin-bottom: 5%; 
 }
+.formcontact{
+	margin-right: 8%;
+
+}
+

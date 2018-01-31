@@ -2,7 +2,7 @@
 {% block client %}
 		<div class="container">
   <h2 id="titreCompte">Mon Compte</h2>
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Prénom</th>
@@ -14,14 +14,15 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{infosUserFirstname}}</td>
-        <td>{{infosUserLastname}}</td>
-        <td>{{infosUseremail}}</td>
-        <td>{{infosUserAdress}}</td>
-        <td>{{infosUsertel}}</td>
+        <td id="info1">{{infosUserFirstname}}</td>
+        <td id="info2">{{infosUserLastname}}</td>
+        <td id="info3">{{infosUseremail}}</td>
+        <td id="info4">{{infosUserAdress}}</td>
+        <td id="info5">{{infosUsertel}}</td>
       </tr>
     </tbody>
   </table>
+  <hr>
 </div>
 		
 {% endblock %}
