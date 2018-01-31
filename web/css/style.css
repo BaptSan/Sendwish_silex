@@ -99,6 +99,7 @@ position: absolute;
 bottom: 0;
 align-self: center;
 margin-bottom: 5px !important;
+z-index: 1;
 }
  
 /*Carousel*/ 
