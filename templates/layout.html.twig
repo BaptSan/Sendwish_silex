@@ -63,14 +63,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js" crossorigin="anonymous" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/1fc4da24df.js"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkeHVc5oyBqsO1mjf7xwA4vrdVS12O6oI&libraries=places&callback=init">
-        </script>
-        <script src="js/distanceMatrix.js"></script>
-        <script src="js/validationFormulaire.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/updatePanier.js"></script>
-        <script src="js/deleteItems.js" ></script>
-        <script src="js/selectOrderMode.js" ></script>
+        {% block js %}
+        {% endblock %}
     </body>
 </html> 
