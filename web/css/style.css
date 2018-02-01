@@ -157,6 +157,23 @@ margin-top: 8%;
 align-self: center;
 
  }
+ #secondCar > div > button.flickity-prev-next-button.next{
+  right: -55px;
+ }
+ #secondCar > div > button.flickity-prev-next-button.previous{
+  left: -55px;
+ }
+
+#secondCar > div > button.flickity-prev-next-button.next, #secondCar > div > button.flickity-prev-next-button.previous{
+  background-color: #dc3545 !important;
+  transition: all 0.200s;
+ }
+#secondCar > div > button.flickity-prev-next-button.next:hover, #secondCar > div > button.flickity-prev-next-button.previous:hover{
+  background-color: #C82333 !important;
+}
+#secondCar > div > button.flickity-prev-next-button.next > svg > path, #secondCar > div > button.flickity-prev-next-button.previous > svg > path{
+  fill: white !important;
+}
 
 .productNameCarousel{
   position: absolute;
