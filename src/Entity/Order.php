@@ -22,7 +22,7 @@ class Order
      */
 	private $price;
 	/**
-     * @Column(type="integer")
+     * @Column(type="string")
      */
 	private $orderNum;
 
