@@ -176,7 +176,6 @@ $().click(function(){
                   '<img data-id="'+product.id+'" src="../'+product.imagePath+'" class="imgCard w-50 align-self-left">'+
                   btnBoisson+  
                   "<div class='productNameCarousel'><h3>"+product.name+"</h3></div>"+
-                  "<div class='productPriceCarousel'><h2><small class='text-muted'>"+product.price+" €</small></h2></div>"+
                   '<div class="productInfo"><p><a href="'+redirect+'#'+product.id+'">En savoir plus</a></p></div>'+
                   "<div class='productPriceCarousel'><h2><small class='text-muted'>"+product.price.toFixed(2)+" €</small></h2></div>"+
                 '</div>';
