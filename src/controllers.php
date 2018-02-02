@@ -427,7 +427,6 @@ $app->match('/admin', function (Request $request) use ($app) {
         }        
 
     return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL,
-        // 'ordersAdmin' => $orders
     ));
 });
 $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
