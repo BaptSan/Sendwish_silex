@@ -249,6 +249,17 @@ $app->get('/order', function () use ($app) {
     }
     $order->setPrice($total);
     $order->setPriceDf($totalDf);
+    $randomNumber = 0;
+    $buildOrderNumber = "";
+
+    for ($i = 0 ; $i <= 11 ; $i++){
+        if($i == 2 || $i == 6 || $i == 11){
+            $buildOrderNumber.="-";
+        }
+        $randomNumber = rand(0,9);
+        $buildOrderNumber.=strval($randomNumber);
+    }
+    $order->setOrderNum($buildOrderNumber);
     $app['em']->persist($order);
     $app['em']->flush();
 
