@@ -9,6 +9,7 @@ use Entity\CartItem;
 use Entity\Product;
 use Entity\Order;
 use Entity\OrderItem;
+use \Mailjet\Resources;
 
 // MAIN ROUTE
 //Request::setTrustedProxies(array('127.0.0.1'));
@@ -30,11 +31,50 @@ $app->get('/', function () use ($app) {
 ->bind('homepage');
 
 // CONTACT ROUTE
-$app->get('/contact', function (Request $request) use ($app) {
-    $firstname=$request->get('firstnameContact');
-    $lastname=$request->get('lastnameContact');
-    $mail=$request->get('mailContact');
-    $message=$request->get('messageContact');
+$app->match('/contact', function (Request $request) use ($app) {
+
+    if($request->get('firstnameContact') != null && !empty($request->get('firstnameContact')) &&
+        $request->get('lastnameContact') != null && !empty($request->get('lastnameContact')) &&
+        $request->get('mailContact') != null && !empty($request->get('mailContact')) &&
+        $request->get('messageContact') != null && !empty($request->get('messageContact'))){
+
+        // null !== $request->get('firstname') && !empty($request->get('firstname'))
+        $firstname=htmlspecialchars($request->get('firstnameContact'));
+        $lastname=htmlspecialchars($request->get('lastnameContact'));
+        $mail=htmlspecialchars($request->get('mailContact'));
+        $message=htmlspecialchars($request->get('messageContact'));
+
+        $apikey = '139edea6ee06f891d9092b1196c9d385';
+        $apisecret = '3119b6fa6d0ba08ad644436d2e62c486';
+
+
+        $mj = new \Mailjet\Client($apikey, $apisecret,
+              true,['version' => 'v3.1']);
+        $body = [
+            'Messages' => [
+                [
+                    'From' => [
+                        'Email' => "pillot.clement@gmail.com",
+                        'Name' => "Sendwish Mail Contact"
+                    ],
+                    'To' => [
+                        [
+                            'Email' => $mail,
+                            'Name' => strtoupper($lastname)." ".$firstname
+                        ]
+                    ],
+                    'Subject' => "Contact depuis Sendwish.fr !",
+                    'TextPart' => $message,
+                    'HTMLPart' => "<h3>".$message."</h3>"
+                ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        $response->success() && var_dump($response->getData());
+    }
+
+
+
     return $app['twig']->render('contact.html.twig',array('theUser' => $app['session']->get('user') ?? NULL));
 });
 

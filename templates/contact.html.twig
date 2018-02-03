@@ -10,7 +10,7 @@
 	<div class="container mt-5 mb-5">
 	<div class="row mr-0">
 	<div class="col-4 formcontact">
-			<form action="/contact" class="form-control" enctype="multipart/form-data" method="get">
+			<form action="/contact" id="contactForm" class="form-control" enctype="multipart/form-data" method="get">
 			{# ENCADREMENT #}
 			<fieldset id="cadre">
 				{# TITRE #}
@@ -46,5 +46,6 @@
 
 {% block js %}
 	<script src="js/index.js"></script>		
+	<script src="js/mailContact.js"></script>
 	<script src="js/validationFormulaire.js"></script>
 {% endblock %}
