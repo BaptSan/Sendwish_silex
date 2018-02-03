@@ -50,27 +50,27 @@ $app->match('/contact', function (Request $request) use ($app) {
 
         $mj = new \Mailjet\Client($apikey, $apisecret,
               true,['version' => 'v3.1']);
-        $body = [
+$body = [
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => "pillot.clement@gmail.com",
-                        'Name' => "Sendwish Mail Contact"
+                            'Email' => 'contact_sendwish@smxme.fr',
+                            'Name' => 'Contact Sendwish'
                     ],
                     'To' => [
                         [
-                            'Email' => $mail,
-                            'Name' => strtoupper($lastname)." ".$firstname
+                            'Name' => "redirection sendwish vers perso",
+                            'Email' => "sendwish@smxme.fr"
                         ]
                     ],
                     'Subject' => "Contact depuis Sendwish.fr !",
-                    'TextPart' => $message,
-                    'HTMLPart' => "<h3>".$message."</h3>"
+                    'TextPart' => "<p>".strtoupper($lastname)." ".$firstname." vous a envoyé un message via le formulaire de contact sur Sendwish : </p><p>".$message."</p><p>Vous pouvez recontacter ".strtoupper($lastname)." ".$firstname." à cette adresse mail : ".$mail."</p>",
+                    'HTMLPart' => "<p>".strtoupper($lastname)." ".$firstname." vous a envoyé un message via le formulaire de contact sur Sendwish : </p><p>".$message."</p><p>Vous pouvez recontacter ".strtoupper($lastname)." ".$firstname." à cette adresse mail : ".$mail."</p>"
                 ]
             ]
         ];
         $response = $mj->post(Resources::$Email, ['body' => $body]);
-        $response->success() && var_dump($response->getData());
+        $response->success() && var_dump($response->getData()); 
     }
 
 

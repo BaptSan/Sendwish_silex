@@ -7,10 +7,9 @@
 $("#contactForm").submit(function(){
     $.ajax({type:"POST", data: $(this).serialize(), url:"/contact",
         success: function(data){
-        	console.log(data);
         },
         error: function(){
-        	console.log('Une erreur est survenue.');
+        	console.log('Une erreur est survenue dans l\'envoi du mail.');
         }
     });
     return false;
