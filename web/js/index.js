@@ -1,15 +1,8 @@
 $(document).ready( function(){
-initFlick();
-updateCart();
-
-generateCarousel('menu');
-ajaxHisto();
-$().click(function(){
-
-    console.log("coucou");
-  });
-
-
+  initFlick();
+  updateCart();
+  generateCarousel('menu');
+  ajaxHisto();
       //Envoie des différents id des différentes image + 
   $('.addProductFromPageImpair, .addProductFromPagePair').click(function(event) {  
     idCarrousel = $(this).attr('data-id');
@@ -56,7 +49,7 @@ $().click(function(){
       data: {
         'carrousel': idCarrousel
       }, 
-      url: '/panier'
+      url: '/addToCart'
     }).done(function(data){
         //fonction ajout des produits dans le petit panier.
         $('#idPanier').addClass('badge badge-light');
@@ -229,7 +222,7 @@ $().click(function(){
       data: {
         'carrousel': idCarrousel
       }, 
-      url: '/panier'
+      url: '/addToCart'
     }).done(function(data){
         //fonction ajout des produits dans le petit panier.
         $('#idPanier').addClass('badge badge-light');

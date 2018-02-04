@@ -331,7 +331,7 @@ $app->get('/deconnexion', function (Request $request) use ($app) {
 });
 
 // AJAX CART ROUTE
-$app->get('/panier', function (Request $request) use ($app) {
+$app->get('/addToCart', function (Request $request) use ($app) {
     $product = $app['em']->find('Entity\Product',$request->get('carrousel'));
     $userSession = $app['session']->get('user');
     $user = $app['em']->find('Entity\User',$userSession['id']);
@@ -339,6 +339,21 @@ $app->get('/panier', function (Request $request) use ($app) {
     $app['em']->persist($cartItem);
     $app['em']->flush();
     return $request->get('carrousel');
+});
+
+$app->get('/removeFromCart', function (Request $request) use ($app) {
+    $userSession = $app['session']->get('user');
+    $user = $app['em']->find('Entity\User',$userSession['id']);
+    $userCartItems = $user->getCartItems();
+    foreach ($userCartItems as $key => $userCartItem) {
+        $product = $userCartItem->getProduct();
+        if($product->getId() == $request->get('carrousel')){
+            $app['em']->remove($userCartItem);
+            $app['em']->flush();
+            $newCartItems = $user->getCartItems();
+            return $request->get('carrousel');
+        }
+     } 
 });
 
 // AJAX DYNAMIC CARROUSEL ROUTE
