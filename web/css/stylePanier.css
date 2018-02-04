@@ -37,3 +37,31 @@
 	text-align: center;
 	background-color: rgba(0,0,0,0)
 }
+
+.qtyInputCart{
+	width: 15%;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.btnQtyCart{
+	color: #DC3545;
+	transition: all ease 0.250s
+}
+.btnQtyCart:hover{
+	color: #DC3545;
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+#orderButton{
+	display: block
+	width: 10%;
+	float: right;
+	margin-top: 15px;
+	margin-right: 15px;
+/*	position: absolute;
+	right: 0;*/
+}
