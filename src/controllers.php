@@ -292,13 +292,16 @@ $app->get('/order', function () use ($app) {
     $randomNumber = 0;
     $buildOrderNumber = "";
 
-    for ($i = 0 ; $i <= 11 ; $i++){
-        if($i == 2 || $i == 6 || $i == 11){
-            $buildOrderNumber.="-";
+    do{
+        for ($i = 0 ; $i <= 11 ; $i++){
+            if($i == 2 || $i == 6 || $i == 11){
+                $buildOrderNumber.="-";
+            }
+            $randomNumber = rand(0,9);
+            $buildOrderNumber.=strval($randomNumber);
         }
-        $randomNumber = rand(0,9);
-        $buildOrderNumber.=strval($randomNumber);
-    }
+    }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
+    
     $order->setOrderNum($buildOrderNumber);
     $app['em']->persist($order);
     $app['em']->flush();
