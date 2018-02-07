@@ -57,8 +57,12 @@
 
 
 {% block js %}
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkeHVc5oyBqsO1mjf7xwA4vrdVS12O6oI&libraries=places&callback=init">
+	</script>
+	<script src="js/distanceMatrix.js"></script>
     <script src="js/index.js"></script> 
     <script src="js/updatePanier.js"></script> 
     <script src="js/deleteItems.js" ></script> 
     <script src="js/selectOrderMode.js" ></script> 
+
 {% endblock %}

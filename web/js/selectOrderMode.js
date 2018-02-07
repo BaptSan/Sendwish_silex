@@ -28,6 +28,8 @@ $(function(){
 				"</div>"+
 			"</div>"+
 			"<hr class='hrDivOrderChoice'>"+
+			"<div id='divAppendAddress' class='row d-flex justify-content-center'>"+
+			"</div>"+
 			"<div class='row  d-flex justify-content-center'>"+
 				"<div class='col-md-8'>"+
 					"<input id='submitOrderButton' type='button' class='btn btn-block btn-danger disabled' value='Passer commande'>"+
@@ -50,9 +52,28 @@ function choseModeOrder(){
 	if($(this).attr('data-orderMode') == "eatIn"){
 			$(this).css('background-color','white').css('color','black');
 			$('#eatOutBox').css('background-color','rgba(0,0,0,0)').css('color','white');
+			$('#divAppendAddress').html("");
 	}else{
 			$(this).css('background-color','white').css('color','black');
 			$('#eatInBox').css('background-color','rgba(0,0,0,0)').css('color','white');
+			
+
+			if($('#divAppendAddress').html() == ""){
+				htmlAddress='<div class="col-md-8 d-flex justify-content-center"><i id="btnLocOrder" class="fa fa-map-marker" title="Geolocalisation"  aria-hidden="true"></i>'+
+				'<input class="form-control formInscriptionCo mb-3 " type="text" name="address" id="inputAddress" required="required" placeholder="Adresse">'+
+				'</div>'+
+				'<div class="col-md-8 d-flex justify-content-center">'+
+				'<p id="addressMessage" style="display: none;"></p></div>'+
+				'<input type="hidden" name="inputLat" id="inputLat">'+
+				'<input type="hidden" name="inputLng" id="inputLng">'+
+				'<input type="hidden" name="inputDist" id="inputDist">';
+				$('#divAppendAddress').append(htmlAddress);
+								
+				init();
+				$("#btnLocOrder").click(getLoc);
+			}
+
+
 	}
 	checkBoxOrderMode = true;
 	checkOrderOption();

@@ -73,3 +73,37 @@
 	margin-left: 20%;
 	margin-right: 20%;
 }
+
+#btnLocOrder{
+/*	position: absolute;
+	left: 6.5% !important;*/
+	cursor: pointer; 
+	/*font-size: 2.1em !important;
+	margin-top: 0% !important;*/
+	/*color: #38c0ff;*/
+	color: white;
+	transition: all ease 0.250s;
+}
+
+#btnLocOrder:hover{
+	transform: scale(1.1);
+}
+
+#divAppendAddress{
+	position: relative;
+	z-index: 99999999999999 !important;
+}
+.pac-container{
+	position: relative;
+	z-index: 99999999999999 !important;
+}
+#divAppendAddress #inputAddress{
+	width: 75%;
+}
+#divAppendAddress #btnLocOrder{
+	font-size: 2.4em;
+	margin-right: 20px;
+}
+#divAppendAddress #btnLocOrder, #divAppendAddress #inputAddress{
+	display: inline-block;
+}
