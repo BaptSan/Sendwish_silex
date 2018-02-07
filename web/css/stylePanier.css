@@ -17,7 +17,7 @@
 	position: fixed;
 	top:0;
 	left: 0;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0,0,0,0.89);
 	color: white;
 	z-index: 10000000;
 }
@@ -32,9 +32,11 @@
 
 .choiceBoxes, .choiceBoxes2{
 	border: 1px solid white;
-	width: 20%;
-	height: 10%;
+	width: 55%;
+	height: 100px;
 	text-align: center;
+	margin-top: 10px; 
+	margin-bottom: 10px;
 	background-color: rgba(0,0,0,0)
 }
 
@@ -64,4 +66,10 @@
 	margin-right: 15px;
 /*	position: absolute;
 	right: 0;*/
+}
+
+.hrDivOrderChoice{
+	border-color: white !important;
+	margin-left: 20%;
+	margin-right: 20%;
 }
