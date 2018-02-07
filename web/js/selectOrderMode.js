@@ -1,21 +1,39 @@
 $(function(){
 	$('#orderButton').click(function(){
-		divSelectOrderOptions = "<div id='divChoiceOrder'>"+
-				"<div id='eatInBox' data-orderMode='eatIn' class='choiceBoxes'>"+
+		divSelectOrderOptions = "<div class='container-fluid pt-5' id='divChoiceOrder'>"+
+			"<div class='row d-flex justify-content-center'>"+
+				"<div class='col-md-4 d-flex justify-content-center'>"+
+					"<div id='eatInBox' data-orderMode='eatIn' class='choiceBoxes  d-flex justify-content-center align-items-center'>"+
 						"<h3>Sur place</h3>"+
+					"</div>"+
 				"</div>"+
-				"<div id='eatOutBox' data-orderMode='eatOut' class='choiceBoxes'>"+
+				
+				"<div class='col-md-4 d-flex justify-content-center'>"+
+					"<div id='eatOutBox' data-orderMode='eatOut' class='choiceBoxes  d-flex justify-content-center align-items-center'>"+
 						"<h3>Livraison</h3>"+
+					"</div>"+
 				"</div>"+
-
-				"<div id='payInBox' data-orderPaiementMode='payIn' class='choiceBoxes2'>"+
+			"</div>"+
+			"<hr class='hrDivOrderChoice'>"+
+			"<div class='row d-flex justify-content-center'>"+
+				"<div class='col-md-4 d-flex justify-content-center'>"+
+					"<div id='payInBox' data-orderPaiementMode='payIn' class='choiceBoxes2  d-flex justify-content-center align-items-center'>"+
 						"<h3>Espèces</h3>"+
+					"</div>"+
 				"</div>"+
-				"<div id='payOnlineBox' data-orderPaiementMode='payOnline' class='choiceBoxes2'>"+
+				"<div class='col-md-4 d-flex justify-content-center'>"+
+					"<div id='payOnlineBox' data-orderPaiementMode='payOnline' class='choiceBoxes2  d-flex justify-content-center align-items-center'>"+
 						"<h3>En ligne</h3>"+
+					"</div>"+
 				"</div>"+
-				"<input id='submitOrderButton' type='button' class='btn btn-lg btn-danger disabled' value='Passer commande'>"+
-			"</div>";
+			"</div>"+
+			"<hr class='hrDivOrderChoice'>"+
+			"<div class='row  d-flex justify-content-center'>"+
+				"<div class='col-md-8'>"+
+					"<input id='submitOrderButton' type='button' class='btn btn-block btn-danger disabled' value='Passer commande'>"+
+				"</div>"+
+			"</div>"+
+		"</div>";
 		$("#mainDiv > .row").prepend(divSelectOrderOptions).fadeIn();
 		initClick();
 		return false;
