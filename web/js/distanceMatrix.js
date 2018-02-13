@@ -85,6 +85,5 @@ function init(){
 	});
 }
 
-$(document).ready(function(){
-    $('#btnLoc').tooltip();   
-});
+ $('#btnLoc').tooltip();   
+

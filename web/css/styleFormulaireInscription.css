@@ -48,6 +48,8 @@
 	margin-top: 1%
 }
 
+/*Rotation animé du bouton Geolocalisation*/
+
 #btnLoc {
   transition: 0.50s;
   -webkit-transition: 0.50s;
