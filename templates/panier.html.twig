@@ -10,7 +10,7 @@
 		<table id="tableCart" class="table table-hover table-light text-center mb-0">
 			<thead class="bg-danger text-white">
 				<tr>
-				<th>Articles</th>
+				<th>Article</th>
 				<th>Nom du produit</th>
 				<th>Quantité</th>
 				<th>Prix</th>
@@ -43,12 +43,17 @@
 		<form id="formOrder" method="post" action="/checkOrderOption">
 			<input id="inputChoiceOrderMode" name="inputChoiceOrderMode" type="hidden">
 			<input id="inputChoicePaiementMode" name="inputChoicePaiementMode" type="hidden">
+			<input id="inputChoiceDeliveryMode" name="inputChoiceDeliveryMode" type="hidden">
+			<input id="inputOrderFormattedAddress" name="inputOrderFormattedAddress" type="hidden">
+			<input id="inputOrderLat" name="inputOrderLat" type="hidden">
+			<input id="inputOrderLng" name="inputOrderLng" type="hidden">
+			<input id="inputOrderDist" name="inputOrderDist" type="hidden">
 		</form>
 		<a href="#" id="orderButton" class="btn btn-lg btn-danger">Commander !</a>
 	</div>
 	{% else %}
 		<div class="container pt-5 mt-5">
-		<h1>Il n'y a actuellement aucun produits dans votre panier !</h1>
+		<h1>Il n'y a actuellement aucun produit dans votre panier !</h1>
 		<hr>
 		</div>
 

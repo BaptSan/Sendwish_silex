@@ -242,24 +242,123 @@ $app->get('/suppPanier',  function (Request $request) use ($app) {
 
 
 $app->match('/checkOrderOption', function (Request $request) use ($app) {
+    $userSession = $app['session']->get('user');
+    $userId = $userSession['id'];
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId));
+
+    if($user->getIsGuest() === true){
+        return $app->redirect('/inscription');
+    }
+    var_dump($request->get('inputChoiceDeliveryMode'));
+
     if ($request->get('inputChoiceOrderMode') !== null && 
         ($request->get('inputChoiceOrderMode') === "eatIn" || $request->get('inputChoiceOrderMode') === "eatOut") &&
          $request->get('inputChoicePaiementMode') !== null &&
-          ($request->get('inputChoicePaiementMode') === "payIn" || $request->get('inputChoicePaiementMode') === "payOnline")){
+          ($request->get('inputChoicePaiementMode') === "payIn" || $request->get('inputChoicePaiementMode') === "payOnline" &&
+            $request->get('inputChoiceDeliveryMode') !== null &&
+            ($request->get('inputChoiceDeliveryMode') === "actualAddress" || $request->get('inputChoiceDeliveryMode') === "newAddress"))){
+
             if($request->get('inputChoiceOrderMode') === "eatIn"){
                 if($request->get('inputChoicePaiementMode') === "payIn"){
-                    return $app->redirect('/order');
+                    $userSession = $app['session']->get('user');
+                    $userId = $userSession['id'];
+                    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId));
+                    $cartItems = $user->getCartItems();
+                    $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
+                    $total=0;
+                    $totalDf=0;
+                    foreach($cartItems as $cartItem){
+                        $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
+                        $order->addOrderItem($orderItem);
+                        $total+=$cartItem->getProduct()->getPrice();
+                        $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
+                        $app['em']->remove($cartItem);
+                    }
+                    $order->setPrice($total);
+                    $order->setPriceDf($totalDf);
+                    $randomNumber = 0;
+                    $buildOrderNumber = "";
+
+                    do{
+                        for ($i = 0 ; $i <= 11 ; $i++){
+                            if($i == 2 || $i == 6 || $i == 11){
+                                $buildOrderNumber.="-";
+                            }
+                            $randomNumber = rand(0,9);
+                            $buildOrderNumber.=strval($randomNumber);
+                        }
+                    }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
+                    $order->setOrderNum($buildOrderNumber);
+                    $order->setEatIn(true);
+                    $order->setTakeOut(false);
+                    $order->setOrderAddress("");
+                    $order->setOrderLat(0);
+                    $order->setOrderLng(0);
+                    $order->setOrderDist("");
+                    $app['em']->persist($order);
+                    $app['em']->flush();
+                    return $app->redirect('/orderhistory');
                 }else{
                     return $app->redirect('/payment');
                 }
             }else{
                 if($request->get('inputChoicePaiementMode') === "payIn"){
-                        //AFFICHER LA ROUTE DE CHOIX D'ADDRESSE AVEC LE PAIEMENT EN RESTO
-                    return $app->redirect('/orderAdressChoice');
+                    //AFFICHER LA ROUTE DE CHOIX D'ADDRESSE AVEC LE PAIEMENT EN RESTO
+                    if($request->get('inputChoiceDeliveryMode') === "actualAddress" || $request->get('inputChoiceDeliveryMode') === "newAddress"){
+                        // SI ON LIVRE ET QU'IL PAYE EN ESPECES
+                        // ON CREE UNE ORDER AVEC SON ADDRESSE ACTUELLE
+                        $userSession = $app['session']->get('user');
+                        $userId = $userSession['id'];
+                        $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId));
+                        $cartItems = $user->getCartItems();
+                        $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
+                        $total=0;
+                        $totalDf=0;
+                        foreach($cartItems as $cartItem){
+                            $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
+                            $order->addOrderItem($orderItem);
+                            $total+=$cartItem->getProduct()->getPrice();
+                            $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
+                            $app['em']->remove($cartItem);
+                        }
+                        $order->setPrice($total);
+                        $order->setPriceDf($totalDf);
+                        $randomNumber = 0;
+                        $buildOrderNumber = "";
+
+                        do{
+                            for ($i = 0 ; $i <= 11 ; $i++){
+                                if($i == 2 || $i == 6 || $i == 11){
+                                    $buildOrderNumber.="-";
+                                }
+                                $randomNumber = rand(0,9);
+                                $buildOrderNumber.=strval($randomNumber);
+                            }
+                        }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
+                        $order->setOrderNum($buildOrderNumber);
+                        $order->setOrderAddress($request->get('inputOrderFormattedAddress'));
+                        $order->setOrderLat($request->get('inputOrderLat'));
+                        $order->setOrderLng($request->get('inputOrderLng'));
+                        $order->setOrderDist($request->get('inputOrderDist'));
+                        $order->setEatIn(false);
+                        $order->setTakeOut(true);
+                        $app['em']->persist($order);
+                        $app['em']->flush();
+                        return $app->redirect('/orderhistory');
+
+                    }
                 }else{
+
+                    var_dump($request->get('inputOrderFormattedAddress'));
+                    var_dump($request->get('inputOrderLat'));
+                    var_dump($request->get('inputOrderLng'));
+                    var_dump($request->get('inputOrderDist'));
                     return $app->redirect('/payment');
+                    
+                    //SI ON LIVRE ET QU'IL PAYE EN ONLINE, ON REDIRIGE VERS PAIEMENT
                 }
             }
+            
     }else{
         return "Erreurs d'échanges dans les options de commandes entre les 2 routes";
     }
@@ -269,6 +368,19 @@ $app->get('/orderAdressChoice', function (Request $request) use ($app) {
     return "Page choix d'adresse"; 
 });
 
+$app->match('/getUserAddress', function (Request $request) use ($app) {
+    $userSession = $app['session']->get('user');
+    $userId = $userSession['id'];
+    $userInfos = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId));
+    $userAddress = $userInfos->getFormattedAddr();
+    $userInfosAddress['formattedAddress']=$userAddress;
+    $userInfosAddress['lat']=$userInfos->getLat();
+    $userInfosAddress['lng']=$userInfos->getLng();
+    $userInfosAddress['dist']=$userInfos->getDistance();
+    return json_encode($userInfosAddress); 
+});
+
+
 // ORDER ROUTE
 $app->get('/order', function () use ($app) {
     $userSession = $app['session']->get('user');
@@ -276,41 +388,52 @@ $app->get('/order', function () use ($app) {
         return $app->redirect('/inscription');
     }
     $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
-    $cartItems = $user->getCartItems();
-    $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
-    $total=0;
-    $totalDf=0;
-    foreach($cartItems as $cartItem){
-        $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
-        $order->addOrderItem($orderItem);
-        $total+=$cartItem->getProduct()->getPrice();
-        $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
-        $app['em']->remove($cartItem);
-    }
-    $order->setPrice($total);
-    $order->setPriceDf($totalDf);
-    $randomNumber = 0;
-    $buildOrderNumber = "";
+    // $cartItems = $user->getCartItems();
+    // $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
+    // $order
+    // $total=0;
+    // $totalDf=0;
+    // foreach($cartItems as $cartItem){
+    //     $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
+    //     $order->addOrderItem($orderItem);
+    //     $total+=$cartItem->getProduct()->getPrice();
+    //     $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
+    //     $app['em']->remove($cartItem);
+    // }
+    // $order->setPrice($total);
+    // $order->setPriceDf($totalDf);
+    // $randomNumber = 0;
+    // $buildOrderNumber = "";
 
-    do{
-        for ($i = 0 ; $i <= 11 ; $i++){
-            if($i == 2 || $i == 6 || $i == 11){
-                $buildOrderNumber.="-";
-            }
-            $randomNumber = rand(0,9);
-            $buildOrderNumber.=strval($randomNumber);
-        }
-    }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
+    // do{
+    //     for ($i = 0 ; $i <= 11 ; $i++){
+    //         if($i == 2 || $i == 6 || $i == 11){
+    //             $buildOrderNumber.="-";
+    //         }
+    //         $randomNumber = rand(0,9);
+    //         $buildOrderNumber.=strval($randomNumber);
+    //     }
+    // }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
     
-    $order->setOrderNum($buildOrderNumber);
-    $app['em']->persist($order);
-    $app['em']->flush();
+    // $order->setOrderNum($buildOrderNumber);
+    // $app['em']->persist($order);
+    // $app['em']->flush();
 
     return $app->redirect('/ajoutPanier');
 });
 
 $app->get('/payment', function () use ($app) {
     return $app['twig']->render('payment.html.twig',array('theUser'=>$app['session']->get('user') ?? null));
+});
+
+
+
+$app->match('/getUserStatut', function (Request $request) use ($app) {
+    $userSession = $app['session']->get('user');
+    $userId = $userSession['id'];
+    $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userId));
+    $userIsGuest = $user->getIsGuest();
+    return $userIsGuest;
 });
 
 // CONNECTION ROUTE

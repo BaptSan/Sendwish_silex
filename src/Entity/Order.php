@@ -53,6 +53,28 @@ class Order
      */
     private $user;
 
+    /**
+     * @Column(type="string")
+     */
+    private $orderAddress;
+
+    /**
+     * @Column(type="float")
+     */
+    private $orderLat;
+
+    /**
+     * @Column(type="float")
+     */
+    private $orderLng;
+
+    /**
+     * @Column(type="string")
+     */
+    private $orderDist;
+
+
+
     public function __construct($priceDf, $price, $orderNum, $eatIn, $takeOut, $orderDate, $user)
     {
         $this->priceDf = $priceDf;
@@ -64,6 +86,7 @@ class Order
         $this->user = $user;
         $this->orderDate = $orderDate;
     }
+
     public function addOrderItem($orderItem){
         $this->orderItems->add($orderItem);
     }
@@ -120,7 +143,6 @@ class Order
         return $this;
     }
 
-
     public function getTakeOut()
     {
         return $this->takeOut;
@@ -132,8 +154,6 @@ class Order
 
         return $this;
     }
-
-
 
         public function getOrderDate()
     {
@@ -147,4 +167,39 @@ class Order
         return $this;
     }
 
+    public function getOrderAddress(){
+        return $this->orderAddress;
+    }
+
+    public function setOrderAddress($orderAddress){
+        $this->orderAddress = $orderAddress;
+        return $this;
+    }
+
+    public function getOrderLat(){
+        return $this->orderLat;
+    }
+
+    public function setOrderLat($orderLat){
+        $this->orderLat = $orderLat;
+        return $this;
+    }
+
+    public function getOrderLng(){
+        return $this->orderLng;
+    }
+
+    public function setOrderLng($orderLng){
+        $this->orderLng = $orderLng;
+        return $this;
+    }
+
+    public function getOrderDist(){
+        return $this->orderDist;
+    }
+
+    public function setOrderDist($orderDist){
+        $this->orderDist = $orderDist;
+        return $this;
+    }
 }
