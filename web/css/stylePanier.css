@@ -30,7 +30,7 @@
 }
 
 
-.choiceBoxes, .choiceBoxes2{
+.choiceBoxes, .choiceBoxes2,.choiceBoxes3{
 	border: 1px solid white;
 	width: 55%;
 	height: 100px;
@@ -38,6 +38,23 @@
 	margin-top: 10px; 
 	margin-bottom: 10px;
 	background-color: rgba(0,0,0,0)
+}
+.choiceBoxes3Disabled{
+	border: 1px solid rgba(0,0,0,0.9);
+	width: 55%;
+	height: 100px;
+	text-align: center;
+	margin-top: 10px; 
+	margin-bottom: 10px;
+	color: black;
+	font-size: 0.7em;
+	background-color: rgba(255,255,255,0.9);
+}
+
+.boxMiniText{
+	position: absolute;
+	bottom: 0;
+	font-size: 0.75em; 
 }
 
 .qtyInputCart{
@@ -75,12 +92,7 @@
 }
 
 #btnLocOrder{
-/*	position: absolute;
-	left: 6.5% !important;*/
 	cursor: pointer; 
-	/*font-size: 2.1em !important;
-	margin-top: 0% !important;*/
-	/*color: #38c0ff;*/
 	color: white;
 	transition: all ease 0.250s;
 }
@@ -106,4 +118,14 @@
 }
 #divAppendAddress #btnLocOrder, #divAppendAddress #inputAddress{
 	display: inline-block;
+}
+
+#divAppendAddress #inputAddress{
+	background-color: rgba(0,0,0,0);
+	border: 1px solid white;
+	color: white !important;
+}
+
+#divAppendAddress #inputAddress::placeholder{
+	color: white !important;
 }

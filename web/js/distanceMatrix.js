@@ -42,7 +42,19 @@ function callback(response, status) {
 	$("#inputLat").val(clientLat);
 	$("#inputLng").val(clientLng);
 	$("#inputDist").val(response.rows["0"].elements["0"].distance.text);
-	$("#addressMessage").html("Vous habitez à "+response.rows["0"].elements["0"].distance.text+". Il faut "+response.rows["0"].elements["0"].duration.text+" pour nous y rendre en voiture.").fadeIn();
+	console.log(parseFloat(response.rows["0"].elements["0"].distance.text));
+	if(parseFloat(response.rows["0"].elements["0"].distance.text) < 20){
+		$("#premierForm #addressMessage").html("Vous habitez à "+response.rows["0"].elements["0"].distance.text+". Il faut "+response.rows["0"].elements["0"].duration.text+" pour nous y rendre en voiture.").css("color","black").fadeIn();
+		$("#divChoiceOrder #addressMessage").html("Vous habitez à "+response.rows["0"].elements["0"].distance.text+". Il faut "+response.rows["0"].elements["0"].duration.text+" pour nous y rendre en voiture.").css("color","white").fadeIn();
+		if($("#submitOrderButton").hasClass("disabled")){
+			$("#submitOrderButton").removeClass("disabled");
+		}
+	}else{
+		if(!$("#submitOrderButton").hasClass("disabled")){
+			$("#submitOrderButton").addClass("disabled");
+		}
+		$("#addressMessage").html("Nous sommes désolés, mais nous ne pouvons livrer au delà de 20 km. Vous habitez à "+response.rows["0"].elements["0"].distance.text).css("color","red").fadeIn();
+	}
 }
 
 //Used to prevent error caused by the api google in the console when the page is loaded.
