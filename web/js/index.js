@@ -112,7 +112,7 @@ $(document).ready( function(){
   $('.carousel-main').flickity({
     pageDots: true,
     contain:true,
-    // On ajoute des produits et on décommente !
+    // On ajoute des produits!
     freeScroll: true,
     wrapAround: true
     });
