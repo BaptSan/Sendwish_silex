@@ -251,7 +251,7 @@ MEDIAQUERIES
 @media screen and (max-width: 768px) {
 
   nav {
-    position:fixed;
+    position:relative;
     top: 0; 
   }
 
@@ -298,6 +298,12 @@ MEDIAQUERIES
   #pageSubclient {
     left:-50px;
     top:56px;
+  }
+
+  .wrapper{
+    width: 100%;
+    position: relative;
+    display: block;
   }
 
 }
