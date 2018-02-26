@@ -166,7 +166,9 @@ color: #4286f4;
 #bgclientorderhistory:hover :not(i){
 background-color: #4286f4;
 }
-
+#iconClient {
+    font-size:35px;
+}
 
 #claccount {
   color: #6a2bff;
@@ -216,6 +218,17 @@ background-color: red;
   z-index: 2;
 }
 
+.dropdown:hover #pageSubclient{
+  display: block;
+}
+#pageSubclient{
+  display: none;
+  position: absolute;
+  left: 100.8px;
+  top:0;
+  z-index: 2;
+}
+
 .dropdown:hover #pageSubCart{
   display: block;
 }
@@ -251,6 +264,7 @@ MEDIAQUERIES
     width: 100%;
     height: auto;
     display: inline-block !important;
+
   }
   
   body {
@@ -259,7 +273,7 @@ MEDIAQUERIES
 
   #sidebar ul.components {
     padding: 0;
-    margin-bottom:0; 
+    margin-bottom: 0; 
   }
 
   #Layer_1 {
@@ -273,6 +287,16 @@ MEDIAQUERIES
 
   #pageSubmenu {
     left: -25px;
+    top:56px;
+  }
+
+  #pageSubCart {
+    left: -50px;
+    top:56px;
+  }
+
+  #pageSubclient {
+    left:-50px;
     top:56px;
   }
 
