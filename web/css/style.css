@@ -153,11 +153,12 @@ z-index: 1;
   background: #37bace;
 }
 @media screen and ( max-width: 768px ) {
-  .carousel-cell { width: 100%; }
-  
+  .carousel-cell { width: 80%; }
+
 }
 @media screen and ( max-width: 320px ) {
   .carousel-cell { width: 50%; }
+  .carousel-cell { height: 200px }
 }
  .imgCard{
 margin-top: 8%;
