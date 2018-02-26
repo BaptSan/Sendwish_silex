@@ -180,6 +180,7 @@ $(document).ready( function(){
       //Envoie des différents id des différentes image + 
   $('#secondCar .btnBMenus').click(function(event) {  
     idCarrousel = $(this).attr('data-id');
+    console.log(idCarrousel);
     cart = $('#idPanier');
     mousX = event.pageX;
     mousY = event.pageY;
@@ -189,17 +190,11 @@ $(document).ready( function(){
     btnHeight = $(this).height();
     btnWidth = $(this).width();
     btnPosition = $(this).offset();
-    console.log(imgPosition.left);
-    console.log(imgPosition.top);
 
     $(this).clone()
     .text("+ 1 !")
-    // width = $(testBadge).outerWidth();
-    // height = $(testBadge).eight();
     .removeClass('w-50')
     .addClass('badge badge-white')
-    // console.log(width);
-    // console.log(height);
     .css({
       'position':'absolute',
       'left':btnPosition.left+(btnWidth/2),
@@ -211,47 +206,46 @@ $(document).ready( function(){
     animate({
       'top':"-=40",
       'opacity':"1",
-    },"slow").
-    delay(750).animate({
+    },"slow").delay(700).
+    animate({
       'top':cart.offset().top,
       'left':cart.offset().left,
       'opacity':'0'
-    },"fast",function(){
-          $.ajax({
+    },"fast");
+
+      $.ajax({
       type:'GET',
       data: {
         'carrousel': idCarrousel
       }, 
       url: '/addToCart'
+
     }).done(function(data){
+      console.log(data);
         //fonction ajout des produits dans le petit panier.
         $('#idPanier').addClass('badge badge-light');
         if($('#idPanier').text() == ""){
-
            $('#idPanier').addClass('badge badge-light badgetest').animate({opacity:'1'});
            $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
            $('#idPanier').text('1');
         }else{
           Pbadge = parseInt($('#idPanier').text());
           $('#idPanier').fadeOut(100,function(){
-   
             $('#idPanier').removeClass('badge badge-light badgetest');
-   
             Pbadge++;
-   
             $('#idPanier').text(Pbadge);
-   
             $('#idPanier').addClass('badge badge-light badgetest').fadeIn(150);
-   
           });
         }
          updateCart();
       });
-    });
+    // });
   });
 
     });
  }
+
+
 
 
 
