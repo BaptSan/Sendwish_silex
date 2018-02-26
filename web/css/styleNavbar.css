@@ -243,8 +243,7 @@ MEDIAQUERIES
   }
 
   .responsiveNav > li, .responsiveNav > .dropdown{
-  display: inline-block;
-   
+  display: inline-block; 
   }
 
   #sidebar.active {
@@ -263,8 +262,18 @@ MEDIAQUERIES
     margin-bottom:0; 
   }
 
+  #Layer_1 {
+    width: 25px;
+    height:25px !important;
+  }
+
   #sidebar.active ul li a {
     padding:5px 10px;
+  }
+
+  #pageSubmenu {
+    left: -25px;
+    top:56px;
   }
 
 }
