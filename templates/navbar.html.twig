@@ -2,7 +2,7 @@
     <!-- Sidebar Holder -->
     {# PAGE D'ACCUEIL #}
     <nav id="sidebar" class="active">
-        <ul class="list-unstyled components active scroll-menu">
+        <ul class="list-unstyled components active scroll-menu responsiveNav">
             <li id="bgaccueil" class="clhover">
                 <a id="claccueil" href="/" aria-expanded="false" class="collapsed">
                     <i class="fa fa-home" aria-hidden="true"></i>
@@ -58,12 +58,12 @@
 <div class="dropdown">
     <li id="bgclient" class="dropdown-toggle">
         <a id="clclient" href="#pageSubclient" data-toggle="collapse" aria-expanded="false" class="collapsed">
-            <i style="font-size:35px;" class="fa fa-user-o" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i>
+            <i class="fa fa-user-o" id="iconClient" aria-hidden="true"></i>
             Client
         </a>
     </li>
     {# PAGE COMPTE #}
-    <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubmenu" aria-expanded="false">
+    <ul class="list-unstyled collapse dropdown-menu" role="menu" id="pageSubclient" aria-expanded="false">
         <li id="bgaccount"><a id="claccount" href="/client">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
         Mon Compte</a>
