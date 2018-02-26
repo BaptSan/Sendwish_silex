@@ -1,9 +1,11 @@
 @media only screen and (max-width: 550px) {
 
-  .bloc {
-    display:block;
-    clear:both;
-  }
+	.productDescriptionBox {
+		display: inline-block;		
+	}
+	.productDescription {
+		width: 100%;
+	}
 }
 
 /* Style page produit => Petite faim */
