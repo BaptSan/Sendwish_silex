@@ -1,14 +1,15 @@
 {% extends "layout.html.twig" %}
 {% block menus %}
-	<div id="menuParallax">
+	<div id="menuParallax" class="margtop">
 		<div class="maskProductBox">
 		{% if menus != null %}
 			{% set i = 0 %}
 			{% for menu in menus %}
-				<div class="lineProduct text-center mb-3 " id="{{ menu.id }}">
+				<div class="lineProduct text-center mb-3" id="{{ menu.id }}">
 				{% set i = i+1 %}
 					{% if i%2 != 0 %}
 						{# TAILLE EN 1024px #}
+
 						<div class="d-md-flex col-sm-8 col-md-12 justify-content-center align-items-center">
 						<div class="col-md-4 p-0 productImageBox">
 						<h3 class="mb-0">{{menu.name}}</h3>
