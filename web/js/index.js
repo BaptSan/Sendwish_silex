@@ -100,8 +100,8 @@ $(document).ready( function(){
           eatIn = '0';
           takeOut = '1';
         }
-        $('#addHisto').append('<tr><td>'+data[i].orderDate+'</td><td>'+data[i].priceDf+'</td><td>'+data[i].price+'</td>'+
-          '<td>'+data[i].orderNum+'</td><td>'+eatIn+'</td><td>'+takeOut+'</td></tr>');
+        $('#addHisto').prepend('<tr><td>'+data[i].orderDate+'</td><td>'+data[i].priceDf+'</td><td>'+data[i].price+'</td>'+
+          '<td>'+data[i].orderNum+'</td><td>'+eatIn+'</td><td>'+takeOut+'</td><td>'+data[i].orderAddress+'</td></tr>');
       }
       setTimeout(ajaxHisto, 30000);
     });

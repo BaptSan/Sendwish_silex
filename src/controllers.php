@@ -50,7 +50,7 @@ $app->match('/contact', function (Request $request) use ($app) {
 
         $mj = new \Mailjet\Client($apikey, $apisecret,
               true,['version' => 'v3.1']);
-$body = [
+        $body = [
             'Messages' => [
                 [
                     'From' => [
@@ -70,7 +70,7 @@ $body = [
             ]
         ];
         $response = $mj->post(Resources::$Email, ['body' => $body]);
-        $response->success() && var_dump($response->getData()); 
+        $response->success();
     }
 
 
@@ -601,6 +601,7 @@ $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
             'orderNum' => $order->getorderNum(),
             'eatIn' => $order->geteatIn(),
             'takeOut' => $order->gettakeOut(),
+            'orderAddress' => $order->getOrderAddress()
         ];
         
     }
