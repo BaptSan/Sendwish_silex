@@ -19,6 +19,74 @@ svg {
   width:50px;
   height:50px;
 }
+
+/*
+-------------------------------------- css qui était dans le fichier stylefooter ---------------------------------
+*/
+
+nav{
+  width: 100%;
+}
+
+
+ 
+nav ul { 
+  list-style: none; 
+  text-align: center; 
+} 
+nav ul .liNavProduct { 
+  display: inline-block; 
+} 
+nav ul .liNavProduct a { 
+  display: block; 
+  padding: 10px; 
+  text-decoration: none; 
+  color: #aaa; 
+  font-weight: 800; 
+  text-transform: uppercase; 
+  margin: 0 10px; 
+} 
+nav ul .liNavProduct a, 
+nav ul .liNavProduct a:after, 
+nav ul .liNavProduct a:before { 
+  transition: all .5s; 
+} 
+nav ul .liNavProduct a:hover { 
+  color: #555; 
+ 
+} 
+nav.navProduct ul .liNavProduct a { 
+  position:relative; 
+  z-index: 1; 
+} 
+nav.navProduct ul .liNavProduct a:hover { 
+  color: black; 
+   
+} 
+nav.navProduct ul .liNavProduct a:after { 
+  display: block; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  bottom: 0; 
+  right: 0; 
+  margin: auto; 
+  width: 100%; 
+  content: '.'; 
+  color: transparent; 
+  background: #86baef; 
+  visibility: none; 
+  opacity: 0; 
+  z-index: -1; 
+  border-radius: 10px; 
+ 
+} 
+nav.navProduct ul .liNavProduct a:hover:after { 
+  opacity: 1; 
+  visibility: visible; 
+  height: 100%; 
+} 
+
 /* ---------------------------------------------------
 SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -245,6 +313,10 @@ background-color: red;
 #pageSubCart:hover{
   color: black !important;
 }
+
+#iconInscription {
+    color:#4286f4;
+}
 /* ---------------------------------------------------
 MEDIAQUERIES
 ----------------------------------------------------- */
@@ -285,26 +357,19 @@ MEDIAQUERIES
   }
 
   #pageSubmenu {
-    left: -25px;
+    left:0;
     top:56px;
   }
 
   #pageSubCart {
-    left: -50px;
+    left: -25px;
     top:56px;
   }
 
   #pageSubclient {
-    left:-50px;
+    left:-25px;
     top:56px;
   }
-
-  #bgmenus, #bgsandwichs, #bgboissons, #bgfaim {
-    width: 70%;
-  }
-
-
-
 
   .wrapper{
     width: 100%;
@@ -312,6 +377,17 @@ MEDIAQUERIES
     display: block;
   }
 
+  .dropdown-menu {
+    min-width: auto !important;
+  }
+
 }
 
+@media screen and (max-width: 440px) {
+
+    #sidebar.active ul li a {
+        padding:5px 5px;
+    }
+
+}
 
