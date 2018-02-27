@@ -152,8 +152,19 @@ header.masthead {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 20rem;
-  padding-bottom: 20rem; }
+  padding-top: 17rem;
+  padding-bottom: 17rem;
+  }
+ 
+/*header.masthead .overlay {
+    position: absolute;
+    background-color: #212529;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0; 
+  }*/
 
 .showcase .showcase-text {
   padding: 3rem; }
@@ -162,7 +173,21 @@ header.masthead {
   min-height: 30rem;
   background-size: cover; }
 
-@media (min-width: 768px) {
+@media screen and (max-width: 1300px ) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+@media screen and (max-width: 980px ) {
+  header.masthead {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .showcase .showcase-text {
     padding: 7rem; } }
 
