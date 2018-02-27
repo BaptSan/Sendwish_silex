@@ -665,7 +665,7 @@ $app->match('/inscription', function (Request $request) use ($app) {
                 }
                 $em->flush();
                 $user = $app['em']->getRepository(User::class)->findOneBy(array('mail' => $request->get('email')));
-                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest()));
+                $app['session']->set('user', array('mail' => $user->getMail(), 'admin' => $user->getIsAdmin(), 'id'=> $user->getId(), 'firstname' => $user->getFirstname(),'guest'=>$user->getIsGuest(),'gender'=>$user->getGender()));
             return $app->redirect('/?register=true');
         }
     }else{
