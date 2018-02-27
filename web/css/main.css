@@ -40,12 +40,15 @@
 	width:100%;
 }
 
-#idPanier{
-	position: absolute !important;
-	right:28px !important;
-	bottom: 84px !important;
-	opacity: 0;
+@media screen and (min-width: 768px){
+	#idPanier{
+		position: absolute !important;
+		right:28px !important;
+		bottom: 84px !important;
+		opacity: 0;
+	}
 }
+
 
 #bgpanier:hover #clpanier span{
 	color:red;
@@ -53,4 +56,12 @@
 }
 #bgpanier:hover #clpanier span:hover{
 	color:red;
+}
+
+
+@media screen and (max-width: 768px){
+	#idPanier{
+		position: absolute !important;
+		opacity: 0;
+	}
 }
