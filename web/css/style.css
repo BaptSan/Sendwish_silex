@@ -163,14 +163,7 @@ header.masthead {
   min-height: 30rem;
   background-size: cover; }
 
-@media screen and (min-width: 1170px ) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
-}
-
-@media screen and (max-width: 1300px ) {
+@media screen and (min-width: 1170px ) and (max-width: 1450px ) {
   header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
