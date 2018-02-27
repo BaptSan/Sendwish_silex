@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 {% block boissons %}
-	<div id="boissonsParallax">
+	<div id="boissonsParallax" class="margtop">
 		<div class="maskProductBox">
 		{% if drinks != null %}
 			{% set i = 0 %}
@@ -8,18 +8,18 @@
 				<div class="lineProduct text-center mb-3" id="{{ drink.id }}">
 				{% set i = i+1 %}
 					{% if i%2 != 0 %}
-						<div class="d-flex flex-row justify-content-center align-items-center">
+						<div class="block d-md-flex col-sm-8 col-md-12 justify-content-center align-items-center">
 					<div class="col-md-4 p-0 productImageBox">
 						<h3 class="mb-0">{{drink.name}}</h3>
-						<img class="w-75 mt-3" src="{{drink.imagePath}}">
+						<img class="w-75 mt-3 imageProduit" src="{{drink.imagePath}}">
 						<p>{{drink.price|number_format(2, '.', ',')}} €</p>
 						<div data-id="{{ drink.id }}" class="addProductFromPageImpair">
 							<i class="fa fa-plus" aria-hidden="true"></i>
 						</div>
 					</div>
-					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
+					<div class="d-md-flex col-sm-12 col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
 						<div class="productDescription">
-							<p class="m-0 p-0">{{drink.description}}</p>
+							<p id="description" class="m-0 p-0">{{drink.description}}</p>
 						</div>
 					</div>
 				</div>
@@ -27,18 +27,18 @@
 					{% else %}	
 
 
-						<div class="d-flex flex-row-reverse justify-content-center align-items-center">
+						<div class="block d-md-flex col-sm-8 col-md-12 flex-row-reverse justify-content-center align-items-center">
 					<div class="col-md-4 p-0 productImageBox">
 						<h3 class="mb-0">{{drink.name}}</h3>
-						<img class="w-75 mt-3" src="{{drink.imagePath}}">
+						<img class="w-75 mt-3 imageProduit" src="{{drink.imagePath}}">
 						<p>{{drink.price|number_format(2, '.', ',')}} €</p>
 						<div data-id="{{ drink.id }}" class="addProductFromPagePair">
 							<i class="fa fa-plus" aria-hidden="true"></i>
 						</div>
 					</div>
-					<div class="col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
+					<div class="d-md-flex col-sm-12 col-md-8 col-md-8 productDescriptionBox d-flex justify-content-center align-items-center">
 						<div class="productDescription">
-							<p class="m-0 p-0">{{drink.description}}</p>
+							<p id="description" class="m-0 p-0">{{drink.description}}</p>
 						</div>
 					</div>
 				</div>
