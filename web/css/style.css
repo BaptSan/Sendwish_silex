@@ -1,14 +1,9 @@
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 body { 
   font-family: 'Roboto', sans-serif;
 }
 
+-----------/*Style Carousel*/-------------------
 
-/* cell number */
 .carousel-cell:before {
   display: block;
   text-align: center;
@@ -27,18 +22,6 @@ body {
   line-height: 80px;
 }
 
-.carousel-nav .carousel-cell.is-nav-selected {
-  background: #37bace;
-}
-.btnBMenus{
-position: absolute;
-bottom: 0;
-align-self: center;
-margin-bottom: 5px !important;
-z-index: 1;
-}
- 
-/*Carousel*/ 
 .carousel { 
   margin-bottom: 40px; 
 } 
@@ -49,11 +32,6 @@ z-index: 1;
   border-radius: 5px; 
   counter-increment: carousel-cell; 
 } 
- 
-/*Carousel*/
-.carousel {
-  margin-bottom: 40px;
-}
 
 .carousel-cell {
   width: 50%;
@@ -64,25 +42,12 @@ z-index: 1;
   counter-increment: carousel-cell;
 }
 
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
-  line-height: 200px;
-  font-size: 80px;
-  color: white;
-}
-
 .carousel-nav .carousel-cell {
   height: 140px;
   width: 140px;
 }
 .carousel-cell {
   height: 350px;
-}
-.carousel-nav .carousel-cell:before {
-  font-size: 50px;
-  line-height: 80px;
 }
 
 .carousel-nav .carousel-cell.is-nav-selected {
@@ -98,14 +63,25 @@ z-index: 1;
   .carousel-cell { height: 200px }
   .imgCard { margin-top: 30%; align-self: center}
 }
- .imgCard{
-margin-top: 8%;
+
+.btnBMenus{
+position: absolute;
+bottom: 0;
 align-self: center;
+margin-bottom: 5px !important;
+z-index: 1;
+}
+
+.imgCard{
+  margin-top: 8%;
+  align-self: center;
 
  }
+
  #secondCar > div > button.flickity-prev-next-button.next{
   right: -55px;
  }
+
  #secondCar > div > button.flickity-prev-next-button.previous{
   left: -55px;
  }
@@ -114,9 +90,11 @@ align-self: center;
   background-color: #dc3545 !important;
   transition: all 0.200s;
  }
+
 #secondCar > div > button.flickity-prev-next-button.next:hover, #secondCar > div > button.flickity-prev-next-button.previous:hover{
   background-color: #C82333 !important;
 }
+
 #secondCar > div > button.flickity-prev-next-button.next > svg > path, #secondCar > div > button.flickity-prev-next-button.previous > svg > path{
   fill: white !important;
 }
@@ -127,11 +105,13 @@ align-self: center;
   left: 20px;
   border-bottom: 1px solid grey;
 }
+
 .productPriceCarousel{
   position: absolute;
   top: 200px;
   right: 30px
 }
+
 .productInfo{
   position: absolute;
   top: 250px;
@@ -157,11 +137,11 @@ header.masthead {
   }
 
 .showcase .showcase-text {
-  padding: 3rem; }
+    padding: 3rem; }
 
 .showcase .showcase-img {
-  min-height: 30rem;
-  background-size: cover; }
+    min-height: 30rem;
+    background-size: cover; }
 
 @media screen and (max-width: 1450px ) {
   header.masthead {
@@ -189,19 +169,19 @@ header.masthead {
     max-width: 20rem; }
     
 .features-icons .features-icons-item .features-icons-icon {
-      height: 7rem; }
+    height: 7rem; }
       
 .features-icons .features-icons-item .features-icons-icon i {
-        font-size: 4.5rem; }
+    font-size: 4.5rem; }
     
 .features-icons .features-icons-item:hover .features-icons-icon i {
-      font-size: 5rem; }
+    font-size: 5rem; }
 
 .testimonials {
-  padding-top: 7rem;
-  padding-bottom: 7rem; }
+    padding-top: 7rem;
+    padding-bottom: 7rem; }
 .testimonials .testimonial-item {
     max-width: 18rem; }
 .testimonials .testimonial-item img {
-      max-width: 12rem;
-      box-shadow: 0px 5px 5px 0px #adb5bd; }
+    max-width: 12rem;
+    box-shadow: 0px 5px 5px 0px #adb5bd; }
