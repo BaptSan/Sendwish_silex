@@ -28,6 +28,10 @@
 				<div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="product-tab">
 					<form action="/admin" method="post" enctype="multipart/form-data" id="formBackOfficeProduct">
 						<div class="row">
+							<div class="col-md-12">
+								<h3>Ajouter un produit</h3>
+								<hr>
+							</div>
 							<div class="col-6 colBackOffice">
 								<label for="productName"> Nom du produit : <br>
 									<input type="text" class="form-control" name="productName" id="productName">
@@ -67,6 +71,18 @@
 							</label> <br>
 						</div>
 						<input type="submit" class="btn btn-info btn-block btn-lg btn-outline-info mb-4" name="btnAddProduct" id="btnAddProduct">
+					</form>
+					<h3>Supprimer un produit</h3>
+					<hr>
+					<form action="/admin" method="POST">
+						<div class="form-group">
+							<select name="selectProductDelete" class="form-control">
+								{% for product in products %}
+									<option value="{{product.id}}">{{product.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<button id="btnDeleteProduct" class="btn btn-info btn-block btn-lg btn-outline-info mb-4">Supprimer</button>
 					</form>
 				</div>
 				{# PAGES UTILISATEUR #}
@@ -133,6 +149,7 @@
 										<th>Numéro de commande</th>
 										<th>Sur place</th>
 										<th>À emporter</th>
+										<th>Adresse</th>
 									</tr>
 								</thead>
 								<tbody id="addHisto">

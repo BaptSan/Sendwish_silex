@@ -19,6 +19,74 @@ svg {
   width:50px;
   height:50px;
 }
+
+/*
+-------------------------------------- css qui était dans le fichier stylefooter ---------------------------------
+*/
+
+nav{
+  width: 100%;
+}
+
+
+ 
+nav ul { 
+  list-style: none; 
+  text-align: center; 
+} 
+nav ul .liNavProduct { 
+  display: inline-block; 
+} 
+nav ul .liNavProduct a { 
+  display: block; 
+  padding: 10px; 
+  text-decoration: none; 
+  color: #aaa; 
+  font-weight: 800; 
+  text-transform: uppercase; 
+  margin: 0 10px; 
+} 
+nav ul .liNavProduct a, 
+nav ul .liNavProduct a:after, 
+nav ul .liNavProduct a:before { 
+  transition: all .5s; 
+} 
+nav ul .liNavProduct a:hover { 
+  color: #555; 
+ 
+} 
+nav.navProduct ul .liNavProduct a { 
+  position:relative; 
+  z-index: 1; 
+} 
+nav.navProduct ul .liNavProduct a:hover { 
+  color: black; 
+   
+} 
+nav.navProduct ul .liNavProduct a:after { 
+  display: block; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  bottom: 0; 
+  right: 0; 
+  margin: auto; 
+  width: 100%; 
+  content: '.'; 
+  color: transparent; 
+  background: #86baef; 
+  visibility: none; 
+  opacity: 0; 
+  z-index: -1; 
+  border-radius: 10px; 
+ 
+} 
+nav.navProduct ul .liNavProduct a:hover:after { 
+  opacity: 1; 
+  visibility: visible; 
+  height: 100%; 
+} 
+
 /* ---------------------------------------------------
 SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -166,7 +234,9 @@ color: #4286f4;
 #bgclientorderhistory:hover :not(i){
 background-color: #4286f4;
 }
-
+#iconClient {
+    font-size:35px;
+}
 
 #claccount {
   color: #6a2bff;
@@ -216,6 +286,17 @@ background-color: red;
   z-index: 2;
 }
 
+.dropdown:hover #pageSubclient{
+  display: block;
+}
+#pageSubclient{
+  display: none;
+  position: absolute;
+  left: 100.8px;
+  top:0;
+  z-index: 2;
+}
+
 .dropdown:hover #pageSubCart{
   display: block;
 }
@@ -232,18 +313,22 @@ background-color: red;
 #pageSubCart:hover{
   color: black !important;
 }
+
+#iconInscription {
+    color:#4286f4;
+}
 /* ---------------------------------------------------
 MEDIAQUERIES
 ----------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
   nav {
-    position:fixed;
+    position:relative;
     top: 0; 
   }
 
-  .responsiveNav > li, .responsiveNav > .dropdown{
-  display: inline-block; 
+  .responsiveNav > li, .responsiveNav > .dropdown {
+    display: inline-block; 
   }
 
   #sidebar.active {
@@ -259,7 +344,7 @@ MEDIAQUERIES
 
   #sidebar ul.components {
     padding: 0;
-    margin-bottom:0; 
+    margin-bottom: 0; 
   }
 
   #Layer_1 {
@@ -272,8 +357,37 @@ MEDIAQUERIES
   }
 
   #pageSubmenu {
+    left:0;
+    top:56px;
+  }
+
+  #pageSubCart {
     left: -25px;
     top:56px;
   }
 
+  #pageSubclient {
+    left:-25px;
+    top:56px;
+  }
+
+  .wrapper{
+    width: 100%;
+    position: relative;
+    display: block;
+  }
+
+  .dropdown-menu {
+    min-width: auto !important;
+  }
+
 }
+
+@media screen and (max-width: 440px) {
+
+    #sidebar.active ul li a {
+        padding:5px 5px;
+    }
+
+}
+

@@ -7,70 +7,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-nav{
-  width: 100%;
-}
-
-footer{
-  width: 100%;
-}
- 
-nav ul { 
-  list-style: none; 
-  text-align: center; 
-} 
-nav ul .liNavProduct { 
-  display: inline-block; 
-} 
-nav ul .liNavProduct a { 
-  display: block; 
-  padding: 10px; 
-  text-decoration: none; 
-  color: #aaa; 
-  font-weight: 800; 
-  text-transform: uppercase; 
-  margin: 0 10px; 
-} 
-nav ul .liNavProduct a, 
-nav ul .liNavProduct a:after, 
-nav ul .liNavProduct a:before { 
-  transition: all .5s; 
-} 
-nav ul .liNavProduct a:hover { 
-  color: #555; 
- 
-} 
-nav.navProduct ul .liNavProduct a { 
-  position:relative; 
-  z-index: 1; 
-} 
-nav.navProduct ul .liNavProduct a:hover { 
-  color: black; 
-   
-} 
-nav.navProduct ul .liNavProduct a:after { 
-  display: block; 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  bottom: 0; 
-  right: 0; 
-  margin: auto; 
-  width: 100%; 
-  content: '.'; 
-  color: transparent; 
-  background: #86baef; 
-  visibility: none; 
-  opacity: 0; 
-  z-index: -1; 
-  border-radius: 10px; 
- 
-} 
-nav.navProduct ul .liNavProduct a:hover:after { 
-  opacity: 1; 
-  visibility: visible; 
-  height: 100%; 
-} 
 
 /* cell number */
 .carousel-cell:before {
@@ -154,11 +90,13 @@ z-index: 1;
 }
 @media screen and ( max-width: 768px ) {
   .carousel-cell { width: 80%; }
+  .imgCard { margin-top: 30% !important; align-self: center}
 
 }
 @media screen and ( max-width: 320px ) {
   .carousel-cell { width: 50%; }
   .carousel-cell { height: 200px }
+  .imgCard { margin-top: 30%; align-self: center}
 }
  .imgCard{
 margin-top: 8%;
@@ -214,28 +152,9 @@ header.masthead {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem; }
- 
-header.masthead .overlay {
-    position: absolute;
-    background-color: #212529;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0; }
-  
-header.masthead h1 {
-    font-size: 2rem; }
-  @media (min-width: 768px) {
-    
-header.masthead {
-      padding-top: 12rem;
-      padding-bottom: 12rem; }
-     
-header.masthead h1 {
-        font-size: 3rem; } }
+  padding-top: 17rem;
+  padding-bottom: 17rem;
+  }
 
 .showcase .showcase-text {
   padding: 3rem; }
@@ -244,7 +163,21 @@ header.masthead h1 {
   min-height: 30rem;
   background-size: cover; }
 
-@media (min-width: 768px) {
+@media screen and (max-width: 1450px ) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+@media screen and (max-width: 980px ) {
+  header.masthead {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .showcase .showcase-text {
     padding: 7rem; } }
 

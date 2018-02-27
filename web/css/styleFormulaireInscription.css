@@ -72,3 +72,10 @@
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
 } 
+
+@media screen and (max-width: 768px) {
+	
+	#formInscription {
+		margin-bottom:30px;
+	}
+}

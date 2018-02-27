@@ -9,6 +9,7 @@ function updateCart(){
 }
 
 $('.btQtyCartMinus').click(function(){
+	binActual = $(this).parent().parent().find('.binCase');
 	dataId = $(this).attr('data-id');
 	actualQty = $('.qtyInputCartId'+dataId).val();
 	if(actualQty == 1){
@@ -22,10 +23,12 @@ $('.btQtyCartMinus').click(function(){
 		}
 	}).done(function(data){
 		productId = data;
-		productQty = $('.qtyInputCartId'+productId).val() ;
+		productQty = $('.qtyInputCartId'+productId).val();
 		totalProductPrice = $('.priceTotalProductId'+productId).attr('data-price');
 		unitPrice = totalProductPrice / productQty;
 		newTotalProductPrice = totalProductPrice-unitPrice;
+		newAttrPrice = parseFloat(binActual.attr('data-price')) - unitPrice;
+		binActual.attr('data-price',newAttrPrice);
 		$('.priceTotalProductId'+productId).attr('data-price',newTotalProductPrice.toFixed(1));
 		$('.priceTotalProductId'+productId).html(newTotalProductPrice.toFixed(1)+" €");
 		prixTotal-=unitPrice;
@@ -36,6 +39,7 @@ $('.btQtyCartMinus').click(function(){
 });
 
 $('.btQtyCartPlus').click(function(){
+	binActual = $(this).parent().parent().find('.binCase');
 	dataId = $(this).attr('data-id');
 	actualQty = $('.qtyInputCartId'+dataId).val();
 	$.ajax({
@@ -49,9 +53,12 @@ $('.btQtyCartPlus').click(function(){
 		productQty = parseInt($('.qtyInputCartId'+productId).val());
 		totalProductPrice = parseFloat($('.priceTotalProductId'+productId).attr('data-price'));
 		unitPrice = parseFloat((totalProductPrice/productQty).toPrecision(3));
-
+		newAttrPrice = parseFloat(binActual.attr('data-price')) + unitPrice;
+		binActual.attr('data-price',newAttrPrice);
 		newTotalProductPrice = totalProductPrice+unitPrice;
-		prixTotal = prixTotal+unitPrice;
+		prixTotal = parseFloat(prixTotal)+unitPrice;
+		console.log(parseFloat(prixTotal));
+		console.log(prixTotal);
 		$('.priceTotalProductId'+productId).attr('data-price',newTotalProductPrice.toFixed(1));
 		$('.priceTotalProductId'+productId).html(newTotalProductPrice.toFixed(1)+" €");
 		$('#totalPriceCart').html("Prix Total : "+prixTotal.toFixed(1)+"€");
