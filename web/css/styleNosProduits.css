@@ -1,3 +1,4 @@
+	/*Responsive Page Produits */
 @media only screen and (max-width: 550px) {
 
 	.productDescription {
@@ -18,9 +19,15 @@
 	.margtop {
 		margin-top: 14%;
 	}
+	.productDescription {
+		width: 100% !important;
+	}
+	.imageProduit {
+		margin-top: 0px !important;
+	}
 }
-
 /* Style page produit => Petite faim */
+
 #parallax {
 	background-image: url('/img/paraBackground.jpg');
 	height: 100%;

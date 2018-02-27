@@ -11,7 +11,7 @@
 					<div class="d-md-flex col-sm-8 col-md-12 justify-content-center align-items-center">
 					<div class="col-md-4 p-0 productImageBox">
 						<h3 class="mb-0">{{sandwich.name}}</h3>
-						<img class="w-75 mt-3" src="{{sandwich.imagePath}}">
+						<img class="w-75 mt-3 imageProduit" src="{{sandwich.imagePath}}">
 						<p>{{sandwich.price|number_format(2, '.', ',')}} €</p>
 						<div data-id="{{ sandwich.id }}" class="addProductFromPageImpair">
 							<i class="fa fa-plus" aria-hidden="true"></i>
@@ -30,7 +30,7 @@
 						<div class="d-md-flex col-sm-8 col-md-12 flex-row-reverse justify-content-center align-items-center">
 					<div class="col-md-4 p-0 productImageBox">
 						<h3 class="mb-0">{{sandwich.name}}</h3>
-						<img class="w-75 mt-3" src="{{sandwich.imagePath}}">
+						<img class="w-75 mt-3 imageProduit" src="{{sandwich.imagePath}}">
 						<p>{{sandwich.price|number_format(2, '.', ',')}} €</p>
 						<div data-id="{{ sandwich.id }}" class="addProductFromPagePair">
 							<i class="fa fa-plus" aria-hidden="true"></i>
