@@ -5,8 +5,12 @@
 		<div class="divRegisterInfo d-flex align-items-center justify-content-center">
 			<div>
         {% if isRegister != NULL %}
-        <h3>Bienvenue !</h3>
-        <p>Félicitations, vous avez bien été enregistré, et vous êtes à présent connecté {{theUser.firstname}} !</p>
+          <h3>Bienvenue !</h3>
+          {% if theUser.gender == "male" %}
+            <p>Félicitations, vous avez bien été enregistré, et vous êtes à présent connecté {{theUser.firstname}} !</p>
+          {% elseif theUser.gender == "female" %}
+            <p>Félicitations, vous avez bien été enregistrée, et vous êtes à présent connectée {{theUser.firstname}} !</p>
+          {% endif %}
         {% else %}
         <p>Bonjour {{ theUser.firstname }}, une petite faim ?</p>
         {% endif %}
