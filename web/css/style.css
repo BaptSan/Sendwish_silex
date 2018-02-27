@@ -156,10 +156,6 @@ z-index: 1;
   .carousel-cell { width: 80%; }
 
 }
-@media screen and ( max-width: 320px ) {
-  .carousel-cell { width: 50%; }
-  .carousel-cell { height: 200px }
-}
  .imgCard{
 margin-top: 8%;
 align-self: center;

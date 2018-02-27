@@ -124,7 +124,6 @@ $(document).ready( function(){
     });
 }
 
- 
  $('#carrouselCat .card').click(function(){
   generateCarousel($(this).attr('data-cat'));
  });
