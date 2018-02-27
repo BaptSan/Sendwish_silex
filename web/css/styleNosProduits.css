@@ -10,6 +10,7 @@
 		font-size: 0.75em;
 	}
 	.productImageBox {
+		margin-top: 4%;
 		margin-bottom: 4%;
 		height: 70%;
 		width: 70%;
@@ -18,12 +19,22 @@
 	}
 	.margtop {
 		margin-top: 14%;
+		padding-top: 4%;
 	}
 	.productDescription {
 		width: 100% !important;
 	}
 	.imageProduit {
 		margin-top: 0px !important;
+	}
+	.block {
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+
+	.footer {
+		padding-top: 20% !important;
+		padding-bottom: 4% !important;
 	}
 }
 /* Style page produit => Petite faim */
