@@ -46,7 +46,7 @@ label{
 	font-size: 1.3em;
 }
 
-#btnAddProduct {
+#btnAddProduct, #btnDeleteProduct {
 	width: 15%;
 	margin:auto;
 }
@@ -69,4 +69,5 @@ label{
 }
 .divCommande{
 	margin-bottom: 26%;
-	}
+}
+

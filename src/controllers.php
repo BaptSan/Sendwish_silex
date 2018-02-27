@@ -388,37 +388,6 @@ $app->get('/order', function () use ($app) {
         return $app->redirect('/inscription');
     }
     $user = $app['em']->getRepository(User::class)->findOneBy(array('id'=>$userSession['id']));
-    // $cartItems = $user->getCartItems();
-    // $order = new Order(0*0.2, 0, 1231231, 0, 1, new DateTime(), $user);
-    // $order
-    // $total=0;
-    // $totalDf=0;
-    // foreach($cartItems as $cartItem){
-    //     $orderItem = new OrderItem($cartItem->getProduct()->getName(), $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10), $cartItem->getProduct()->getPrice(),$order);
-    //     $order->addOrderItem($orderItem);
-    //     $total+=$cartItem->getProduct()->getPrice();
-    //     $totalDf+= $cartItem->getProduct()->getPrice() - (($cartItem->getProduct()->getPrice() / 100) * 10);
-    //     $app['em']->remove($cartItem);
-    // }
-    // $order->setPrice($total);
-    // $order->setPriceDf($totalDf);
-    // $randomNumber = 0;
-    // $buildOrderNumber = "";
-
-    // do{
-    //     for ($i = 0 ; $i <= 11 ; $i++){
-    //         if($i == 2 || $i == 6 || $i == 11){
-    //             $buildOrderNumber.="-";
-    //         }
-    //         $randomNumber = rand(0,9);
-    //         $buildOrderNumber.=strval($randomNumber);
-    //     }
-    // }while($app['em']->getRepository(Order::class)->findOneBy(array('orderNum'=>$buildOrderNumber)) != null);
-    
-    // $order->setOrderNum($buildOrderNumber);
-    // $app['em']->persist($order);
-    // $app['em']->flush();
-
     return $app->redirect('/ajoutPanier');
 });
 
@@ -607,7 +576,16 @@ $app->match('/admin', function (Request $request) use ($app) {
                     return $app->redirect('/admin');
         }        
 
-    return $app['twig']->render('backOffice.html.twig', array('theUser' => $app['session']->get('user') ?? NULL,
+        if($request->get('selectProductDelete') !== null && !empty($request->get('selectProductDelete'))){
+            $product = $app['em']->getRepository(Product::class)->findOneBy(array('id'=>$request->get('selectProductDelete')));
+            $app['em']->remove($product);
+            $app['em']->flush();
+            unlink(__DIR__."/../web/".$product->getImagePath());
+        }
+    $products = $app['em']->getRepository(Product::class)->findAll();
+    return $app['twig']->render('backOffice.html.twig', array(
+        'theUser' => $app['session']->get('user') ?? NULL,
+        'products' => $products ?? NULL,
     ));
 });
 $app->match('/backOfficeRefresh', function(Request $request) use ($app) {
