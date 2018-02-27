@@ -155,16 +155,6 @@ header.masthead {
   padding-top: 17rem;
   padding-bottom: 17rem;
   }
- 
-/*header.masthead .overlay {
-    position: absolute;
-    background-color: #212529;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0; 
-  }*/
 
 .showcase .showcase-text {
   padding: 3rem; }
@@ -172,6 +162,13 @@ header.masthead {
 .showcase .showcase-img {
   min-height: 30rem;
   background-size: cover; }
+
+@media screen and (min-width: 1170px ) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
 
 @media screen and (max-width: 1300px ) {
   header.masthead {
