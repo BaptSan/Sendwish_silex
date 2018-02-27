@@ -255,8 +255,8 @@ MEDIAQUERIES
     top: 0; 
   }
 
-  .responsiveNav > li, .responsiveNav > .dropdown{
-  display: inline-block; 
+  .responsiveNav > li, .responsiveNav > .dropdown {
+    display: inline-block; 
   }
 
   #sidebar.active {
@@ -264,7 +264,6 @@ MEDIAQUERIES
     width: 100%;
     height: auto;
     display: inline-block !important;
-
   }
   
   body {
@@ -300,6 +299,13 @@ MEDIAQUERIES
     top:56px;
   }
 
+  #bgmenus, #bgsandwichs, #bgboissons, #bgfaim {
+    width: 70%;
+  }
+
+
+
+
   .wrapper{
     width: 100%;
     position: relative;
@@ -307,3 +313,5 @@ MEDIAQUERIES
   }
 
 }
+
+
