@@ -154,7 +154,13 @@ z-index: 1;
 }
 @media screen and ( max-width: 768px ) {
   .carousel-cell { width: 80%; }
+  .imgCard { margin-top: 30% !important; align-self: center}
 
+}
+@media screen and ( max-width: 320px ) {
+  .carousel-cell { width: 50%; }
+  .carousel-cell { height: 200px }
+  .imgCard { margin-top: 30%; align-self: center}
 }
  .imgCard{
 margin-top: 8%;
