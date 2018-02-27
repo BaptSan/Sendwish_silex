@@ -15,7 +15,6 @@ function getLoc(){
 }
 
 function calcDist(lat,lng){
-	// SendWish place (8 Cours Clémenceau Orient Kebab)
 	var origin1 = new google.maps.LatLng(48.4314183, 0.08938020000005054);
 	// Client Place
 	var destinationA = new google.maps.LatLng(lat, lng);
@@ -23,12 +22,7 @@ function calcDist(lat,lng){
 	service.getDistanceMatrix({
     	origins: [origin1],
     	destinations: [destinationA],
-    	travelMode: 'DRIVING',
-	    // transitOptions: TransitOptions,
-	    // drivingOptions: DrivingOptions,
-	    // unitSystem: UnitSystem,
-	    // avoidHighways: Boolean,
-	    // avoidTolls: Boolean,
+    	travelMode: 'DRIVING',	  
   	}, callback);
 }
 
