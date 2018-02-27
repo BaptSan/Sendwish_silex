@@ -6,7 +6,14 @@
 	}
 	#description {
 		width: 100%;
-		font-size: 0.50em !important;
+		font-size: 0.75em;
+	}
+	.productImageBox {
+		margin-bottom: 4%;
+		height: 70%;
+		width: 70%;
+		margin-left: 15%;
+		margin-right: 15%;
 	}
 }
 
