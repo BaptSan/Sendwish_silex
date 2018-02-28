@@ -1,4 +1,47 @@
-	@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 575px) {
+
+	.productDescriptionBox {
+		padding-bottom: 1%;
+	}
+	.block {
+		margin-left: 0%;
+		margin-right: 0%;	
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+	.footer {
+		padding-top: 5% !important;
+		padding-bottom: 5% !important;
+	}
+}
+
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+	.productDescriptionBox {
+		padding-bottom: 1%;
+	}
+	.block {
+		margin-left: 15%;
+		margin-right: 15%;	
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+	.footer {
+		padding-top: 5% !important;
+		padding-bottom: 5% !important;
+	}
+}
+
+
+
+
+	/*Responsive Page Produits Tablette */
+@media only screen and (max-width: 768px) {
 
 	#description {
 		width: 100%;
@@ -19,10 +62,6 @@
 		padding-bottom: 5% !important;
 	}
 }
-
-
-
-
 
 	/*Responsive Page Produits Mobile */
 @media only screen and (max-width: 550px) {
@@ -53,6 +92,8 @@
 		margin-top: 0px !important;
 	}
 	.block {
+		margin-left: 0%;
+		margin-right: 0%;
 		padding-top: 1%;
 		padding-bottom: 1%;
 	}
