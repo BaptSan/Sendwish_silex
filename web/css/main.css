@@ -6,7 +6,7 @@
 	left: 0;
 	background-color: rgba(0,0,0,0.7);
 	color: white;
-	animation: animRegisterInfo 6.5s;
+	animation: animRegisterInfo 4s;
 	opacity: 0;
 	visibility: hidden;
 	z-index: 10000000;
