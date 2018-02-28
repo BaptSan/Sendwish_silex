@@ -1,26 +1,12 @@
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 700px) {
 
-	#description {
-		width: 100%;
-		font-size: 0.85em;
-	}
-	.productImageBox {
-		margin-top: 2%;
-		margin-bottom: 2%;
-	}
-	.margtop {
-		padding-top: 4%;
-	}
-	.imageProduit {
-		margin-top: 0px !important;
-	}
-	.block {
-		width: 100%;	
-		padding-top: 1%;
+	.productDescriptionBox {
 		padding-bottom: 1%;
 	}
-	.lineProduct {
-		width: 100%;
+
+	.block {
+		padding-top: 1%;
+		padding-bottom: 1%;
 	}
 	.footer {
 		padding-top: 5% !important;
